@@ -3,15 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { StoreProvider } from "easy-peasy";
-import { store } from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/*@ts-ignore*/}
-    <StoreProvider store={store}>
-      <App />
-    </StoreProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
