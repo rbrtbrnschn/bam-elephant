@@ -17,9 +17,11 @@ Alpha:
   - based on sort alg, V
     - which can be used to determine lose if more than 2 player V
   - draw V
-- undo draw
-- add in map of cards as chosen per gamemodes to run cbs for winning cards (possible useGameState param?)
+- undo draw V
+- add in map of cards as chosen per gamemodes to run cbs for winning cards (possible useGameState param?) V
 - shuffle deck from the get go
+- refactor undo, drawCards to store
+- refactor toggle Modal, newRule out of store/index.ts 
 
 Beta:
--
+- vercel

@@ -4,29 +4,62 @@ import { STANDARD_DECK } from "../common/cards";
 import { DEFAULT_RULES } from "../common/rules";
 import { CardValue, ICard, IUndoCard } from "../interfaces/card.interface";
 import usePrevious from "./usePrevious.hook";
+/*TODO refactor to own file */
+interface IGameState {
+  deck: ICard[];
+  drawnCards: ICard[];
+  disposedCards: ICard[];
+  rule: string;
+  rules: Partial<Record<CardValue, string>>;
+  newRule: string;
+  modalIsOpen: boolean;
+}
+type GameRules = Partial<Record<CardValue, string>>;
+interface IGameActions {
+  setDeck: (deck: ICard[]) => void;
+  setDrawnCards: (cards: ICard[]) => void;
+  setDisposedCards: (cards: ICard[]) => void;
+  setRule: (rule: string) => void;
+  setRules: (rules: GameRules) => void;
+  setNewRule: (newRule: string) => void;
+  toggleModal: () => void;
+}
 
+interface IGameHelpers {
+  winner: ICard | null | undefined;
+  loser: ICard | null | undefined;
+  roundHasStarted: boolean;
+  roundHasEnded: boolean;
+}
+
+export interface IInjections {
+  state: IGameState;
+  actions: IGameActions;
+  helpers: IGameHelpers;
+}
+type WinnerCallback = (e: IInjections) => void;
+export type WinnerCallbacks = Partial<Record<CardValue, WinnerCallback>>;
 interface IUseGameStateOptions {
   discardedPileSize?: number;
   playerCount?: number;
+  winnerCallbacks?: WinnerCallbacks;
 }
+
 export function useGameState({
   discardedPileSize: DISCARDED_PILE_SIZE = 30,
   playerCount: PLAYER_COUNT = 2,
+  winnerCallbacks: WINNER_CALLBACKS = {},
 }: IUseGameStateOptions = {}) {
+  /*TODO refactor constants */
   const MAX_PLAYER_COUNT = 8;
+
+  /* Error Handling */
   if (PLAYER_COUNT > MAX_PLAYER_COUNT)
     throw new Error(
       `Too many Players. Max Player Count is ${MAX_PLAYER_COUNT}.`
     );
-  interface IGameState {
-    deck: ICard[];
-    drawnCards: ICard[];
-    disposedCards: ICard[];
-    rule: string;
-    rules: Partial<Record<CardValue, string>>;
-    newRule: string;
-    modalIsOpen: boolean;
-  }
+  /* Error Handling */
+
   const [state, setState] = useState<IGameState>({
     deck: [...STANDARD_DECK],
     drawnCards: [],
@@ -55,7 +88,7 @@ export function useGameState({
     setState((oldState) => ({ ...oldState, rule: newRule }));
   };
 
-  const setRules = (newRules: Partial<Record<CardValue, string>>) => {
+  const setRules = (newRules: GameRules) => {
     setState((oldState) => ({ ...oldState, rules: newRules }));
   };
 
@@ -66,11 +99,21 @@ export function useGameState({
   const toggleModal = () => {
     setState((oldState) => ({ ...oldState, modalIsOpen: !state.modalIsOpen }));
   };
+
+  const actions: IGameActions = {
+    setDeck,
+    setDrawnCards,
+    setDisposedCards,
+    setRule,
+    setRules,
+    setNewRule,
+    toggleModal,
+  };
   /* ACTIONS */
 
   /* HELPERS */
   const roundHasStarted = useMemo(
-    () => state.deck.length && state.drawnCards.length,
+    () => !!(state.deck.length && state.drawnCards.length),
     [state.drawnCards.length, state.deck.length]
   );
   const roundHasEnded = useMemo(() => !state.deck.length, [state.deck.length]);
@@ -98,6 +141,12 @@ export function useGameState({
     return [sorted[sorted.length - 1], sorted[0]];
   }, [state.drawnCards]);
 
+  const helpers: IGameHelpers = {
+    winner,
+    loser,
+    roundHasStarted,
+    roundHasEnded,
+  };
   /* HELPERS */
 
   /**
@@ -109,6 +158,7 @@ export function useGameState({
       toast.error("It's a draw.");
       return setRule("");
     }
+    WINNER_CALLBACKS[winner.value]?.({ state, actions, helpers });
 
     const rule = state.rules[winner.value];
     const fallback = "You got lucky";
@@ -138,7 +188,11 @@ export function useGameState({
   function useDisposeLastDrawnCards() {
     useEffect(() => {
       if (!previousDrawnCards) return;
-      if (state.drawnCards.some((c) => (c as IUndoCard)?.isUndo)) {
+
+      const isUndoCards = state.drawnCards.some(
+        (c) => (c as IUndoCard)?.isUndo
+      );
+      if (isUndoCards) {
         return setDisposedCards([...state.disposedCards.slice(PLAYER_COUNT)]);
       }
 

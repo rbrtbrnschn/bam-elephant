@@ -2,14 +2,27 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { STANDARD_DECK } from "./common/cards";
 import { CardValue, cardValueToName, ICard } from "./interfaces/card.interface";
-import { useGameState } from "./store";
+import { useGameState, WinnerCallbacks } from "./store";
 import { MyCard } from "./components/card/card";
 import { MyBanner } from "./components/banner/banner";
 import { MyTable } from "./components/table/table";
+import { toast } from "react-toastify";
 
 function App() {
-  const [playerCount, setPlayerCount] = useState(3);
-  const { state, actions, helpers } = useGameState({ playerCount });
+  const [playerCount, setPlayerCount] = useState(2);
+  const winnerCallbacks: WinnerCallbacks = {
+    [CardValue.ACE]: (options) => {
+      toggleModal();
+    },
+    [CardValue.KING]: ({ state }) => {
+      console.log("hacking the system", state.drawnCards);
+      toast.warn("KING BABY");
+    },
+  };
+  const { state, actions, helpers } = useGameState({
+    playerCount,
+    winnerCallbacks,
+  });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;
   const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
@@ -42,11 +55,11 @@ function App() {
     setDrawnCards([]);
   };
 
-  useEffect(() => {
-    if (winner?.value === CardValue.ACE) {
-      toggleModal();
-    }
-  }, [winner]);
+  // useEffect(() => {
+  //   if (winner?.value === CardValue.ACE) {
+  //     toggleModal();
+  //   }
+  // }, [winner]);
 
   return (
     <div className="App">
