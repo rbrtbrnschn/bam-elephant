@@ -1,14 +1,16 @@
-import React, { useEffect, useMemo, useState } from "react";
-import logo from "./logo.svg";
+import React, { useEffect } from "react";
 import "./App.css";
 import { STANDARD_DECK } from "./common/cards";
 import { CardValue, ICard } from "./interfaces/card.interface";
 import { useGameState } from "./store";
+import { MyCard } from "./components/card/card";
+import { MyBanner } from "./components/banner/banner";
 
 function App() {
   const { state, actions, helpers } = useGameState();
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules } = state;
-  const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal } = actions;
+  const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
+    actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
 
   const drawCards = () => {
@@ -33,27 +35,42 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          <code>{rule}</code>
-        </p>
-        <div className="cards">
+      {rule && (
+        <MyBanner
+          title={rule}
+          onClose={() => {
+            setRule("");
+          }}
+        />
+      )}
+
+      <div className="container mx-auto px-4">
+        <div
+          className="w-full flex justify-center items-center gap-10"
+          style={{ minHeight: "500px" }}
+        >
           {drawnCards.map((c, i) => (
-            <div key={i} style={{ display: "inline-block" }}>
-              <div>
-                Card#{i + 1}: {c.code}
-              </div>
-              <img
-                src={c.images?.png}
-                className={`card ${winner?.code === c.code ? "--winner" : ""}`}
-                alt={c.code}
-              />
-            </div>
+            <MyCard imageUrl={c.images?.png} title={c.code + ""} />
           ))}
         </div>
-
-        {!hasEnded && <button onClick={() => drawCards()}>Draw</button>}
-        {hasEnded && <button onClick={renewStack}>Renew</button>}
+        <div className="full-w flex items-center justify-center">
+          {!hasEnded && (
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+              onClick={() => drawCards()}
+            >
+              Draw
+            </button>
+          )}
+          {hasEnded && (
+            <button
+              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+              onClick={renewStack}
+            >
+              Renew
+            </button>
+          )}
+        </div>
 
         {modalIsOpen && (
           <div>
@@ -80,7 +97,7 @@ function App() {
             </button>
           </div>
         )}
-      </header>
+      </div>
     </div>
   );
 }
