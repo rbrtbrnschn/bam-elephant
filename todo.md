@@ -33,7 +33,7 @@ Alpha:
 
 Beta:
 - tooltip on hover card showing current rule V
-- fix up mobile view
+- fix up mobile view V
 - add How To Section ( Rules )
 - add home screen
 - allow for game modes
