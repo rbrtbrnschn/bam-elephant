@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import ReactTooltip from "react-tooltip";
 import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
   <React.StrictMode>
     <ToastContainer />
+    <ReactTooltip id="main" />
     <App />
   </React.StrictMode>,
   document.getElementById("root")
