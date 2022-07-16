@@ -2,12 +2,26 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { STANDARD_DECK } from "../common/cards";
 import { DEFAULT_RULES } from "../common/rules";
-import { CardValue, ICard } from "../interfaces/card.interface";
+import { CardValue, ICard, IUndoCard } from "../interfaces/card.interface";
+import usePrevious from "./usePrevious.hook";
 
-export function useGameState() {
+interface IUseGameStateOptions {
+  discardedPileSize?: number;
+  playerCount?: number;
+}
+export function useGameState({
+  discardedPileSize: DISCARDED_PILE_SIZE = 30,
+  playerCount: PLAYER_COUNT = 2,
+}: IUseGameStateOptions = {}) {
+  const MAX_PLAYER_COUNT = 8;
+  if (PLAYER_COUNT > MAX_PLAYER_COUNT)
+    throw new Error(
+      `Too many Players. Max Player Count is ${MAX_PLAYER_COUNT}.`
+    );
   interface IGameState {
     deck: ICard[];
     drawnCards: ICard[];
+    disposedCards: ICard[];
     rule: string;
     rules: Partial<Record<CardValue, string>>;
     newRule: string;
@@ -16,11 +30,13 @@ export function useGameState() {
   const [state, setState] = useState<IGameState>({
     deck: [...STANDARD_DECK],
     drawnCards: [],
+    disposedCards: [],
     rule: "",
     rules: { ...DEFAULT_RULES },
     newRule: "",
     modalIsOpen: false,
   });
+  const previousDrawnCards = usePrevious<ICard[]>(state.drawnCards);
 
   /* ACTIONS */
   const setDeck = (newDeck: ICard[]) => {
@@ -31,15 +47,22 @@ export function useGameState() {
     setState((oldState) => ({ ...oldState, drawnCards: newDrawnCards }));
   };
 
+  const setDisposedCards = (newDisposedCards: ICard[]) => {
+    setState((oldState) => ({ ...oldState, disposedCards: newDisposedCards }));
+  };
+
   const setRule = (newRule: string) => {
     setState((oldState) => ({ ...oldState, rule: newRule }));
   };
+
   const setRules = (newRules: Partial<Record<CardValue, string>>) => {
     setState((oldState) => ({ ...oldState, rules: newRules }));
   };
+
   const setNewRule = (newRule: string) => {
     setState((oldState) => ({ ...oldState, newRule }));
   };
+
   const toggleModal = () => {
     setState((oldState) => ({ ...oldState, modalIsOpen: !state.modalIsOpen }));
   };
@@ -107,9 +130,28 @@ export function useGameState() {
       }
     }, [state.drawnCards]);
   }
+
+  /**
+   * Shift old `drawnCards` to `disposedCards` pile for history
+   * and undo purposes.
+   */
+  function useDisposeLastDrawnCards() {
+    useEffect(() => {
+      if (!previousDrawnCards) return;
+      if (state.drawnCards.some((c) => (c as IUndoCard)?.isUndo)) {
+        return setDisposedCards([...state.disposedCards.slice(PLAYER_COUNT)]);
+      }
+
+      setDisposedCards([
+        ...previousDrawnCards,
+        ...state.disposedCards.slice(0, DISCARDED_PILE_SIZE),
+      ]);
+    }, [state.drawnCards]);
+  }
   /* HOOKS */
 
   useCleanupNewRuleDelegationDialoge();
+  useDisposeLastDrawnCards();
 
   return {
     state,
@@ -118,6 +160,7 @@ export function useGameState() {
       toggleModal,
       setDeck,
       setDrawnCards,
+      setDisposedCards,
       setRule,
       setRules,
       setNewRule,

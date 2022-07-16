@@ -59,3 +59,7 @@ export interface ICard {
   value: CardValue;
   suit: CardSuit;
 }
+
+export interface IUndoCard extends ICard {
+  isUndo: boolean;
+}

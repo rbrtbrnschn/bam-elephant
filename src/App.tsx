@@ -8,15 +8,18 @@ import { MyBanner } from "./components/banner/banner";
 import { MyTable } from "./components/table/table";
 
 function App() {
-  const { state, actions, helpers } = useGameState();
-  const { deck, drawnCards, modalIsOpen, newRule, rule, rules } = state;
+  const [playerCount, setPlayerCount] = useState(3);
+  const { state, actions, helpers } = useGameState({ playerCount });
+  const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
+    state;
   const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
 
-  const [playerCount, setPlayerCount] = useState(3);
+  const drawCards = (givenCards?: ICard[]) => {
+    if (givenCards)
+      return setDrawnCards(givenCards.map((c) => ({ ...c, isUndo: true })));
 
-  const drawCards = () => {
     const newDeck = [...deck];
     const newDrawnCards = new Array(playerCount)
       .fill(0)
@@ -25,13 +28,21 @@ function App() {
     setDrawnCards(newDrawnCards);
     setDeck([...newDeck]);
   };
+
+  const undo = () => {
+    const previouslyDiscardedCards = [...state.disposedCards].slice(
+      0,
+      playerCount
+    );
+    setDeck([...state.drawnCards, ...state.deck]);
+    drawCards(previouslyDiscardedCards);
+  };
   const renewStack = () => {
     setDeck([...STANDARD_DECK].sort(() => 0.5 - Math.random()));
     setDrawnCards([]);
   };
 
   useEffect(() => {
-    console.log(winner, loser);
     if (winner?.value === CardValue.ACE) {
       toggleModal();
     }
@@ -70,6 +81,16 @@ function App() {
               Draw
             </button>
           )}
+          {disposedCards.length ? (
+            <button
+              className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+              onClick={() => {
+                undo();
+              }}
+            >
+              Undo
+            </button>
+          ) : null}
           {hasEnded && (
             <button
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
