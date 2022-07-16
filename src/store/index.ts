@@ -31,13 +31,18 @@ interface IGameHelpers {
   roundHasStarted: boolean;
   roundHasEnded: boolean;
 }
+interface IGameThunks {
+  shuffle: () => void;
+  restart: () => void;
+}
 
-export interface IInjections {
+export interface IGameInjections {
   state: IGameState;
   actions: IGameActions;
   helpers: IGameHelpers;
+  thunks: IGameThunks;
 }
-type WinnerCallback = (e: IInjections) => void;
+type WinnerCallback = (e: IGameInjections) => void;
 export type WinnerCallbacks = Partial<Record<CardValue, WinnerCallback>>;
 interface IUseGameStateOptions {
   discardedPileSize?: number;
@@ -149,6 +154,30 @@ export function useGameState({
     roundHasStarted,
     roundHasEnded,
   };
+
+  /* THUNKS */
+  const shuffle = (shuffleAlg = () => 0.5 - Math.random()) => {
+    setDeck([...state.deck].sort(shuffleAlg));
+    setDrawnCards([]);
+  };
+  const restart = () => {
+    setDeck([...STANDARD_DECK].sort(() => 0.5 * Math.random()));
+    setDrawnCards([]);
+    setDisposedCards([]);
+  };
+
+  const thunks: IGameThunks = {
+    shuffle,
+    restart,
+  };
+  /* THUNKS */
+
+  const gameInjections: IGameInjections = {
+    state,
+    actions,
+    helpers,
+    thunks,
+  };
   /* HELPERS */
 
   /**
@@ -160,7 +189,12 @@ export function useGameState({
       toast.error("It's a draw.");
       return setRule("");
     }
-    WINNER_CALLBACKS[winner.value]?.({ state, actions, helpers });
+
+    try {
+      WINNER_CALLBACKS[winner.value]?.(gameInjections);
+    } catch (e) {
+      console.error(e);
+    }
 
     const rule = state.rules[winner.value];
     const fallback = "You got lucky";
@@ -204,10 +238,18 @@ export function useGameState({
       ]);
     }, [state.drawnCards]);
   }
+
+  /**
+   * Shuffle deck on Mount.
+   */
+  function useShuffleDeck() {
+    useEffect(shuffle, []);
+  }
   /* HOOKS */
 
   useCleanupNewRuleDelegationDialoge();
   useDisposeLastDrawnCards();
+  useShuffleDeck();
 
   return {
     state,
@@ -227,5 +269,6 @@ export function useGameState({
       winner,
       loser,
     },
+    thunks,
   };
 }

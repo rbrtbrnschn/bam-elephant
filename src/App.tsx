@@ -10,16 +10,13 @@ import { toast } from "react-toastify";
 
 function App() {
   const [playerCount, setPlayerCount] = useState(2);
+  //@TODO refactor to common
   const winnerCallbacks: WinnerCallbacks = {
     [CardValue.ACE]: (options) => {
       toggleModal();
     },
-    [CardValue.KING]: ({ state }) => {
-      console.log("hacking the system", state.drawnCards);
-      toast.warn("KING BABY");
-    },
   };
-  const { state, actions, helpers } = useGameState({
+  const { state, actions, helpers, thunks } = useGameState({
     playerCount,
     winnerCallbacks,
   });
@@ -28,7 +25,7 @@ function App() {
   const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
-
+  const { shuffle, restart } = thunks;
   const drawCards = (givenCards?: ICard[]) => {
     if (givenCards)
       return setDrawnCards(givenCards.map((c) => ({ ...c, isUndo: true })));
@@ -107,7 +104,7 @@ function App() {
           {hasEnded && (
             <button
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              onClick={renewStack}
+              onClick={restart}
             >
               Renew
             </button>
