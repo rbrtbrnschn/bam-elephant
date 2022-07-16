@@ -21,7 +21,7 @@ Alpha:
 - add in map of cards as chosen per gamemodes to run cbs for winning cards (possible useGameState param?) V
 - allow for different rule sets V
 - shuffle deck from the get go V
-- CSS statics
+- CSS statics V
 - refactor interfaces
 - refactor undo, drawCards to store
 - refactor winnerCallbacks

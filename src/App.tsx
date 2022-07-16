@@ -7,6 +7,7 @@ import { MyCard } from "./components/card/card";
 import { MyBanner } from "./components/banner/banner";
 import { MyTable } from "./components/table/table";
 import { toast } from "react-toastify";
+import { AddRuleModal } from "./components/modal/add-rule.modal";
 
 function App() {
   const [playerCount, setPlayerCount] = useState(2);
@@ -25,7 +26,7 @@ function App() {
   const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
-  const { shuffle, restart } = thunks;
+  const { restart } = thunks;
   const drawCards = (givenCards?: ICard[]) => {
     if (givenCards)
       return setDrawnCards(givenCards.map((c) => ({ ...c, isUndo: true })));
@@ -47,19 +48,19 @@ function App() {
     setDeck([...state.drawnCards, ...state.deck]);
     drawCards(previouslyDiscardedCards);
   };
-  const renewStack = () => {
-    setDeck([...STANDARD_DECK].sort(() => 0.5 - Math.random()));
-    setDrawnCards([]);
-  };
-
-  // useEffect(() => {
-  //   if (winner?.value === CardValue.ACE) {
-  //     toggleModal();
-  //   }
-  // }, [winner]);
 
   return (
-    <div className="App">
+    <div className="App relative">
+      {modalIsOpen && (
+        <AddRuleModal
+          card={loser as ICard}
+          onClose={toggleModal}
+          onSuccess={(rule: string) => {
+            setRules({ ...rules, [(loser as ICard)?.value]: rule });
+          }}
+          placeholder={state.rules[(loser as ICard)?.value]}
+        />
+      )}
       <div className="h-0">
         {rule && (
           <MyBanner
