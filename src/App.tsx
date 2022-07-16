@@ -60,14 +60,16 @@ function App() {
 
   return (
     <div className="App">
-      {rule && (
-        <MyBanner
-          title={rule}
-          onClose={() => {
-            setRule("");
-          }}
-        />
-      )}
+      <div className="h-0">
+        {rule && (
+          <MyBanner
+            title={rule}
+            onClose={() => {
+              setRule("");
+            }}
+          />
+        )}
+      </div>
 
       <div className="container mx-auto px-4">
         <div
@@ -82,7 +84,7 @@ function App() {
             />
           ))}
         </div>
-        <div className="full-w flex items-center justify-center">
+        <div className="full-w flex items-center justify-center gap-4">
           {!hasEnded && (
             <button
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
@@ -91,7 +93,15 @@ function App() {
               Draw
             </button>
           )}
-          {disposedCards.length ? (
+          {hasEnded && (
+            <button
+              className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
+              onClick={restart}
+            >
+              Renew
+            </button>
+          )}
+          {!hasEnded && disposedCards.length ? (
             <button
               className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
               onClick={() => {
@@ -101,14 +111,6 @@ function App() {
               Undo
             </button>
           ) : null}
-          {hasEnded && (
-            <button
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              onClick={restart}
-            >
-              Renew
-            </button>
-          )}
         </div>
 
         {modalIsOpen && (
