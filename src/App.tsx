@@ -3,15 +3,13 @@ import logo from "./logo.svg";
 import "./App.css";
 import { STANDARD_DECK } from "./common/cards";
 import { CardValue, ICard } from "./interfaces/card.interface";
-import { DEFAULT_RULES } from "./common/rules";
 import { useGameState } from "./store";
 
 function App() {
   const { state, actions, helpers } = useGameState();
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules } = state;
-  const { setDeck, setDrawnCards, setNewRule, setRule, setRules, toggleModal } =
-    actions;
-  const { hasEnded, hasStarted } = helpers;
+  const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal } = actions;
+  const { hasEnded, hasStarted, winner, loser } = helpers;
 
   const drawCards = () => {
     const newDeck = [...deck];
@@ -23,38 +21,15 @@ function App() {
     setDeck([...newDeck]);
   };
   const renewStack = () => {
-    setDeck([...STANDARD_DECK]);
+    setDeck([...STANDARD_DECK].sort(() => 0.5 - Math.random()));
     setDrawnCards([]);
-    setRule("");
   };
-  const winner = useMemo<ICard | null>(
-    () =>
-      drawnCards.length
-        ? drawnCards?.[0].value > drawnCards?.[1].value
-          ? drawnCards[0]
-          : drawnCards[1]
-        : null,
-
-    [drawnCards]
-  );
-  const loser = useMemo<ICard | null>(
-    () => drawnCards.find((c) => c.code !== winner?.code) || null,
-    [drawnCards, winner]
-  );
 
   useEffect(() => {
     if (winner?.value === CardValue.ACE) {
       toggleModal();
     }
   }, [winner]);
-  useEffect(() => {
-    if (!drawnCards.length) return setRule("");
-    if (!winner) return;
-
-    const rule = rules[winner.value];
-    const fallback = "You got lucky";
-    setRule(rule ?? fallback);
-  }, [drawnCards.length, rules, winner]);
 
   return (
     <div className="App">

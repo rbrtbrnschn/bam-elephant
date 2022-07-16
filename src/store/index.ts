@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { STANDARD_DECK } from "../common/cards";
 import { DEFAULT_RULES } from "../common/rules";
 import { CardValue, ICard } from "../interfaces/card.interface";
@@ -21,6 +21,7 @@ export function useGameState() {
     modalIsOpen: false,
   });
 
+  /* ACTIONS */
   const setDeck = (newDeck: ICard[]) => {
     setState((oldState) => ({ ...oldState, deck: newDeck }));
   };
@@ -41,15 +42,61 @@ export function useGameState() {
   const toggleModal = () => {
     setState((oldState) => ({ ...oldState, modalIsOpen: !state.modalIsOpen }));
   };
+  /* ACTIONS */
 
   /* HELPERS */
-  const hasStarted = useMemo(
+  const roundHasStarted = useMemo(
     () => state.deck.length && state.drawnCards.length,
     [state.drawnCards.length, state.deck.length]
   );
-  const hasEnded = useMemo(() => !state.deck.length, [state.deck.length]);
+  const roundHasEnded = useMemo(() => !state.deck.length, [state.deck.length]);
+
+  const winner = useMemo<ICard | null>(
+    () =>
+      state.drawnCards.length
+        ? state.drawnCards?.[0].value > state.drawnCards?.[1].value
+          ? state.drawnCards[0]
+          : state.drawnCards[1]
+        : null,
+
+    [state.drawnCards]
+  );
+  const loser = useMemo<ICard | null>(
+    () => state.drawnCards.find((c) => c.code !== winner?.code) || null,
+    [state.drawnCards, winner]
+  );
 
   /* HELPERS */
+
+  /**
+   * Update Rule On New Win
+   */
+  useEffect(() => {
+    if (!state.drawnCards.length) return setRule("");
+    if (!winner) return;
+
+    const rule = state.rules[winner.value];
+    const fallback = "You got lucky";
+    setRule(rule ?? fallback);
+  }, [state.rules, winner]);
+
+  /* HOOKS */
+  /**
+   * Cleanup New Rule Modal
+   * if skipped.
+   */
+  function useCleanupNewRuleDelegationDialoge() {
+    useEffect(() => {
+      const noAce = winner?.value !== CardValue.ACE;
+      const modalIsOpen = state.modalIsOpen === true;
+      if (noAce && modalIsOpen) {
+        toggleModal();
+      }
+    }, [state.drawnCards]);
+  }
+  /* HOOKS */
+
+  useCleanupNewRuleDelegationDialoge();
 
   return {
     state,
@@ -63,8 +110,10 @@ export function useGameState() {
       setNewRule,
     },
     helpers: {
-      hasStarted,
-      hasEnded,
+      hasStarted: roundHasStarted,
+      hasEnded: roundHasEnded,
+      winner,
+      loser,
     },
   };
 }
