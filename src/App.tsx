@@ -8,8 +8,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route index element={<GamePage />} />
-          <Route element={<HomePage />} path="/info" />
+          <Route index element={<HomePage />} />
+          <Route path="/v1" element={<GamePage />} />
+          <Route path="*" element={<GamePage />} />
         </Routes>
       </Router>
     </div>

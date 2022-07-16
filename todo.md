@@ -34,6 +34,7 @@ Alpha:
 Beta:
 - tooltip on hover card showing current rule V
 - fix up mobile view V
+- use cookies to redirect to game from home
 - add How To Section ( Rules )
 - add home screen
 - allow for game modes
