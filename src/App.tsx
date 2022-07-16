@@ -8,6 +8,8 @@ import { MyBanner } from "./components/banner/banner";
 import { MyTable } from "./components/table/table";
 import { toast } from "react-toastify";
 import { AddRuleModal } from "./components/modal/add-rule.modal";
+import ReactTooltip from "react-tooltip";
+import { useUpdatedTooltip } from "./store/useUpdatedTooltip.hook";
 
 function App() {
   const [playerCount, setPlayerCount] = useState(2);
@@ -27,6 +29,10 @@ function App() {
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
+
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  }, [drawnCards]);
   const drawCards = (givenCards?: ICard[]) => {
     if (givenCards)
       return setDrawnCards(givenCards.map((c) => ({ ...c, isUndo: true })));
@@ -78,11 +84,19 @@ function App() {
           style={{ minHeight: "500px" }}
         >
           {drawnCards.map((c, i) => (
-            <MyCard
-              key={"card#" + i}
-              imageUrl={c.images?.png}
-              title={c.code + ""}
-            />
+            <div
+              {...(rules[c.value]?.length && {
+                "data-tip": "Rule: " + rules[c.value],
+              })}
+              data-for="main"
+              key={"container-card#" + i}
+            >
+              <MyCard
+                key={"card#" + i}
+                imageUrl={c.images?.png}
+                title={c.code + ""}
+              />
+            </div>
           ))}
         </div>
         <div className="full-w flex items-center justify-center gap-4">
