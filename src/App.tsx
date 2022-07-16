@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { STANDARD_DECK } from "./common/cards";
-import { CardValue, ICard } from "./interfaces/card.interface";
+import { CardValue, cardValueToName, ICard } from "./interfaces/card.interface";
 import { useGameState } from "./store";
 import { MyCard } from "./components/card/card";
 import { MyBanner } from "./components/banner/banner";
+import { MyTable } from "./components/table/table";
 
 function App() {
   const { state, actions, helpers } = useGameState();
@@ -97,6 +98,15 @@ function App() {
             </button>
           </div>
         )}
+        <MyTable
+          head={["Value", "Rule"]}
+          body={Object.entries(rules).map(([key, value], index) => {
+            return [
+              cardValueToName(parseInt(key) as unknown as CardValue),
+              value,
+            ];
+          })}
+        />
       </div>
     </div>
   );
