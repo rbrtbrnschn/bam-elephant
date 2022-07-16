@@ -23,17 +23,23 @@ export const AddRuleModal = ({
       <div
         id="add-rule-modal"
         aria-hidden="true"
-        className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+        className="h-full overflow-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
         {...props}
       >
         <div
           className="relative p-4 w-full max-w-md h-full md:h-auto z-50"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            transform: "translate(166%,30%)",
-          }}
+          style={
+            window.innerWidth > 678
+              ? {
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  transform: "translate(166%,30%)",
+                }
+              : {
+                  transform: "translateY(15%)",
+                }
+          }
         >
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <button

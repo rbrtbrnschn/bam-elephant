@@ -11,7 +11,7 @@ import { WinnerCallbacks } from "./interfaces/game.interface";
 import { GAMEMODES } from "./common/gamemodes";
 
 function App() {
-  const [playerCount, setPlayerCount] = useState(2);
+  const [playerCount, setPlayerCount] = useState(3);
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,

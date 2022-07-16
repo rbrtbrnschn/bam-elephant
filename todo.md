@@ -24,11 +24,12 @@ Alpha:
 - CSS statics V
 - allow for different initialRule Sets V
 - fix toasts (move to right || disable) V
+- refactor winnerCallbacks V
+- refactor interfaces V
 
-- refactor interfaces
 - refactor undo, drawCards to store
-- refactor winnerCallbacks
 - refactor toggle Modal, newRule out of store/index.ts 
+- feat: add in givenState for gameState hook for modal and such to allow use of actions/access to state in IGameInjections 
 
 Beta:
 - tooltip on hover card showing current rule V
