@@ -14,7 +14,7 @@ interface IGameState {
   newRule: string;
   modalIsOpen: boolean;
 }
-type GameRules = Partial<Record<CardValue, string>>;
+export type GameRules = Partial<Record<CardValue, string>>;
 interface IGameActions {
   setDeck: (deck: ICard[]) => void;
   setDrawnCards: (cards: ICard[]) => void;
@@ -43,12 +43,14 @@ interface IUseGameStateOptions {
   discardedPileSize?: number;
   playerCount?: number;
   winnerCallbacks?: WinnerCallbacks;
+  ruleSet?: GameRules;
 }
 
 export function useGameState({
   discardedPileSize: DISCARDED_PILE_SIZE = 30,
   playerCount: PLAYER_COUNT = 2,
   winnerCallbacks: WINNER_CALLBACKS = {},
+  ruleSet: RULE_SET = { ...DEFAULT_RULES },
 }: IUseGameStateOptions = {}) {
   /*TODO refactor constants */
   const MAX_PLAYER_COUNT = 8;
@@ -65,7 +67,7 @@ export function useGameState({
     drawnCards: [],
     disposedCards: [],
     rule: "",
-    rules: { ...DEFAULT_RULES },
+    rules: { ...RULE_SET },
     newRule: "",
     modalIsOpen: false,
   });

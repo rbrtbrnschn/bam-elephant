@@ -22,6 +22,7 @@ Alpha:
 - shuffle deck from the get go
 - refactor undo, drawCards to store
 - refactor toggle Modal, newRule out of store/index.ts 
+- allow for different initialRule Sets
 
 Beta:
 - vercel
