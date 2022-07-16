@@ -2,19 +2,30 @@ import React, { useEffect, useMemo, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { useStoreActions, useStoreState } from "./store";
-import { STANDARD_DECK } from "./common/deck";
+import { STANDARD_DECK } from "./common/cards";
 import { CardValue, ICard } from "./interfaces/card.interface";
+import { DEFAULT_RULES } from "./common/rules";
 
 function App() {
   const [deck, setDeck] = useState([...STANDARD_DECK]);
   const [drawnCards, setDrawnCards] = useState<ICard[]>([]);
   const [rule, setRule] = useState("");
+  const [rules, setRules] = useState<Partial<Record<CardValue, string>>>({
+    ...DEFAULT_RULES,
+  });
+  const [newRule, setNewRule] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const toggleModal = (boo?: boolean) =>
+    setModalIsOpen((isOpen) => boo ?? !isOpen);
 
+  /* HELPERS */
   const hasStarted = useMemo(
     () => deck.length && drawnCards.length,
     [drawnCards.length, deck.length]
   );
   const hasEnded = useMemo(() => !deck.length, [deck.length]);
+
+  /* HELPERS */
 
   const drawCards = () => {
     const newDeck = [...deck];
@@ -38,18 +49,24 @@ function App() {
           : drawnCards[1]
         : null,
 
-    [drawCards]
+    [drawnCards]
+  );
+  const loser = useMemo<ICard | null>(
+    () => drawnCards.find((c) => c.code !== winner?.code) || null,
+    [drawnCards, winner]
   );
   useEffect(() => {
     if (!drawnCards.length) return setRule("");
     if (!winner) return;
 
-    if (winner.value === CardValue.ACE) return setRule("Slap Bet");
-    if (winner.value === CardValue.KING) return setRule("1 Shot");
-    if (winner.value === CardValue.QUEEN) return setRule("Never Have I Ever");
-    if (winner.value === CardValue.JACK) return setRule("1/2 Shot");
-    setRule("You got lucky");
-  }, [drawnCards]);
+    if (winner.value === CardValue.ACE) {
+      toggleModal();
+    } else {
+      const rule = rules[winner.value];
+      const fallback = "You got lucky";
+      setRule(rule ?? fallback);
+    }
+  }, [drawnCards.length, rules, winner]);
 
   // useEffect(() => {
   //   fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
@@ -90,6 +107,32 @@ function App() {
         </a>
         {!hasEnded && <button onClick={() => drawCards()}>Draw</button>}
         {hasEnded && <button onClick={renewStack}>Renew</button>}
+
+        {modalIsOpen && (
+          <div>
+            <input
+              value={newRule}
+              placeholder={`Assign ${loser?.value} a new rule`}
+              onChange={(e) => {
+                setNewRule(e.currentTarget.value);
+              }}
+            />
+            <button
+              type="submit"
+              onClick={() => {
+                const newRules = { ...rules };
+                if (loser?.code.length) {
+                  newRules[loser.value] = newRule;
+                }
+                setRules(newRules);
+                setNewRule("");
+                setModalIsOpen(false);
+              }}
+            >
+              Submit
+            </button>
+          </div>
+        )}
       </header>
     </div>
   );
