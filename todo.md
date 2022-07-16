@@ -28,6 +28,7 @@ Alpha:
 - refactor undo, drawCards to store
 - refactor winnerCallbacks
 - refactor toggle Modal, newRule out of store/index.ts 
+- fix toasts (move to right || disable)
 
 Beta:
 - add home screen
@@ -35,4 +36,7 @@ Beta:
 - allow for rule sets
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 - add in player names somehow
+- tooltip on hover card showing current rule
 - vercel
+
+Ice Box:
