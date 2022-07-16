@@ -13,8 +13,13 @@ Alpha:
   - refactor to 1 state V
 - add table view of rules V
 - allow more than 3 players V
-- winner functionality 
-  - based on sort alg,
-    - which can be used to determine lose if more than 2 player
-  - draw
+- winner functionality V
+  - based on sort alg, V
+    - which can be used to determine lose if more than 2 player V
+  - draw V
 - undo draw
+- add in map of cards as chosen per gamemodes to run cbs for winning cards (possible useGameState param?)
+- shuffle deck from the get go
+
+Beta:
+-

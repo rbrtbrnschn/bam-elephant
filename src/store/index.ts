@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import { STANDARD_DECK } from "../common/cards";
 import { DEFAULT_RULES } from "../common/rules";
 import { CardValue, ICard } from "../interfaces/card.interface";
@@ -51,21 +52,28 @@ export function useGameState() {
   );
   const roundHasEnded = useMemo(() => !state.deck.length, [state.deck.length]);
 
-  const winner = useMemo<ICard | null>(
-    () =>
-      state.drawnCards.reduce<ICard | null>((prev, curr) => {
-        if (!prev) return curr;
+  /**
+   * Sorts ICard by `#value` from low to high.
+   * @param a {ICard}
+   * @param b {ICard}
+   * @returns {number}
+   */
+  function sortCardsByValue(a: ICard, b: ICard) {
+    return a.value - b.value;
+  }
 
-        if (curr.value > (prev as ICard).value) return curr;
-        else if (curr.value < (prev as ICard).value) return prev;
-        else return null;
-      }, null),
-    [state.drawnCards]
-  );
-  const loser = useMemo<ICard | null>(
-    () => state.drawnCards.find((c) => c.code !== winner?.code) || null,
-    [state.drawnCards, winner]
-  );
+  const [winner, loser] = useMemo<(ICard | null)[]>(() => {
+    const sorted = [...state.drawnCards].sort(sortCardsByValue);
+    const cardValues = sorted.map((c) => c.value);
+    const uniqueCardValues = new Set(cardValues);
+
+    const deltaSetLength = Math.abs(sorted.length - uniqueCardValues.size);
+    const allDraw = sorted.length === deltaSetLength + 1;
+
+    if (allDraw) return [null, null];
+
+    return [sorted[sorted.length - 1], sorted[0]];
+  }, [state.drawnCards]);
 
   /* HELPERS */
 
@@ -74,11 +82,15 @@ export function useGameState() {
    */
   useEffect(() => {
     if (!state.drawnCards.length) return setRule("");
-    if (!winner) return;
+    if (!winner) {
+      toast.error("It's a draw.");
+      return setRule("");
+    }
 
     const rule = state.rules[winner.value];
     const fallback = "You got lucky";
     setRule(rule ?? fallback);
+    toast.success(rule);
   }, [state.rules, winner]);
 
   /* HOOKS */

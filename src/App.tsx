@@ -14,11 +14,11 @@ function App() {
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
 
-  const [playerAmount, setPlayerAmount] = useState(2);
+  const [playerCount, setPlayerCount] = useState(3);
 
   const drawCards = () => {
     const newDeck = [...deck];
-    const newDrawnCards = new Array(playerAmount)
+    const newDrawnCards = new Array(playerCount)
       .fill(0)
       .map((_, i) => newDeck.shift())
       .filter((e) => e) as ICard[];
@@ -31,6 +31,7 @@ function App() {
   };
 
   useEffect(() => {
+    console.log(winner, loser);
     if (winner?.value === CardValue.ACE) {
       toggleModal();
     }
@@ -53,7 +54,11 @@ function App() {
           style={{ minHeight: "500px" }}
         >
           {drawnCards.map((c, i) => (
-            <MyCard imageUrl={c.images?.png} title={c.code + ""} />
+            <MyCard
+              key={"card#" + i}
+              imageUrl={c.images?.png}
+              title={c.code + ""}
+            />
           ))}
         </div>
         <div className="full-w flex items-center justify-center">

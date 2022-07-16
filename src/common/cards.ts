@@ -21,6 +21,37 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.KING,
     suit: CardSuit.CLUBS,
   },
+
+  {
+    code: "9D",
+    image: "https://deckofcardsapi.com/static/img/9D.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/9D.svg",
+      png: "https://deckofcardsapi.com/static/img/9D.png",
+    },
+    value: CardValue.NINE,
+    suit: CardSuit.DIAMONDS,
+  },
+  {
+    code: "5D",
+    image: "https://deckofcardsapi.com/static/img/5D.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/5D.svg",
+      png: "https://deckofcardsapi.com/static/img/5D.png",
+    },
+    value: CardValue.FIVE,
+    suit: CardSuit.DIAMONDS,
+  },
+  {
+    code: "5H",
+    image: "https://deckofcardsapi.com/static/img/5H.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/5H.svg",
+      png: "https://deckofcardsapi.com/static/img/5H.png",
+    },
+    value: CardValue.FIVE,
+    suit: CardSuit.HEARTS,
+  },
   {
     code: "5S",
     image: "https://deckofcardsapi.com/static/img/5S.png",
@@ -42,16 +73,6 @@ export const STANDARD_DECK: ICard[] = [
     suit: CardSuit.CLUBS,
   },
   {
-    code: "9D",
-    image: "https://deckofcardsapi.com/static/img/9D.png",
-    images: {
-      svg: "https://deckofcardsapi.com/static/img/9D.svg",
-      png: "https://deckofcardsapi.com/static/img/9D.png",
-    },
-    value: CardValue.NINE,
-    suit: CardSuit.DIAMONDS,
-  },
-  {
     code: "2S",
     image: "https://deckofcardsapi.com/static/img/2S.png",
     images: {
@@ -61,16 +82,7 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.TWO,
     suit: CardSuit.SPADES,
   },
-  {
-    code: "5H",
-    image: "https://deckofcardsapi.com/static/img/5H.png",
-    images: {
-      svg: "https://deckofcardsapi.com/static/img/5H.svg",
-      png: "https://deckofcardsapi.com/static/img/5H.png",
-    },
-    value: CardValue.FIVE,
-    suit: CardSuit.HEARTS,
-  },
+
   {
     code: "6S",
     image: "https://deckofcardsapi.com/static/img/6S.png",
@@ -510,15 +522,5 @@ export const STANDARD_DECK: ICard[] = [
     },
     value: CardValue.EIGHT,
     suit: CardSuit.CLUBS,
-  },
-  {
-    code: "5D",
-    image: "https://deckofcardsapi.com/static/img/5D.png",
-    images: {
-      svg: "https://deckofcardsapi.com/static/img/5D.svg",
-      png: "https://deckofcardsapi.com/static/img/5D.png",
-    },
-    value: CardValue.FIVE,
-    suit: CardSuit.DIAMONDS,
   },
 ];
