@@ -28,9 +28,11 @@ Alpha:
 - refactor undo, drawCards to store
 - refactor winnerCallbacks
 - refactor toggle Modal, newRule out of store/index.ts 
-- fix toasts (move to right || disable)
+- fix toasts (move to right || disable) V
 
 Beta:
+- fix up mobile view
+- add How To Section ( Rules )
 - add home screen
 - allow for game modes
 - allow for rule sets
@@ -40,3 +42,4 @@ Beta:
 - vercel
 
 Ice Box:
+- Tutorial Walkthrough
