@@ -53,12 +53,13 @@ export function useGameState() {
 
   const winner = useMemo<ICard | null>(
     () =>
-      state.drawnCards.length
-        ? state.drawnCards?.[0].value > state.drawnCards?.[1].value
-          ? state.drawnCards[0]
-          : state.drawnCards[1]
-        : null,
+      state.drawnCards.reduce<ICard | null>((prev, curr) => {
+        if (!prev) return curr;
 
+        if (curr.value > (prev as ICard).value) return curr;
+        else if (curr.value < (prev as ICard).value) return prev;
+        else return null;
+      }, null),
     [state.drawnCards]
   );
   const loser = useMemo<ICard | null>(

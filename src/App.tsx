@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { STANDARD_DECK } from "./common/cards";
 import { CardValue, cardValueToName, ICard } from "./interfaces/card.interface";
@@ -14,9 +14,11 @@ function App() {
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
 
+  const [playerAmount, setPlayerAmount] = useState(2);
+
   const drawCards = () => {
     const newDeck = [...deck];
-    const newDrawnCards = new Array(2)
+    const newDrawnCards = new Array(playerAmount)
       .fill(0)
       .map((_, i) => newDeck.shift())
       .filter((e) => e) as ICard[];
@@ -77,7 +79,9 @@ function App() {
           <div>
             <input
               value={newRule}
-              placeholder={`Assign ${loser?.value} a new rule`}
+              placeholder={`Assign ${cardValueToName(
+                loser?.value as CardValue
+              )} a new rule`}
               onChange={(e) => {
                 setNewRule(e.currentTarget.value);
               }}
