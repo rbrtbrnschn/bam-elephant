@@ -23,14 +23,15 @@ Alpha:
 - shuffle deck from the get go V
 - CSS statics V
 - allow for different initialRule Sets V
+- fix toasts (move to right || disable) V
 
 - refactor interfaces
 - refactor undo, drawCards to store
 - refactor winnerCallbacks
 - refactor toggle Modal, newRule out of store/index.ts 
-- fix toasts (move to right || disable) V
 
 Beta:
+- tooltip on hover card showing current rule V
 - fix up mobile view
 - add How To Section ( Rules )
 - add home screen
@@ -38,7 +39,6 @@ Beta:
 - allow for rule sets
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 - add in player names somehow
-- tooltip on hover card showing current rule
 - vercel
 
 Ice Box:

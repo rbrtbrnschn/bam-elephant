@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { STANDARD_DECK } from "./common/cards";
 import { CardValue, cardValueToName, ICard } from "./interfaces/card.interface";
-import { useGameState, WinnerCallbacks } from "./store";
+import { useGameState } from "./store";
 import { MyCard } from "./components/card/card";
 import { MyBanner } from "./components/banner/banner";
 import { MyTable } from "./components/table/table";
-import { toast } from "react-toastify";
 import { AddRuleModal } from "./components/modal/add-rule.modal";
 import ReactTooltip from "react-tooltip";
-import { useUpdatedTooltip } from "./store/useUpdatedTooltip.hook";
+import { WinnerCallbacks } from "./interfaces/game.interface";
+import { GAMEMODES } from "./common/gamemodes";
 
 function App() {
   const [playerCount, setPlayerCount] = useState(2);
-  //@TODO refactor to common
-  const winnerCallbacks: WinnerCallbacks = {
-    [CardValue.ACE]: (options) => {
-      toggleModal();
-    },
-  };
+
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    winnerCallbacks,
+    gameMode: GAMEMODES.testing,
   });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;

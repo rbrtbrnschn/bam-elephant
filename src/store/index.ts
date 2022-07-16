@@ -1,62 +1,31 @@
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { STANDARD_DECK } from "../common/cards";
-import { DEFAULT_RULES } from "../common/rules";
+import { GAMEMODES } from "../common/gamemodes";
+import { BASIC_RULES } from "../common/rules";
 import { CardValue, ICard, IUndoCard } from "../interfaces/card.interface";
+import {
+  GameRules,
+  IGameActions,
+  IGameHelpers,
+  IGameInjections,
+  IGameState,
+  IGameThunks,
+  IUseGameStateOptions,
+} from "../interfaces/game.interface";
 import usePrevious from "./usePrevious.hook";
-/*TODO refactor to own file */
-interface IGameState {
-  deck: ICard[];
-  drawnCards: ICard[];
-  disposedCards: ICard[];
-  rule: string;
-  rules: Partial<Record<CardValue, string>>;
-  newRule: string;
-  modalIsOpen: boolean;
-}
-export type GameRules = Partial<Record<CardValue, string>>;
-interface IGameActions {
-  setDeck: (deck: ICard[]) => void;
-  setDrawnCards: (cards: ICard[]) => void;
-  setDisposedCards: (cards: ICard[]) => void;
-  setRule: (rule: string) => void;
-  setRules: (rules: GameRules) => void;
-  setNewRule: (newRule: string) => void;
-  toggleModal: () => void;
-}
-
-interface IGameHelpers {
-  winner: ICard | null | undefined;
-  loser: ICard | null | undefined;
-  roundHasStarted: boolean;
-  roundHasEnded: boolean;
-}
-interface IGameThunks {
-  shuffle: () => void;
-  restart: () => void;
-}
-
-export interface IGameInjections {
-  state: IGameState;
-  actions: IGameActions;
-  helpers: IGameHelpers;
-  thunks: IGameThunks;
-}
-type WinnerCallback = (e: IGameInjections) => void;
-export type WinnerCallbacks = Partial<Record<CardValue, WinnerCallback>>;
-interface IUseGameStateOptions {
-  discardedPileSize?: number;
-  playerCount?: number;
-  winnerCallbacks?: WinnerCallbacks;
-  ruleSet?: GameRules;
-}
 
 export function useGameState({
   discardedPileSize: DISCARDED_PILE_SIZE = 30,
   playerCount: PLAYER_COUNT = 2,
-  winnerCallbacks: WINNER_CALLBACKS = {},
-  ruleSet: RULE_SET = { ...DEFAULT_RULES },
+  gameMode: GAME_MODE = GAMEMODES.basic,
 }: IUseGameStateOptions = {}) {
+  const {
+    winnerCallbacks: WINNER_CALLBACKS,
+    ruleSet: RULE_SET,
+    title,
+  } = GAME_MODE;
+
   /*TODO refactor constants */
   const MAX_PLAYER_COUNT = 8;
 
@@ -158,7 +127,7 @@ export function useGameState({
   /* THUNKS */
   const shuffle = (shuffleAlg = () => 0.5 - Math.random()) => {
     setDeck([...state.deck].sort(shuffleAlg));
-    setDrawnCards([]);
+    // setDrawnCards([]);
   };
   const restart = () => {
     setDeck([...STANDARD_DECK].sort(() => 0.5 * Math.random()));
