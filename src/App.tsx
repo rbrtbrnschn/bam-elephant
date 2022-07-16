@@ -68,17 +68,6 @@ function App() {
     }
   }, [drawnCards.length, rules, winner]);
 
-  // useEffect(() => {
-  //   fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-  //     .then((res) => res.json())
-  //     .then((data) =>
-  //       fetch(
-  //         `https://www.deckofcardsapi.com/api/deck/${data.deck_id}/draw/?count=52`
-  //       )
-  //     )
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data, JSON.stringify(data)));
-  // }, []);
   return (
     <div className="App">
       <header className="App-header">
