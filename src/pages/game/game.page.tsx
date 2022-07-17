@@ -18,9 +18,12 @@ export const GamePage = () => {
 
   const ready2Submit = useMemo(
     () =>
-      [players.length >= 2, players.every(Boolean), ruleSet, gamemode].every(
-        Boolean
-      ),
+      [
+        players.length >= 2,
+        players.every((e) => e.length),
+        ruleSet,
+        gamemode,
+      ].every(Boolean),
     [players, ruleSet, gamemode]
   );
   const addInput = () => {

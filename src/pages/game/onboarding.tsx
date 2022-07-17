@@ -163,10 +163,10 @@ export const GameOnboarding = ({
           <div className="mt-6"></div>
           <button
             type="submit"
-            className={`bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded ${
+            className={`text-white font-bold py-2 px-4 border-b-4 rounded ${
               ready2Submit
                 ? "bg-green-500 hover:bg-green-400 border-green-700 hover:border-green-500"
-                : ""
+                : "bg-yellow-500 hover:bg-yellow-400 border-yellow-700 hover:border-yellow-500"
             }`}
             onClick={onSubmit}
           >
