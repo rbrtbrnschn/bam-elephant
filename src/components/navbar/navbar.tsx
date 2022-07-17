@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { faqs } from "../../pages/rules/rules";
 
 export const MyNavbar = () => {
   const [isDropdown, setIsDropdown] = useState(false);
@@ -133,38 +134,47 @@ export const MyNavbar = () => {
           id="mega-menu-full-dropdown"
           className="mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600"
         >
-          <div className="grid py-5 px-4 mx-auto max-w-screen-xl text-gray-900 dark:text-white sm:grid-cols-2 sm:grid-cols-3 md:px-6">
+          <div className="grid py-5 px-4 mx-auto max-w-screen-xl text-gray-900 dark:text-white sm:grid-cols-2 sm:grid-cols-2 md:px-6">
             <ul>
               <li>
                 <a
-                  href="#"
+                  href={`#${faqs[0].id}`}
+                  onClick={() => {
+                    navigate("/rules");
+                  }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Online Stores</div>
+                  <div className="font-semibold">{faqs[0].title}</div>
                   <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                    {faqs[0].description}
                   </span>
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href={"#" + faqs[1].id}
+                  onClick={() => {
+                    navigate("/rules");
+                  }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Segmentation</div>
+                  <div className="font-semibold">{faqs[1].title}</div>
                   <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                    {faqs[1].description}
                   </span>
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href={"#" + faqs[2].id}
+                  onClick={() => {
+                    navigate("/rules");
+                  }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Marketing CRM</div>
+                  <div className="font-semibold">{faqs[2].title}</div>
                   <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                    {faqs[2].description}
                   </span>
                 </a>
               </li>
@@ -172,12 +182,15 @@ export const MyNavbar = () => {
             <ul>
               <li>
                 <a
-                  href="#"
+                  href={"#" + faqs[3].id}
+                  onClick={() => {
+                    navigate("/rules");
+                  }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Online Stores</div>
+                  <div className="font-semibold">{faqs[3].title}</div>
                   <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                    {faqs[3].description}
                   </span>
                 </a>
               </li>
@@ -186,9 +199,38 @@ export const MyNavbar = () => {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Segmentation</div>
+                  <div className="font-semibold">Where do I play?</div>
                   <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                    Click the{" "}
+                    <a
+                      href="#"
+                      onClick={() => navigate("/v1")}
+                      className="text-blue-600 underline"
+                    >
+                      'Get Started'
+                    </a>{" "}
+                    button in the top right corner.
+                  </span>
+                </a>
+              </li>
+              {/* <li>
+                <a
+                  href="#"
+                  className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  <div className="font-semibold">
+                    What are all the possible Game Modes?
+                  </div>
+                  <span className="text-sm font-light text-gray-500 dark:text-gray-400">
+                    Go to{" "}
+                    <a
+                      href="#game-modes"
+                      onClick={() => navigate("/rules")}
+                      className="text-blue-600 underline"
+                    >
+                      /rules#game-modes
+                    </a>{" "}
+                    to find out.
                   </span>
                 </a>
               </li>
@@ -197,12 +239,22 @@ export const MyNavbar = () => {
                   href="#"
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
-                  <div className="font-semibold">Marketing CRM</div>
+                  <div className="font-semibold">
+                    What are all the possible Rule Sets?
+                  </div>
                   <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Connect with third-party tools that you're already using.
+                    Go to{" "}
+                    <a
+                      href="#rule-sets"
+                      onClick={() => navigate("/rules")}
+                      className="text-blue-600 underline"
+                    >
+                      /rules#rule-sets
+                    </a>{" "}
+                    to find out.
                   </span>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

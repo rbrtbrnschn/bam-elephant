@@ -41,10 +41,11 @@ Beta:
 - add in guide section V
 - add in home page details V
 - highlight winner row in table  V
-- navbar #help links to rules sections
+- navbar #help links to rules sections V
+- rules page V
+- add How To Section ( Rules )V
+
 - game onboarding -> players -> gamemode -> ruleset
-- rules page
-- add How To Section ( Rules ) 
 -> tooltip showcase player
 - add in players
 - add in card-value tooltip on right hand side
