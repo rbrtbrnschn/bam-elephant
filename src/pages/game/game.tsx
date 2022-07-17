@@ -4,6 +4,7 @@ import { PRESETS } from "../../common/presets";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
 import { AddRuleModal } from "../../components/modal/add-rule.modal";
+import { MyNavbar } from "../../components/navbar/navbar";
 import { MyTable } from "../../components/table/table";
 import {
   CardValue,
@@ -62,6 +63,7 @@ export const Game = ({
 
   return (
     <div className="relative">
+      <MyNavbar />
       {modalIsOpen && (
         <AddRuleModal
           card={loser as ICard}
@@ -75,15 +77,18 @@ export const Game = ({
           placeholder={state.rules[(loser as ICard)?.value]?.title}
         />
       )}
-      <div className="h-0">
-        {rule && (
-          <MyBanner
-            title={rule}
-            onClose={() => {
-              setRule("");
-            }}
-          />
-        )}
+
+      <div className="container mx-auto px-4">
+        <div className="h-0">
+          {rule && (
+            <MyBanner
+              title={rule}
+              onClose={() => {
+                setRule("");
+              }}
+            />
+          )}
+        </div>
       </div>
 
       <div className="container mx-auto px-4">

@@ -54,11 +54,13 @@ release:
 - fix navbar mobile V
 - add preview table on /v1 onboarding V
 - refactor rules to objects as to use with more detailed knowledge ie. description for rules. V
-- refactor rule sets, gamemodes, presets
+- delete presets, no more custom presets, only as an interface for props
 - thinking to just get rid of presets all together.
+
+- refactor rule sets, gamemodes, presets
 - allow for more detail on rulesets and gamemodes, more than the actual data themselves.
 - refactor winner loser logic to gamemode! ;) 100iq move right there.
-
+- gamemode may has rules to chose from, not rule sets, but rules categories? :shrug:
 
 - use joyride over current implementation ( dont work )
 - add in gamemode description when playing.
