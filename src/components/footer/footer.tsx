@@ -28,7 +28,7 @@ export const MyFooter = () => {
                   href="#faqs"
                   className="hover:underline"
                   onClick={() => {
-                    navigate("/rules");
+                    navigate("/guide");
                   }}
                 >
                   FAQS
@@ -39,7 +39,7 @@ export const MyFooter = () => {
                   href="#game-modes"
                   className="hover:underline"
                   onClick={() => {
-                    navigate("/rules");
+                    navigate("/guide");
                   }}
                 >
                   Game Modes

@@ -107,10 +107,10 @@ export const MyNavbar = () => {
                 href="#"
                 className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
                 onClick={() => {
-                  navigate("/rules");
+                  navigate("/guide");
                 }}
               >
-                Rules
+                Guide
               </a>
             </li>
             <li>
@@ -147,7 +147,7 @@ export const MyNavbar = () => {
                 <a
                   href={`#${faqs[0].id}`}
                   onClick={() => {
-                    navigate("/rules");
+                    navigate("/guide");
                   }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
@@ -161,7 +161,7 @@ export const MyNavbar = () => {
                 <a
                   href={"#" + faqs[1].id}
                   onClick={() => {
-                    navigate("/rules");
+                    navigate("/guide");
                   }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
@@ -175,7 +175,7 @@ export const MyNavbar = () => {
                 <a
                   href={"#" + faqs[2].id}
                   onClick={() => {
-                    navigate("/rules");
+                    navigate("/guide");
                   }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
@@ -191,7 +191,7 @@ export const MyNavbar = () => {
                 <a
                   href={"#" + faqs[3].id}
                   onClick={() => {
-                    navigate("/rules");
+                    navigate("/guide");
                   }}
                   className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
@@ -220,48 +220,6 @@ export const MyNavbar = () => {
                   </span>
                 </a>
               </li>
-              {/* <li>
-                <a
-                  href="#"
-                  className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
-                >
-                  <div className="font-semibold">
-                    What are all the possible Game Modes?
-                  </div>
-                  <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Go to{" "}
-                    <a
-                      href="#game-modes"
-                      onClick={() => navigate("/rules")}
-                      className="text-blue-600 underline"
-                    >
-                      /rules#game-modes
-                    </a>{" "}
-                    to find out.
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
-                >
-                  <div className="font-semibold">
-                    What are all the possible Rule Sets?
-                  </div>
-                  <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Go to{" "}
-                    <a
-                      href="#rule-sets"
-                      onClick={() => navigate("/rules")}
-                      className="text-blue-600 underline"
-                    >
-                      /rules#rule-sets
-                    </a>{" "}
-                    to find out.
-                  </span>
-                </a>
-              </li> */}
             </ul>
           </div>
         </div>

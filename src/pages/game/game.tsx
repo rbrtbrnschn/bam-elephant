@@ -1,10 +1,6 @@
-import { useTour } from "@reactour/tour";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import { GAMEMODES, GameModes } from "../../common/game-modes";
 import { PRESETS } from "../../common/presets";
-import { RuleSets, RULE_SETS } from "../../common/rules";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
 import { AddRuleModal } from "../../components/modal/add-rule.modal";

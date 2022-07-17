@@ -76,7 +76,7 @@ function App() {
               // </TourProvider>
             }
           />
-          <Route path="/rules" element={<RulesPage />} />
+          <Route path="/guide" element={<RulesPage />} />
           <Route path="/tos" element={<TOSPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
 
