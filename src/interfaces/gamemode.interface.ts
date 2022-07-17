@@ -1,7 +1,7 @@
-import { GameRules, WinnerCallbacks } from "./game.interface";
+import { GameRules, GameMode } from "./game.interface";
 
-export interface IGameMode {
-  winnerCallbacks: WinnerCallbacks;
+export interface IGamePreset {
+  gamemode: GameMode;
   ruleSet: GameRules;
   title: string;
 }

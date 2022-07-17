@@ -1,5 +1,5 @@
 import { CardValue, ICard } from "./card.interface";
-import { IGameMode } from "./gamemode.interface";
+import { IGamePreset } from "./gamemode.interface";
 
 export interface IGameState {
   deck: ICard[];
@@ -38,10 +38,10 @@ export interface IGameInjections {
   helpers: IGameHelpers;
   thunks: IGameThunks;
 }
-export type WinnerCallback = (e: IGameInjections) => void;
-export type WinnerCallbacks = Partial<Record<CardValue, WinnerCallback>>;
+export type GameModeHook = (e: IGameInjections) => void;
+export type GameMode = Partial<Record<CardValue, GameModeHook>>;
 export interface IUseGameStateOptions {
   discardedPileSize?: number;
   playerCount?: number;
-  gameMode?: IGameMode;
+  gameMode?: IGamePreset;
 }

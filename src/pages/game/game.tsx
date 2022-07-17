@@ -1,7 +1,8 @@
 import { useTour } from "@reactour/tour";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import { GAMEMODES } from "../../common/gamemodes";
+import { PRESETS } from "../../common/presets";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
 import { AddRuleModal } from "../../components/modal/add-rule.modal";
@@ -11,16 +12,23 @@ import {
   cardValueToName,
   ICard,
 } from "../../interfaces/card.interface";
-import { useGameState } from "../../store";
+import { useGameState } from "../../store/game";
 
 export const GamePage = () => {
+  const url = new URL(window.location.href);
+  const searchParams = new URLSearchParams(url.search);
+
+  useEffect(() => {
+    searchParams.forEach((val, key) => console.log(key, val));
+  }, []);
+
   const [players, setPlayers] = useState(["Pete", "David"]);
   const { setIsOpen } = useTour();
   const [playerCount, setPlayerCount] = useState(players.length);
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    gameMode: GAMEMODES.basic,
+    gameMode: PRESETS.basic,
   });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { STANDARD_DECK } from "../common/cards";
-import { GAMEMODES } from "../common/gamemodes";
+import { PRESETS } from "../common/presets";
 import { BASIC_RULES } from "../common/rules";
 import { CardValue, ICard, IUndoCard } from "../interfaces/card.interface";
 import {
@@ -18,13 +18,9 @@ import usePrevious from "./usePrevious.hook";
 export function useGameState({
   discardedPileSize: DISCARDED_PILE_SIZE = 30,
   playerCount: PLAYER_COUNT = 2,
-  gameMode: GAME_MODE = GAMEMODES.basic,
+  gameMode: GAME_MODE = PRESETS.basic,
 }: IUseGameStateOptions = {}) {
-  const {
-    winnerCallbacks: WINNER_CALLBACKS,
-    ruleSet: RULE_SET,
-    title,
-  } = GAME_MODE;
+  const { gamemode: WINNER_CALLBACKS, ruleSet: RULE_SET, title } = GAME_MODE;
 
   /*TODO refactor constants */
   const MAX_PLAYER_COUNT = 8;

@@ -1,7 +1,7 @@
 import { StepType, TourProvider, useTour } from "@reactour/tour";
 import { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
-import { GAMEMODES } from "../../common/gamemodes";
+import { PRESETS } from "../../common/presets";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
 import { AddRuleModal } from "../../components/modal/add-rule.modal";
@@ -11,7 +11,7 @@ import {
   cardValueToName,
   ICard,
 } from "../../interfaces/card.interface";
-import { useGameState } from "../../store";
+import { useGameState } from "../../store/game";
 
 export const WalkthroughPage = () => {
   const { setIsOpen } = useTour();
@@ -19,7 +19,7 @@ export const WalkthroughPage = () => {
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    gameMode: GAMEMODES.walkthrough,
+    gameMode: PRESETS.walkthrough,
   });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;

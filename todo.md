@@ -45,7 +45,7 @@ Beta:
 - rules page V
 - add How To Section ( Rules )V
 
-- add in players
+- add in players V
 - game onboarding -> players -> gamemode -> ruleset
 -> tooltip showcase player
 - add in card-value tooltip on right hand side
