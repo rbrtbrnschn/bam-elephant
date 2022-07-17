@@ -163,7 +163,10 @@ export const WalkthroughPage = () => {
         card={loser as ICard}
         onClose={toggleModal}
         onSuccess={(rule: string) => {
-          setRules({ ...rules, [(loser as ICard)?.value]: rule });
+          setRules({
+            ...rules,
+            [(loser as ICard)?.value]: { title: rule, description: "" },
+          });
         }}
         placeholder={state.rules[(loser as ICard)?.value]?.title}
         className={!modalIsOpen ? "hidden" : ""}
