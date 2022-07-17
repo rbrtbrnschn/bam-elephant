@@ -1,5 +1,6 @@
 import { StepType, TourProvider, useTour } from "@reactour/tour";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import ReactJoyride, { Step } from "react-joyride";
 import { useNavigate } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { PRESETS } from "../../common/presets";
@@ -13,6 +14,7 @@ import {
   ICard,
 } from "../../interfaces/card.interface";
 import { useGameState } from "../../store/game";
+import Joyride from "react-joyride";
 
 export const WalkthroughPage = () => {
   const { setIsOpen, isOpen } = useTour();
@@ -59,19 +61,113 @@ export const WalkthroughPage = () => {
     setDeck([...state.drawnCards, ...state.deck]);
     drawCards(previouslyDiscardedCards);
   };
+  const drawButtonRef = useRef<HTMLButtonElement>(null);
+  const image1Ref = useRef<HTMLDivElement>(null);
+  const image2Ref = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
+  const [steps, setSteps] = useState<Array<Step>>([
+    {
+      content: <div>Click here to draw cards for each player.</div>,
+      disableOverlayClose: true,
+      placementBeacon: "top",
+      spotlightClicks: false,
+      styles: {
+        options: {
+          zIndex: 10000,
+        },
+      },
+      title: "Let's get started.",
+      target: "button#draw-button",
+      showProgress: true,
+    },
+    {
+      spotlightClicks: false,
+      target: "#cards-view",
+      content:
+        "Now remember, KING is higher than JACK. JACK higher than 10, and so on.",
+      styles: {
+        options: {
+          zIndex: 10000,
+        },
+      },
+      title: "Here is your draw.",
+    },
+    {
+      spotlightClicks: false,
+      target: "table.my-table",
+      content:
+        "Here you find all the rules, the actions you'll take or have others take when you win.",
+    },
+    {
+      target: "table.my-table tr#table-row3",
+      spotlightClicks: false,
+      content:
+        "The KING is the higher card here. Now, now you do whatever the rule says.",
+    },
+    {
+      target: "button#draw-button",
+      content: "Draw another round.",
+      spotlightClicks: false,
+    },
+    {
+      target: "#add-rule-modal",
+      styles: {
+        options: {
+          zIndex: 10000,
+        },
+      },
+
+      content:
+        "A special card has been played. Whoever played the ACE must now assign a new rule to the lowest value card played that round.",
+    },
+    {
+      target: "#add-rule-input",
+      spotlightClicks: false,
+      content: "Set a new rule for the 9. Try: 'What are the odds?'",
+    },
+    {
+      target: "#add-rule-submit",
+      content: "Alright, submit the rule.",
+      spotlightClicks: false,
+    },
+    {
+      target: "html",
+      spotlightClicks: false,
+      content: "Okay, you got the hang of it. Have fun.",
+    },
+  ]);
+  const [run, setRun] = useState(true);
   return (
     <div className="relative">
-      {modalIsOpen && (
-        <AddRuleModal
-          card={loser as ICard}
-          onClose={toggleModal}
-          onSuccess={(rule: string) => {
-            setRules({ ...rules, [(loser as ICard)?.value]: rule });
-          }}
-          placeholder={state.rules[(loser as ICard)?.value]}
-        />
-      )}
+      <Joyride
+        steps={steps}
+        continuous
+        run={true}
+        showProgress
+        callback={(data) => {
+          console.log(data.index, data.status);
+          if (
+            !drawnCards.length &&
+            data.index === 1 &&
+            data.status === "running"
+          ) {
+            drawButtonRef.current?.click();
+          } else if (data.index === 5 && data.status === "running") {
+            drawButtonRef.current?.click();
+          }
+        }}
+      />
+      <AddRuleModal
+        ref={modalRef}
+        card={loser as ICard}
+        onClose={toggleModal}
+        onSuccess={(rule: string) => {
+          setRules({ ...rules, [(loser as ICard)?.value]: rule });
+        }}
+        placeholder={state.rules[(loser as ICard)?.value]}
+        className={!modalIsOpen ? "hidden" : ""}
+      />
       <div className="h-0">
         {rule && (
           <MyBanner
@@ -96,6 +192,8 @@ export const WalkthroughPage = () => {
               })}
               data-for="main"
               key={"container-card#" + i}
+              id={"image-wrapper" + (i + 1)}
+              // ref={i === 0 ? image1Ref : image2Ref}
             >
               <MyCard
                 key={"card#" + i}
@@ -110,6 +208,7 @@ export const WalkthroughPage = () => {
             <button
               id="draw-button"
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+              ref={drawButtonRef}
               onClick={() => {
                 drawCards();
               }}

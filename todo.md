@@ -45,15 +45,17 @@ Beta:
 - rules page V
 - add How To Section ( Rules )V
 - add in players V
-- vercel
+- vercel V
+- Tutorial Walkthrough V
 
 release:
 - add favicon V
 - add logo navbar / footer V
 - build out readme
+- use joyride over current implementation ( dont work )
+- fix navbar mobile
 - add in gamemode description when playing.
 - add in card-value tooltip on right hand side
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 
 Ice Box:
-- Tutorial Walkthrough V
