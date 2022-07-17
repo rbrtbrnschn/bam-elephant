@@ -67,9 +67,12 @@ export const Game = ({
           card={loser as ICard}
           onClose={toggleModal}
           onSuccess={(rule: string) => {
-            setRules({ ...rules, [(loser as ICard)?.value]: rule });
+            setRules({
+              ...rules,
+              [(loser as ICard)?.value]: { title: rule, description: "" },
+            });
           }}
-          placeholder={state.rules[(loser as ICard)?.value]}
+          placeholder={state.rules[(loser as ICard)?.value]?.title}
         />
       )}
       <div className="h-0">
@@ -91,8 +94,8 @@ export const Game = ({
         >
           {drawnCards.map((c, i) => (
             <div
-              {...(rules[c.value]?.length && {
-                "data-tip": "Rule: " + rules[c.value],
+              {...(rules[c.value]?.title?.length && {
+                "data-tip": "Rule: " + rules[c.value]?.title,
               })}
               data-for="main"
               key={"container-card#" + i}
@@ -158,7 +161,7 @@ export const Game = ({
               onClick={() => {
                 const newRules = { ...rules };
                 if (loser?.code.length) {
-                  newRules[loser.value] = newRule;
+                  newRules[loser.value] = { title: newRule, description: "" };
                 }
                 setRules(newRules);
                 setNewRule("");

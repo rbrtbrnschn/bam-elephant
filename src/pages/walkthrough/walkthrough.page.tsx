@@ -165,7 +165,7 @@ export const WalkthroughPage = () => {
         onSuccess={(rule: string) => {
           setRules({ ...rules, [(loser as ICard)?.value]: rule });
         }}
-        placeholder={state.rules[(loser as ICard)?.value]}
+        placeholder={state.rules[(loser as ICard)?.value]?.title}
         className={!modalIsOpen ? "hidden" : ""}
       />
       <div className="h-0">
@@ -187,8 +187,8 @@ export const WalkthroughPage = () => {
         >
           {drawnCards.map((c, i) => (
             <div
-              {...(rules[c.value]?.length && {
-                "data-tip": "Rule: " + rules[c.value],
+              {...(rules[c.value]?.title?.length && {
+                "data-tip": "Rule: " + rules[c.value]?.title,
               })}
               data-for="main"
               key={"container-card#" + i}
@@ -262,7 +262,7 @@ export const WalkthroughPage = () => {
               onClick={() => {
                 const newRules = { ...rules };
                 if (loser?.code.length) {
-                  newRules[loser.value] = newRule;
+                  newRules[loser.value] = { title: newRule, description: "" };
                 }
                 setRules(newRules);
                 setNewRule("");

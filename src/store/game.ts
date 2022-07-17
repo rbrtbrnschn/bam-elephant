@@ -163,8 +163,8 @@ export function useGameState({
 
     const rule = state.rules[winner.value];
     const fallback = "You got lucky";
-    setRule(rule ?? fallback);
-    toast.success(rule);
+    setRule(rule?.title ?? fallback);
+    toast.success(rule?.title);
   }, [state.rules, winner]);
 
   /* HOOKS */

@@ -1,16 +1,17 @@
+import { IBaseRule } from "../common/rules";
 import { CardValue, ICard } from "./card.interface";
 import { IGamePreset } from "./preset.interface";
 
+export type GameRules = Partial<Record<CardValue, IBaseRule>>;
 export interface IGameState {
   deck: ICard[];
   drawnCards: ICard[];
   disposedCards: ICard[];
   rule: string;
-  rules: Partial<Record<CardValue, string>>;
+  rules: GameRules;
   newRule: string;
   modalIsOpen: boolean;
 }
-export type GameRules = Partial<Record<CardValue, string>>;
 export interface IGameActions {
   setDeck: (deck: ICard[]) => void;
   setDrawnCards: (cards: ICard[]) => void;

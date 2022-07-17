@@ -24,15 +24,14 @@ export const MyCard2 = ({
       {...props}
     >
       <a
-        href="#"
-        className={`flex justify-center -translate-x-3 p-5 ${
+        className={`flex justify-center -translate-x-3 p-5 cursor-pointer${
           disabled ? "opacity-25 cursor-not-allowed" : ""
         }`}
       >
         <img className="rounded-t-lg w-64" src={imageUrl} alt="" />
       </a>
       <div className={`p-5 ${disabled ? "opacity-25 cursor-not-allowed" : ""}`}>
-        <a href="#">
+        <a className="cursor-pointer">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h5>

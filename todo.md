@@ -53,10 +53,12 @@ release:
 - add logo navbar / footer V
 - fix navbar mobile V
 - add preview table on /v1 onboarding V
-- refactor rules to objects as to use with more detailed knowledge ie. description for rules.
+- refactor rules to objects as to use with more detailed knowledge ie. description for rules. V
 - refactor rule sets, gamemodes, presets
 - thinking to just get rid of presets all together.
 - allow for more detail on rulesets and gamemodes, more than the actual data themselves.
+- refactor winner loser logic to gamemode! ;) 100iq move right there.
+
 
 - use joyride over current implementation ( dont work )
 - add in gamemode description when playing.

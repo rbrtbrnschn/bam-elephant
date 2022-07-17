@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GAMEMODES, GameModes } from "../../common/game-modes";
@@ -8,6 +8,7 @@ import { GameMode, GameRules } from "../../interfaces/game.interface";
 import { Game } from "./game";
 import { GameOnboarding } from "./onboarding";
 import { useGameRedirect } from "../home/redirect.hook";
+import ReactTooltip from "react-tooltip";
 
 export const GamePage = () => {
   useGameRedirect();
@@ -15,6 +16,10 @@ export const GamePage = () => {
   const [players, setPlayers] = useState<string[]>(["", ""]);
   const [ruleSet, setRuleSet] = useState<GameRules>();
   const [gamemode, setGamemode] = useState<GameMode>();
+
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  }, [players, ruleSet, gamemode]);
 
   const ready2Submit = useMemo(
     () =>
@@ -37,11 +42,11 @@ export const GamePage = () => {
   };
 
   const onSubmit = () => {
-    if (!ready2Submit) return;
-    if (!gamemode)
+    if (!Object.keys(gamemode || {}).length)
       return toast.error("Missing Game Mode. Please Select One first.");
-    if (!ruleSet)
+    if (!Object.keys(ruleSet || {}).length)
       return toast.error("Missing Rule Set. Please Select One first.");
+    if (!ready2Submit) return;
 
     setNeedsOnboarding(false);
   };
