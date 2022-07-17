@@ -7,10 +7,11 @@ interface IMyTableProps extends React.HTMLAttributes<HTMLDivElement> {
   winner?: ICard;
 }
 export const MyTable = ({ head, body, winner, ...props }: IMyTableProps) => {
+  console.log("winner", winner);
   const winnerStyles = "bg-blue-500 text-white";
   const getWinnerStyles = (row: string[]) => {
     return row.includes(cardValueToName((winner as ICard)?.value))
-      ? winnerStyles
+      ? "bg-blue-500 text-white"
       : "";
   };
   return (
@@ -35,7 +36,11 @@ export const MyTable = ({ head, body, winner, ...props }: IMyTableProps) => {
                   ? "bg-gray-50 dark:bg-gray-800"
                   : "bg-white dark:bg-gray-900"
               } border-b dark:border-gray-70
-              ${getWinnerStyles(row)}
+              ${
+                row.includes(cardValueToName((winner as ICard)?.value))
+                  ? "bg-blue-500 text-white"
+                  : ""
+              }
               
               `}
             >
@@ -44,14 +49,23 @@ export const MyTable = ({ head, body, winner, ...props }: IMyTableProps) => {
                   <th
                     key={"th#" + index}
                     scope="row"
-                    className={`py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white ${getWinnerStyles(
-                      row
-                    )}`}
+                    className={`py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white ${
+                      row.includes(cardValueToName((winner as ICard)?.value))
+                        ? "bg-blue-500 text-white"
+                        : ""
+                    }`}
                   >
                     {entry}
                   </th>
                 ) : (
-                  <td key={"td#" + index} className="py-4 px-6">
+                  <td
+                    key={"td#" + index}
+                    className={`${
+                      row.includes(cardValueToName((winner as ICard)?.value))
+                        ? "bg-blue-500 text-white"
+                        : ""
+                    } py-4 px-6`}
+                  >
                     {entry}
                   </td>
                 )
