@@ -1,5 +1,6 @@
 import { StepType, TourProvider, useTour } from "@reactour/tour";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { PRESETS } from "../../common/presets";
 import { MyBanner } from "../../components/banner/banner";
@@ -14,7 +15,8 @@ import {
 import { useGameState } from "../../store/game";
 
 export const WalkthroughPage = () => {
-  const { setIsOpen } = useTour();
+  const { setIsOpen, isOpen } = useTour();
+  const navigate = useNavigate();
   const [playerCount, setPlayerCount] = useState(2);
 
   const { state, actions, helpers, thunks } = useGameState({
@@ -115,9 +117,19 @@ export const WalkthroughPage = () => {
               Draw
             </button>
           )}
+          {drawnCards.length && !isOpen && (
+            <button
+              className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
+              onClick={() => {
+                navigate("/v1");
+              }}
+            >
+              Leave Demo.
+            </button>
+          )}
           {hasEnded && (
             <button
-              className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
+              className="bg-green-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
               onClick={restart}
             >
               Renew

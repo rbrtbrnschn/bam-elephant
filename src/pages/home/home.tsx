@@ -6,8 +6,6 @@ import { Testimonial } from "../rules/testimonial.rules";
 import { useGameRedirect } from "./redirect.hook";
 
 export const HomePage = () => {
-  useGameRedirect();
-
   const navigate = useNavigate();
   return (
     <div>

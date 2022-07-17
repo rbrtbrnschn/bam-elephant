@@ -7,8 +7,10 @@ import { RuleSets } from "../../common/rules";
 import { GameMode, GameRules } from "../../interfaces/game.interface";
 import { Game } from "./game";
 import { GameOnboarding } from "./onboarding";
+import { useGameRedirect } from "../home/redirect.hook";
 
 export const GamePage = () => {
+  useGameRedirect();
   const [needsOnboarding, setNeedsOnboarding] = useState(true);
   const [players, setPlayers] = useState<string[]>(["", ""]);
   const [ruleSet, setRuleSet] = useState<GameRules>();

@@ -24,8 +24,6 @@ export const Game = ({
   players = ["Pete", "David3"],
   preset = PRESETS.basic,
 }: IGameProps) => {
-  const { setIsOpen } = useTour();
-
   const { state, actions, helpers, thunks } = useGameState({
     playerCount: players.length,
     preset,
