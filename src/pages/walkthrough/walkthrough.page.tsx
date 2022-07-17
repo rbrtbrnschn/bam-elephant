@@ -140,7 +140,7 @@ export const WalkthroughPage = () => {
   const [run, setRun] = useState(true);
   return (
     <div className="relative">
-      <Joyride
+      {/* <Joyride
         steps={steps}
         continuous
         run={true}
@@ -157,7 +157,7 @@ export const WalkthroughPage = () => {
             drawButtonRef.current?.click();
           }
         }}
-      />
+      /> */}
       <AddRuleModal
         ref={modalRef}
         card={loser as ICard}
