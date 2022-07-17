@@ -52,10 +52,12 @@ release:
 - add favicon V
 - add logo navbar / footer V
 - fix navbar mobile V
-- build out readme
+- add preview table on /v1 onboarding V
+- refactor rules to objects as to use with more detailed knowledge ie. description for rules.
 - use joyride over current implementation ( dont work )
 - add in gamemode description when playing.
 - add in card-value tooltip on right hand side
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
+- build out readme
 
 Ice Box:

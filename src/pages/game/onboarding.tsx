@@ -7,6 +7,8 @@ import { RuleSets, RULE_SETS } from "../../common/rules";
 import { MyCard2 } from "../../components/card/card2";
 import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
+import { MyTable } from "../../components/table/table";
+import { CardValue, cardValueToName } from "../../interfaces/card.interface";
 import { GameMode, GameRules } from "../../interfaces/game.interface";
 import { useGameOnboarding } from "../../store/game.onboarding";
 
@@ -35,6 +37,8 @@ export const GameOnboarding = ({
   setRuleSet,
   ...props
 }: IGameOnboardingProps) => {
+  const hasRuleSelection = Object.keys(ruleSet || {}).length;
+  const hasGameModeSelection = Object.keys(gameMode || {}).length;
   return (
     <div>
       <MyNavbar />
@@ -126,6 +130,14 @@ export const GameOnboarding = ({
               disabled
             />
           </div>
+          {/* <div className={!hasGameModeSelection ? "hidden" : ""}>
+            <h3 className="mb-3 text-xl font-medium text-gray-900 dark:text-white">
+              Sample
+            </h3>
+            <p className="mb-5 text-sm font-medium text-gray-500 dark:text-gray-300">
+              Lorem Ipsum.
+            </p>
+          </div> */}
           <h2
             className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
             id="rule-sets"
@@ -161,6 +173,24 @@ export const GameOnboarding = ({
             />
           </div>
           <div className="mt-6"></div>
+          <div className={hasRuleSelection ? "w-full" : "hidden"}>
+            <h2
+              className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+              id="rule-sets"
+            >
+              Rule Set Preview
+            </h2>
+            <div className="grid md:grid-cols-1 md:gap-6">
+              <MyTable
+                head={["Card Value", "Rule"]}
+                body={Object.entries(ruleSet || {}).map(([key, val]) => [
+                  cardValueToName(parseInt(key)),
+                  val,
+                ])}
+                className="mb-6"
+              />
+            </div>
+          </div>
           <button
             type="submit"
             className={`text-white font-bold py-2 px-4 border-b-4 rounded ${
