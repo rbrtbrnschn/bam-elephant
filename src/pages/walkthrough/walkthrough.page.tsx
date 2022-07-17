@@ -19,7 +19,7 @@ export const WalkthroughPage = () => {
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    gameMode: PRESETS.walkthrough,
+    preset: PRESETS.walkthrough,
   });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;

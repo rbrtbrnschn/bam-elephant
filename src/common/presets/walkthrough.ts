@@ -1,4 +1,4 @@
-import { IGamePreset } from "../../interfaces/gamemode.interface";
+import { IGamePreset } from "../../interfaces/preset.interface";
 import { WALKTHROUGH_RULES } from "../rules";
 import { WALKTHROUGH_GAME_MODE } from "../game-modes";
 

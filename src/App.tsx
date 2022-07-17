@@ -6,7 +6,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { GamePage } from "./pages/game/game";
+import { GamePage } from "./pages/game";
 import { HomePage } from "./pages/home/home";
 import { WalkthroughPage } from "./pages/walkthrough/walkthrough.page";
 import { StepType, TourProvider } from "@reactour/tour";
@@ -80,7 +80,6 @@ function App() {
           <Route path="/tos" element={<TOSPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
 
-          <Route path="/new-game" element={<GameOnboarding />} />
           <Route path="/v1" element={<GamePage />} />
           <Route path="*" element={<GamePage />} />
         </Routes>

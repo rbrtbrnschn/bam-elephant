@@ -1,4 +1,4 @@
-import { IGamePreset } from "../../interfaces/gamemode.interface";
+import { IGamePreset } from "../../interfaces/preset.interface";
 import { ADVERSITY_RICH_RULES, CRAZY_RULES } from "../rules";
 import { AT_THE_CLUB_GAME_MODE, OUTDOORS_GAME_MODE } from "../game-modes";
 

@@ -18,7 +18,7 @@ import usePrevious from "./usePrevious.hook";
 export function useGameState({
   discardedPileSize: DISCARDED_PILE_SIZE = 30,
   playerCount: PLAYER_COUNT = 2,
-  gameMode: GAME_MODE = PRESETS.basic,
+  preset: GAME_MODE = PRESETS.basic,
 }: IUseGameStateOptions = {}) {
   const { gamemode: WINNER_CALLBACKS, ruleSet: RULE_SET, title } = GAME_MODE;
 

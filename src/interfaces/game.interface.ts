@@ -1,5 +1,5 @@
 import { CardValue, ICard } from "./card.interface";
-import { IGamePreset } from "./gamemode.interface";
+import { IGamePreset } from "./preset.interface";
 
 export interface IGameState {
   deck: ICard[];
@@ -43,5 +43,5 @@ export type GameMode = Partial<Record<CardValue, GameModeHook>>;
 export interface IUseGameStateOptions {
   discardedPileSize?: number;
   playerCount?: number;
-  gameMode?: IGamePreset;
+  preset?: IGamePreset;
 }

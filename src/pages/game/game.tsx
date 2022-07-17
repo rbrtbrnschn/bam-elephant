@@ -2,7 +2,9 @@ import { useTour } from "@reactour/tour";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
+import { GAMEMODES, GameModes } from "../../common/game-modes";
 import { PRESETS } from "../../common/presets";
+import { RuleSets, RULE_SETS } from "../../common/rules";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
 import { AddRuleModal } from "../../components/modal/add-rule.modal";
@@ -12,23 +14,21 @@ import {
   cardValueToName,
   ICard,
 } from "../../interfaces/card.interface";
+import { IGamePreset } from "../../interfaces/preset.interface";
 import { useGameState } from "../../store/game";
-
-export const GamePage = () => {
-  const url = new URL(window.location.href);
-  const searchParams = new URLSearchParams(url.search);
-
-  useEffect(() => {
-    searchParams.forEach((val, key) => console.log(key, val));
-  }, []);
-
-  const [players, setPlayers] = useState(["Pete", "David"]);
+interface IGameProps {
+  players: string[];
+  preset: IGamePreset;
+}
+export const Game = ({
+  players = ["Pete", "David3"],
+  preset = PRESETS.basic,
+}: IGameProps) => {
   const { setIsOpen } = useTour();
-  const [playerCount, setPlayerCount] = useState(players.length);
 
   const { state, actions, helpers, thunks } = useGameState({
-    playerCount,
-    gameMode: PRESETS.basic,
+    playerCount: players.length,
+    preset,
   });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;
@@ -38,8 +38,9 @@ export const GamePage = () => {
   const { restart } = thunks;
 
   useEffect(() => {
-    setIsOpen(true);
+    thunks.shuffle();
   }, []);
+
   useEffect(() => {
     ReactTooltip.rebuild();
   }, [drawnCards]);
@@ -48,7 +49,7 @@ export const GamePage = () => {
       return setDrawnCards(givenCards.map((c) => ({ ...c, isUndo: true })));
 
     const newDeck = [...deck];
-    const newDrawnCards = new Array(playerCount)
+    const newDrawnCards = new Array(players.length)
       .fill(0)
       .map((_, i) => newDeck.shift())
       .filter((e) => e) as ICard[];
@@ -59,7 +60,7 @@ export const GamePage = () => {
   const undo = () => {
     const previouslyDiscardedCards = [...state.disposedCards].slice(
       0,
-      playerCount
+      players.length
     );
     setDeck([...state.drawnCards, ...state.deck]);
     drawCards(previouslyDiscardedCards);

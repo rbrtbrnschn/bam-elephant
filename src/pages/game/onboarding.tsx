@@ -1,59 +1,48 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { GameModes } from "../../common/game-modes";
+import { GAMEMODES, GameModes } from "../../common/game-modes";
 import { Presets, PRESETS } from "../../common/presets";
-import { RuleSets } from "../../common/rules";
+import { RuleSets, RULE_SETS } from "../../common/rules";
 import { MyCard2 } from "../../components/card/card2";
 import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
+import { GameMode, GameRules } from "../../interfaces/game.interface";
 import { useGameOnboarding } from "../../store/game.onboarding";
 
-export const GameOnboarding = () => {
-  const { state, actions } = useGameOnboarding();
-  const navigate = useNavigate();
-
-  const [inputs, setInputs] = useState<string[]>(["", ""]);
-  const [ruleSet, setRuleSet] = useState<RuleSets>();
-  const [gameMode, setGameMode] = useState<GameModes>();
-  const ready2Submit = useMemo(
-    () =>
-      [inputs.length >= 2, ruleSet?.length, gameMode?.length].every(Boolean),
-    [inputs, ruleSet, gameMode]
-  );
-  const addInput = () => {
-    setInputs((oldInputs) => [...oldInputs, ""]);
-  };
-  const deleteInput = () => {
-    const newInputs = [...inputs];
-    if (newInputs.length <= 2) return;
-    newInputs.pop();
-    setInputs(newInputs);
-  };
-
-  const onSubmit = () => {
-    if (!gameMode)
-      return toast.error("Missing Game Mode. Please Select One first.");
-    if (!ruleSet)
-      return toast.error("Missing Rule Set. Please Select One first.");
-
-    navigate(
-      encodeURIComponent(
-        `/v1?players=${inputs.join(
-          ","
-        )}&game-mode=${gameMode}&rule-set=${ruleSet}`
-      )
-    );
-  };
-
+interface IGameOnboardingProps {
+  onSubmit: () => void;
+  ruleSet: GameRules;
+  gameMode: GameMode;
+  ready2Submit: boolean;
+  players: string[];
+  setPlayers: (a: string[]) => void;
+  addInput: () => void;
+  deleteInput: () => void;
+  setGameMode: (gamemode: GameMode) => void;
+  setRuleSet: (ruleSet: GameRules) => void;
+}
+export const GameOnboarding = ({
+  onSubmit,
+  addInput,
+  deleteInput,
+  gameMode,
+  ready2Submit,
+  ruleSet,
+  players: inputs,
+  setPlayers: setInputs,
+  setGameMode,
+  setRuleSet,
+  ...props
+}: IGameOnboardingProps) => {
   return (
     <div>
       <MyNavbar />
       <div className="relative py-8 px-4 mx-auto max-w-screen-xl  lg:py-16 lg:px-12">
         <form onSubmit={onSubmit}>
           <div className="relative z-0 mb-6 w-full group">
-            <input required className="hidden" value={ruleSet} />
-            <input required className="hidden" value={gameMode} />
+            <input required className="hidden" value={ruleSet ? "1" : ""} />
+            <input required className="hidden" value={gameMode ? "1" : ""} />
             {inputs.map((input, index) => (
               <div
                 key={"input-" + (index + 1)}
@@ -115,9 +104,9 @@ export const GameOnboarding = () => {
               description="Assign new Rules as fast as possible. Every face card gets you one step closer."
               imageUrl="/assets/sex-on-the-beach.png"
               c2a="Select"
-              isSelected={gameMode === "lowkey"}
+              isSelected={gameMode === GAMEMODES.lowkey.gamemode}
               onClick={() => {
-                setGameMode("lowkey");
+                setGameMode(GAMEMODES.lowkey.gamemode);
               }}
             />
             <MyCard2
@@ -149,9 +138,9 @@ export const GameOnboarding = () => {
               description="At this point I'm out of information."
               imageUrl="/assets/coconut-drink.png"
               c2a="Select"
-              isSelected={ruleSet === "basic"}
+              isSelected={ruleSet === RULE_SETS.basic.rules}
               onClick={() => {
-                setRuleSet("basic");
+                setRuleSet(RULE_SETS.basic.rules);
               }}
             />
             <MyCard2

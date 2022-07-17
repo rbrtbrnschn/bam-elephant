@@ -1,4 +1,4 @@
-import { IGamePreset } from "../../interfaces/gamemode.interface";
+import { IGamePreset } from "../../interfaces/preset.interface";
 import { LOW_KEY_RULES } from "../rules";
 import { LOW_KEY_GAME_MODE } from "../game-modes";
 

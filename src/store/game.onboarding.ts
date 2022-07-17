@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IGamePreset } from "../interfaces/gamemode.interface";
+import { IGamePreset } from "../interfaces/preset.interface";
 interface IGameOnboardingState {
   players: string[];
   gameMode?: IGamePreset;

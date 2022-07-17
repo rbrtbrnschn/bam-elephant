@@ -1,4 +1,4 @@
-import { IGamePreset } from "../../interfaces/gamemode.interface";
+import { IGamePreset } from "../../interfaces/preset.interface";
 import { CRAZY_RULES } from "../rules";
 import { OUTDOORS_GAME_MODE } from "../game-modes";
 

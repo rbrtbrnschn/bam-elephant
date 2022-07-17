@@ -1,4 +1,4 @@
-import { IGamePreset } from "../../interfaces/gamemode.interface";
+import { IGamePreset } from "../../interfaces/preset.interface";
 import { BASIC_RULES } from "../rules";
 import { BASIC_GAME_MODE } from "../game-modes";
 
