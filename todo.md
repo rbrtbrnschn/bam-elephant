@@ -39,15 +39,18 @@ Beta:
 - allow for game modes V
 - allow for rule sets V
 - add in guide section V
-- add in home page details 
+- add in home page details V
 - highlight winner row in table  V
+- navbar #help links to rules sections
+- game onboarding -> players -> gamemode -> ruleset
+- rules page
+- add How To Section ( Rules ) 
 -> tooltip showcase player
 - add in players
 - add in card-value tooltip on right hand side
-- add How To Section ( Rules ) 
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 - add in player names somehow
 - vercel
 
 Ice Box:
-- Tutorial Walkthrough
+- Tutorial Walkthrough V

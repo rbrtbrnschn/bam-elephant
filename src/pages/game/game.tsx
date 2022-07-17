@@ -168,6 +168,7 @@ export const GamePage = () => {
               value,
             ];
           })}
+          winner={winner as ICard}
         />
       </div>
     </div>
