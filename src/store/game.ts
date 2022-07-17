@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { STANDARD_DECK } from "../common/cards";
-import { PRESETS } from "../common/presets";
-import { BASIC_RULES } from "../common/rules";
+import { LOW_KEY_GAME_MODE_WITH_DESCRIPTION } from "../common/game-modes";
+import { BASIC_GAME_RULES_WITH_DESCRIPTION } from "../common/game-rules";
 import { CardValue, ICard, IUndoCard } from "../interfaces/card.interface";
 import {
-  GameRules,
   IGameActions,
   IGameHelpers,
   IGameInjections,
@@ -13,15 +12,15 @@ import {
   IGameThunks,
   IUseGameStateOptions,
 } from "../interfaces/game.interface";
+import { IGameRulesWithDescription } from "../interfaces/rules.interface";
 import usePrevious from "./usePrevious.hook";
 
 export function useGameState({
   discardedPileSize: DISCARDED_PILE_SIZE = 30,
   playerCount: PLAYER_COUNT = 2,
-  preset: GAME_MODE = PRESETS.basic,
+  gameMode = LOW_KEY_GAME_MODE_WITH_DESCRIPTION,
+  gameRules = BASIC_GAME_RULES_WITH_DESCRIPTION,
 }: IUseGameStateOptions = {}) {
-  const { gamemode: WINNER_CALLBACKS, ruleSet: RULE_SET, title } = GAME_MODE;
-
   /*TODO refactor constants */
   const MAX_PLAYER_COUNT = 8;
 
@@ -37,7 +36,8 @@ export function useGameState({
     drawnCards: [],
     disposedCards: [],
     rule: "",
-    rules: { ...RULE_SET },
+    gameRules: { ...gameRules },
+    gameMode: { ...gameMode },
     newRule: "",
     modalIsOpen: false,
   });
@@ -60,8 +60,11 @@ export function useGameState({
     setState((oldState) => ({ ...oldState, rule: newRule }));
   };
 
-  const setRules = (newRules: GameRules) => {
-    setState((oldState) => ({ ...oldState, rules: newRules }));
+  const setRules = (newRules: IGameRulesWithDescription) => {
+    setState((oldState) => ({
+      ...oldState,
+      gameRules: newRules,
+    }));
   };
 
   const setNewRule = (newRule: string) => {
@@ -156,16 +159,16 @@ export function useGameState({
     }
 
     try {
-      WINNER_CALLBACKS[winner.value]?.(gameInjections);
+      gameMode.mode[winner.value]?.(gameInjections);
     } catch (e) {
       console.error(e);
     }
 
-    const rule = state.rules[winner.value];
-    const fallback = "You got lucky";
+    const rule = state.gameRules.rules[winner.value];
+    const fallback = "";
     setRule(rule?.title ?? fallback);
     toast.success(rule?.title);
-  }, [state.rules, winner]);
+  }, [state.gameRules, winner]);
 
   /* HOOKS */
   /**

@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import ReactJoyride, { Step } from "react-joyride";
 import { useNavigate } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import { PRESETS } from "../../common/presets";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
 import { AddRuleModal } from "../../components/modal/add-rule.modal";
@@ -15,6 +14,11 @@ import {
 } from "../../interfaces/card.interface";
 import { useGameState } from "../../store/game";
 import Joyride from "react-joyride";
+import { WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION } from "../../common/game-modes";
+import {
+  WALKTHROUGH_GAME_RULES,
+  WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION,
+} from "../../common/game-rules";
 
 export const WalkthroughPage = () => {
   const { setIsOpen, isOpen } = useTour();
@@ -23,10 +27,18 @@ export const WalkthroughPage = () => {
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    preset: PRESETS.walkthrough,
+    gameMode: WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION,
+    gameRules: WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION,
   });
-  const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
-    state;
+  const {
+    deck,
+    drawnCards,
+    modalIsOpen,
+    newRule,
+    rule,
+    gameRules,
+    disposedCards,
+  } = state;
   const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
@@ -164,11 +176,14 @@ export const WalkthroughPage = () => {
         onClose={toggleModal}
         onSuccess={(rule: string) => {
           setRules({
-            ...rules,
-            [(loser as ICard)?.value]: { title: rule, description: "" },
+            ...gameRules,
+            rules: {
+              ...gameRules.rules,
+              [(loser as ICard)?.value]: { title: rule, description: "Custom" },
+            },
           });
         }}
-        placeholder={state.rules[(loser as ICard)?.value]?.title}
+        placeholder={gameRules.rules[(loser as ICard)?.value]?.title}
         className={!modalIsOpen ? "hidden" : ""}
       />
       <div className="h-0">
@@ -190,8 +205,8 @@ export const WalkthroughPage = () => {
         >
           {drawnCards.map((c, i) => (
             <div
-              {...(rules[c.value]?.title?.length && {
-                "data-tip": "Rule: " + rules[c.value]?.title,
+              {...(gameRules.rules[c.value]?.title?.length && {
+                "data-tip": "Rule: " + gameRules.rules[c.value]?.title,
               })}
               data-for="main"
               key={"container-card#" + i}
@@ -263,11 +278,14 @@ export const WalkthroughPage = () => {
             <button
               type="submit"
               onClick={() => {
-                const newRules = { ...rules };
+                const newGameRules = { ...gameRules };
                 if (loser?.code.length) {
-                  newRules[loser.value] = { title: newRule, description: "" };
+                  newGameRules.rules[loser.value] = {
+                    title: newRule,
+                    description: "",
+                  };
                 }
-                setRules(newRules);
+                setRules(newGameRules);
                 setNewRule("");
                 toggleModal();
               }}
@@ -278,7 +296,7 @@ export const WalkthroughPage = () => {
         )}
         <MyTable
           head={["Value", "Rule"]}
-          body={Object.entries(rules).map(([key, value], index) => {
+          body={Object.entries(gameRules.rules).map(([key, value], index) => {
             return [
               cardValueToName(parseInt(key) as unknown as CardValue),
               value,

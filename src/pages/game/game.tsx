@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
-import { PRESETS } from "../../common/presets";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
 import { AddRuleModal } from "../../components/modal/add-rule.modal";
@@ -11,22 +10,37 @@ import {
   cardValueToName,
   ICard,
 } from "../../interfaces/card.interface";
-import { IGamePreset } from "../../interfaces/preset.interface";
+import { IGameModeWithDescription } from "../../interfaces/game.interface";
+import {
+  IBaseRule,
+  IGameRulesWithDescription,
+} from "../../interfaces/rules.interface";
 import { useGameState } from "../../store/game";
 interface IGameProps {
   players: string[];
-  preset: IGamePreset;
+  gameRules: IGameRulesWithDescription;
+  gameMode: IGameModeWithDescription;
 }
 export const Game = ({
-  players = ["Pete", "David3"],
-  preset = PRESETS.basic,
+  players,
+  gameMode: givenGameMode,
+  gameRules: givenGameRules,
 }: IGameProps) => {
   const { state, actions, helpers, thunks } = useGameState({
     playerCount: players.length,
-    preset,
+    gameMode: givenGameMode,
+    gameRules: givenGameRules,
   });
-  const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
-    state;
+  const {
+    deck,
+    drawnCards,
+    modalIsOpen,
+    newRule,
+    rule,
+    gameRules,
+    gameMode,
+    disposedCards,
+  } = state;
   const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
@@ -70,11 +84,17 @@ export const Game = ({
           onClose={toggleModal}
           onSuccess={(rule: string) => {
             setRules({
-              ...rules,
-              [(loser as ICard)?.value]: { title: rule, description: "" },
+              ...gameRules,
+              rules: {
+                ...gameRules.rules,
+                [(loser as ICard)?.value]: {
+                  title: rule,
+                  description: "Custom",
+                },
+              },
             });
           }}
-          placeholder={state.rules[(loser as ICard)?.value]?.title}
+          placeholder={gameRules.rules[(loser as ICard)?.value]?.title}
         />
       )}
 
@@ -99,8 +119,8 @@ export const Game = ({
         >
           {drawnCards.map((c, i) => (
             <div
-              {...(rules[c.value]?.title?.length && {
-                "data-tip": "Rule: " + rules[c.value]?.title,
+              {...(gameRules.rules[c.value]?.title?.length && {
+                "data-tip": "Rule: " + gameRules.rules[c.value]?.title,
               })}
               data-for="main"
               key={"container-card#" + i}
@@ -150,36 +170,9 @@ export const Game = ({
           ) : null}
         </div>
 
-        {modalIsOpen && (
-          <div>
-            <input
-              value={newRule}
-              placeholder={`Assign ${cardValueToName(
-                loser?.value as CardValue
-              )} a new rule`}
-              onChange={(e) => {
-                setNewRule(e.currentTarget.value);
-              }}
-            />
-            <button
-              type="submit"
-              onClick={() => {
-                const newRules = { ...rules };
-                if (loser?.code.length) {
-                  newRules[loser.value] = { title: newRule, description: "" };
-                }
-                setRules(newRules);
-                setNewRule("");
-                toggleModal();
-              }}
-            >
-              Submit
-            </button>
-          </div>
-        )}
         <MyTable
           head={["Value", "Rule"]}
-          body={Object.entries(rules).map(([key, value], index) => {
+          body={Object.entries(gameRules.rules).map(([key, value], index) => {
             return [
               cardValueToName(parseInt(key) as unknown as CardValue),
               value,

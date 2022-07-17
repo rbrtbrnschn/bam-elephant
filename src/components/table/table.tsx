@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { IBaseRule } from "../../common/rules";
 import { cardValueToName, ICard } from "../../interfaces/card.interface";
+import { IBaseRule } from "../../interfaces/rules.interface";
 
 interface IMyTableProps extends React.HTMLAttributes<HTMLDivElement> {
   head: string[];

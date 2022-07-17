@@ -20,6 +20,7 @@ export const MyCard2 = ({
     <div
       className={`transition max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:-translate-y-2
       ${isSelected ? "border-green-300 border-2" : ""}
+      ${disabled ? "pointer-events-none " : ""}
          ${className}`}
       {...props}
     >
@@ -28,7 +29,11 @@ export const MyCard2 = ({
           disabled ? "opacity-25 cursor-not-allowed" : ""
         }`}
       >
-        <img className="rounded-t-lg w-64" src={imageUrl} alt="" />
+        <img
+          className={`rounded-t-lg w-64 ${disabled ? "opacity-25" : ""}`}
+          src={imageUrl}
+          alt=""
+        />
       </a>
       <div className={`p-5 ${disabled ? "opacity-25 cursor-not-allowed" : ""}`}>
         <a className="cursor-pointer">

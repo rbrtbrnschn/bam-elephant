@@ -1,35 +1,32 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { GAMEMODES, GameModes } from "../../common/game-modes";
-import { PRESETS } from "../../common/presets";
-import { RuleSets } from "../../common/rules";
-import { GameMode, GameRules } from "../../interfaces/game.interface";
+import { IGameModeWithDescription } from "../../interfaces/game.interface";
 import { Game } from "./game";
 import { GameOnboarding } from "./onboarding";
 import { useGameRedirect } from "../home/redirect.hook";
 import ReactTooltip from "react-tooltip";
+import { IGameRulesWithDescription } from "../../interfaces/rules.interface";
 
 export const GamePage = () => {
   useGameRedirect();
   const [needsOnboarding, setNeedsOnboarding] = useState(true);
   const [players, setPlayers] = useState<string[]>(["", ""]);
-  const [ruleSet, setRuleSet] = useState<GameRules>();
-  const [gamemode, setGamemode] = useState<GameMode>();
+  const [gameRules, setGameRules] = useState<IGameRulesWithDescription>();
+  const [gameMode, setGameMode] = useState<IGameModeWithDescription>();
 
   useEffect(() => {
     ReactTooltip.rebuild();
-  }, [players, ruleSet, gamemode]);
+  }, [players, gameRules, gameMode]);
 
   const ready2Submit = useMemo(
     () =>
       [
         players.length >= 2,
         players.every((e) => e.length),
-        ruleSet,
-        gamemode,
+        gameRules,
+        gameMode,
       ].every(Boolean),
-    [players, ruleSet, gamemode]
+    [players, gameRules, gameMode]
   );
   const addInput = () => {
     setPlayers((oldInputs) => [...oldInputs, ""]);
@@ -42,9 +39,9 @@ export const GamePage = () => {
   };
 
   const onSubmit = () => {
-    if (!Object.keys(gamemode || {}).length)
+    if (!Object.keys(gameMode || {}).length)
       return toast.error("Missing Game Mode. Please Select One first.");
-    if (!Object.keys(ruleSet || {}).length)
+    if (!Object.keys(gameRules || {}).length)
       return toast.error("Missing Rule Set. Please Select One first.");
     if (!ready2Submit) return;
 
@@ -57,22 +54,19 @@ export const GamePage = () => {
           onSubmit={onSubmit}
           addInput={addInput}
           deleteInput={deleteInput}
-          gameMode={gamemode as GameMode}
+          gameMode={gameMode}
           players={players}
           ready2Submit={ready2Submit}
-          ruleSet={ruleSet as GameRules}
-          setGameMode={setGamemode}
+          gameRules={gameRules}
+          setGameMode={setGameMode}
           setPlayers={setPlayers}
-          setRuleSet={setRuleSet}
+          setGameRules={setGameRules}
         />
       ) : (
         <Game
           players={players}
-          preset={{
-            gamemode: gamemode as GameMode,
-            ruleSet: ruleSet as GameRules,
-            title: "Custom",
-          }}
+          gameMode={gameMode as IGameModeWithDescription}
+          gameRules={gameRules as IGameRulesWithDescription}
         />
       )}
     </div>

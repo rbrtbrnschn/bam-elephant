@@ -1,28 +1,24 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { GAMEMODES, GameModes } from "../../common/game-modes";
-import { Presets, PRESETS } from "../../common/presets";
-import { RuleSets, RULE_SETS } from "../../common/rules";
+import { GAME_MODES_WITH_DESCRIPTION } from "../../common/game-modes";
+import { GAME_RULES_WITH_DESCRIPTION } from "../../common/game-rules";
 import { MyCard2 } from "../../components/card/card2";
 import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
 import { MyTable } from "../../components/table/table";
 import { CardValue, cardValueToName } from "../../interfaces/card.interface";
-import { GameMode, GameRules } from "../../interfaces/game.interface";
-import { useGameOnboarding } from "../../store/game.onboarding";
+import { IGameModeWithDescription } from "../../interfaces/game.interface";
+import { IGameRulesWithDescription } from "../../interfaces/rules.interface";
 
 interface IGameOnboardingProps {
   onSubmit: () => void;
-  ruleSet: GameRules;
-  gameMode: GameMode;
+  gameRules?: IGameRulesWithDescription;
+  gameMode?: IGameModeWithDescription;
   ready2Submit: boolean;
   players: string[];
   setPlayers: (a: string[]) => void;
   addInput: () => void;
   deleteInput: () => void;
-  setGameMode: (gamemode: GameMode) => void;
-  setRuleSet: (ruleSet: GameRules) => void;
+  setGameMode: (gameMode: IGameModeWithDescription) => void;
+  setGameRules: (gameRules: IGameRulesWithDescription) => void;
 }
 export const GameOnboarding = ({
   onSubmit,
@@ -30,14 +26,14 @@ export const GameOnboarding = ({
   deleteInput,
   gameMode,
   ready2Submit,
-  ruleSet,
+  gameRules,
   players: inputs,
   setPlayers: setInputs,
   setGameMode,
-  setRuleSet,
+  setGameRules,
   ...props
 }: IGameOnboardingProps) => {
-  const hasRuleSelection = Object.keys(ruleSet || {}).length;
+  const hasRuleSelection = Object.keys(gameRules || {}).length;
   const hasGameModeSelection = Object.keys(gameMode || {}).length;
   return (
     <div>
@@ -45,7 +41,7 @@ export const GameOnboarding = ({
       <div className="relative py-8 px-4 mx-auto max-w-screen-xl  lg:py-16 lg:px-12">
         <form onSubmit={onSubmit}>
           <div className="relative z-0 mb-6 w-full group">
-            <input required className="hidden" value={ruleSet ? "1" : ""} />
+            <input required className="hidden" value={gameRules ? "1" : ""} />
             <input required className="hidden" value={gameMode ? "1" : ""} />
             {inputs.map((input, index) => (
               <div
@@ -103,74 +99,64 @@ export const GameOnboarding = ({
             Game Modes
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6 mb-6">
-            <MyCard2
-              title="Low-Key"
-              description="Assign new Rules as fast as possible. Every face card gets you one step closer."
-              imageUrl="/assets/sex-on-the-beach.png"
-              c2a="Select"
-              isSelected={gameMode === GAMEMODES.lowkey.gamemode}
-              onClick={() => {
-                setGameMode(GAMEMODES.lowkey.gamemode);
-              }}
-            />
-            <MyCard2
-              title="Outdoors"
-              description="A low-key scenario, just sit down with your friends. Put on some good music. Have a good time."
-              imageUrl="/assets/beer-cocktail.png"
-              c2a="Select"
-              isSelected={gameMode === "outdoors"}
-              disabled
-            />
-            <MyCard2
-              title="@ The club"
-              description="A low-key scenario, just sit down with your friends. Put on some good music. Have a good time."
-              imageUrl="/assets/pina-colada.png"
-              c2a="Select"
-              isSelected={gameMode === "atTheClub"}
-              disabled
-            />
+            {GAME_MODES_WITH_DESCRIPTION.map((gameModeWithDescription, i) => (
+              <MyCard2
+                title={gameModeWithDescription.title}
+                description={gameModeWithDescription.about}
+                imageUrl={
+                  [
+                    "/assets/beer-cocktail.png",
+                    "/assets/pina-colada.png",
+                    "/assets/sex-on-the-beach.png",
+                  ][i]
+                }
+                c2a="Select"
+                isSelected={gameMode === gameModeWithDescription}
+                onClick={() => {
+                  setGameMode(gameModeWithDescription);
+                }}
+                disabled={i !== 1}
+                key={"gameMode-" + (i + 1)}
+              />
+            ))}
           </div>
-          {/* <div className={!hasGameModeSelection ? "hidden" : ""}>
-            <h3 className="mb-3 text-xl font-medium text-gray-900 dark:text-white">
-              Sample
-            </h3>
-            <p className="mb-5 text-sm font-medium text-gray-500 dark:text-gray-300">
-              Lorem Ipsum.
+
+          <div className={!gameMode ? "hidden" : ""}>
+            <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12">
+              About: {gameMode?.title}
+            </h2>
+            <p className="mb-6 font-normal text-gray-700 dark:text-gray-400">
+              {gameMode?.description}
             </p>
-          </div> */}
+          </div>
+
           <h2
             className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
             id="rule-sets"
           >
-            Rule Sets
+            Game Rule
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6">
-            <MyCard2
-              title="Basic"
-              description="At this point I'm out of information."
-              imageUrl="/assets/coconut-drink.png"
-              c2a="Select"
-              isSelected={ruleSet === RULE_SETS.basic.rules}
-              onClick={() => {
-                setRuleSet(RULE_SETS.basic.rules);
-              }}
-            />
-            <MyCard2
-              title="Crazy"
-              description="Lorem Ipsum. I don't even know, how to describe it. That's how crazy it is."
-              imageUrl="/assets/soft-drink.png"
-              c2a="Select"
-              isSelected={ruleSet === "crazy"}
-              disabled
-            />
-            <MyCard2
-              title="Adversity-rich"
-              description="I'm just making up words as I go now."
-              imageUrl="/assets/beer.png"
-              c2a="Select"
-              isSelected={ruleSet === "adversityRich"}
-              disabled
-            />
+            {GAME_RULES_WITH_DESCRIPTION.map((gameRuleWithDescription, i) => (
+              <MyCard2
+                title={gameRuleWithDescription.title}
+                description={gameRuleWithDescription.about}
+                imageUrl={
+                  [
+                    "/assets/soft-drink.png",
+                    "/assets/coconut-drink.png",
+                    "/assets/beer.png",
+                  ][i]
+                }
+                c2a="Select"
+                isSelected={gameRules === gameRuleWithDescription}
+                onClick={() => {
+                  setGameRules(gameRuleWithDescription);
+                }}
+                disabled={i !== 1}
+                key={"gameRule-" + (i + 1)}
+              />
+            ))}
           </div>
           <div className="mt-6"></div>
           <div
@@ -185,10 +171,9 @@ export const GameOnboarding = ({
             <div className="grid md:grid-cols-1 md:gap-6">
               <MyTable
                 head={["Card Value", "Rule"]}
-                body={Object.entries(ruleSet || {}).map(([key, val]) => [
-                  cardValueToName(parseInt(key)),
-                  val,
-                ])}
+                body={Object.entries(gameRules?.rules || {}).map(
+                  ([key, val]) => [cardValueToName(parseInt(key)), val]
+                )}
                 className="mb-6"
               />
             </div>

@@ -1,14 +1,13 @@
-import { IBaseRule } from "../common/rules";
 import { CardValue, ICard } from "./card.interface";
-import { IGamePreset } from "./preset.interface";
+import { IGameRulesWithDescription } from "./rules.interface";
 
-export type GameRules = Partial<Record<CardValue, IBaseRule>>;
 export interface IGameState {
   deck: ICard[];
   drawnCards: ICard[];
   disposedCards: ICard[];
   rule: string;
-  rules: GameRules;
+  gameRules: IGameRulesWithDescription;
+  gameMode: IGameModeWithDescription;
   newRule: string;
   modalIsOpen: boolean;
 }
@@ -17,7 +16,7 @@ export interface IGameActions {
   setDrawnCards: (cards: ICard[]) => void;
   setDisposedCards: (cards: ICard[]) => void;
   setRule: (rule: string) => void;
-  setRules: (rules: GameRules) => void;
+  setRules: (rules: IGameRulesWithDescription) => void;
   setNewRule: (newRule: string) => void;
   toggleModal: () => void;
 }
@@ -41,8 +40,16 @@ export interface IGameInjections {
 }
 export type GameModeHook = (e: IGameInjections) => void;
 export type GameMode = Partial<Record<CardValue, GameModeHook>>;
+
+export interface IGameModeWithDescription {
+  title: string;
+  about: string;
+  description: string;
+  mode: GameMode;
+}
 export interface IUseGameStateOptions {
   discardedPileSize?: number;
   playerCount?: number;
-  preset?: IGamePreset;
+  gameMode?: IGameModeWithDescription;
+  gameRules?: IGameRulesWithDescription;
 }

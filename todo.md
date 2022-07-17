@@ -54,18 +54,24 @@ release:
 - fix navbar mobile V
 - add preview table on /v1 onboarding V
 - refactor rules to objects as to use with more detailed knowledge ie. description for rules. V
-- delete presets, no more custom presets, only as an interface for props
-- thinking to just get rid of presets all together.
+- delete presets, no more custom presets, only as an interface for props V
+- thinking to just get rid of presets all together. V
+- refactor rule sets, gamemodes, presets V
+- allow for more detail on rulesets and gamemodes, more than the actual data themselves. V
+- add in gamemode description when playing. V
 
-- refactor rule sets, gamemodes, presets
-- allow for more detail on rulesets and gamemodes, more than the actual data themselves.
 - refactor winner loser logic to gamemode! ;) 100iq move right there.
+
 - gamemode may has rules to chose from, not rule sets, but rules categories? :shrug:
+- add lint / format test
 
 - use joyride over current implementation ( dont work )
-- add in gamemode description when playing.
 - add in card-value tooltip on right hand side
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 - build out readme
+
+- allow to add in rules dynamically form onboarding via dropdown, 
+  - each gamemode has it's own categories of rules to be picked from.
+- allow for toast/rule manipulation/creation via callback
 
 Ice Box:
