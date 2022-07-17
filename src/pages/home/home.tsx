@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
+import { Testimonial } from "../rules/testimonial.rules";
 import { useGameRedirect } from "./redirect.hook";
 
 export const HomePage = () => {
@@ -90,8 +92,19 @@ export const HomePage = () => {
               Read Rules
             </a>
           </div>
+          <hr />
+
+          <Testimonial
+            authorName={"Robert Bornschein"}
+            position={"Co Founder"}
+            quote={"Bam Elephant! This is not how the fish eats it's food."}
+            authorImageUrl={"https://www.tailwind-kit.com/images/person/1.jpg"}
+            iconUrl={"https://www.tailwind-kit.com/icons/rocket.svg"}
+          />
+          <hr />
         </div>
       </section>
+      <MyFooter />
     </div>
   );
 };

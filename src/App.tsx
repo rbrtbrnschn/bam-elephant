@@ -11,6 +11,8 @@ import { HomePage } from "./pages/home/home";
 import { WalkthroughPage } from "./pages/walkthrough/walkthrough.page";
 import { StepType, TourProvider } from "@reactour/tour";
 import { RulesPage } from "./pages/rules/rules";
+import { TOSPage } from "./pages/tos/tos";
+import { PrivacyPage } from "./pages/privacy/privacy";
 
 function App() {
   const steps: StepType[] = [
@@ -74,6 +76,9 @@ function App() {
             }
           />
           <Route path="/rules" element={<RulesPage />} />
+          <Route path="/tos" element={<TOSPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+
           <Route path="/v1" element={<GamePage />} />
           <Route path="*" element={<GamePage />} />
         </Routes>
