@@ -34,14 +34,15 @@ Alpha:
 Beta:
 - tooltip on hover card showing current rule V
 - fix up mobile view V
-- use cookies to redirect to game from home
-- add How To Section ( Rules )
-- add home screen
-- allow for game modes
-- allow for rule sets
+- use cookies to redirect to game from home V
+- add home screen V
+- allow for game modes V
+- allow for rule sets V
+- add How To Section ( Rules ) 
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 - add in player names somehow
 - vercel
+- highlight winner row in table -> tooltip showcase player
 
 Ice Box:
 - Tutorial Walkthrough
