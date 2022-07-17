@@ -16,7 +16,7 @@ export const MyNavbar = () => {
           }}
         >
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="/assets/elephant.png"
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />

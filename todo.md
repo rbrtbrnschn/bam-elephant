@@ -48,6 +48,8 @@ Beta:
 - vercel
 
 release:
+- add favicon V
+- add logo navbar / footer V
 - build out readme
 - add in gamemode description when playing.
 - add in card-value tooltip on right hand side
