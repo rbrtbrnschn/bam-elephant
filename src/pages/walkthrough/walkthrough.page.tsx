@@ -170,6 +170,7 @@ export const WalkthroughPage = () => {
               value,
             ];
           })}
+          winner={winner as ICard}
         />
       </div>
     </div>
