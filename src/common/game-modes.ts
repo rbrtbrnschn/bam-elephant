@@ -1,9 +1,33 @@
 import { toast } from "react-toastify";
-import { CardValue } from "../interfaces/card.interface";
+import { CardValue, ICard } from "../interfaces/card.interface";
 import {
   GameMode,
   IGameModeWithDescription,
+  IGameState,
 } from "../interfaces/game.interface";
+
+/**
+ * Sorts ICard by `#value` from low to high.
+ * @param a {ICard}
+ * @param b {ICard}
+ * @returns {number}
+ */
+function sortCardsByValue(a: ICard, b: ICard) {
+  return a.value - b.value;
+}
+
+const handleWinner = ({ state }: { state: IGameState }) => {
+  const sorted = [...state.drawnCards].sort(sortCardsByValue);
+  const cardValues = sorted.map((c) => c.value);
+  const uniqueCardValues = new Set(cardValues);
+
+  const deltaSetLength = Math.abs(sorted.length - uniqueCardValues.size);
+  const allDraw = sorted.length === deltaSetLength + 1;
+
+  if (allDraw) return [null, null];
+
+  return [sorted[sorted.length - 1], sorted[0]];
+};
 
 export const LOW_KEY_GAME_MODE: GameMode = {
   [CardValue.SEVEN]: (options) => {
@@ -19,9 +43,10 @@ export const LOW_KEY_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
   title: "Low-Key",
   about:
     "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
-  description: `Seven: shuffle deck
-  Ace: assign new rule`,
+  description: `Seven: shuffle deck. Ace: assign new rule. Winner Determined: Highest Card Value.
+  `,
   mode: LOW_KEY_GAME_MODE,
+  handleWinner,
 };
 
 /* For Walkthrough Purposes Only */
@@ -33,6 +58,7 @@ export const WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
     about: "",
     description: "For educational purposes only.",
     mode: WALKTHROUGH_GAME_MODE,
+    handleWinner,
   };
 /* For Walkthrough Purposes Only */
 
@@ -57,6 +83,7 @@ export const OUTDOORS_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
   Queen: assign new rule
   KING assing new rule`,
   mode: OUTDOORS_GAME_MODE,
+  handleWinner,
 };
 export const AT_THE_CLUB_GAME_MODE: GameMode = {
   ...OUTDOORS_GAME_MODE,
@@ -68,6 +95,7 @@ export const AT_THE_CLUB_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
       "Let us help you level up your search engine game, explore our solutions for digital marketing for your business.",
     description: "WIP.",
     mode: AT_THE_CLUB_GAME_MODE,
+    handleWinner,
   };
 
 export const GAME_MODES_WITH_DESCRIPTION = [

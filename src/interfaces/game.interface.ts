@@ -46,6 +46,7 @@ export interface IGameModeWithDescription {
   about: string;
   description: string;
   mode: GameMode;
+  handleWinner: ({ state }: { state: IGameState }) => (ICard | null)[];
 }
 export interface IUseGameStateOptions {
   discardedPileSize?: number;

@@ -60,7 +60,7 @@ release:
 - allow for more detail on rulesets and gamemodes, more than the actual data themselves. V
 - add in gamemode description when playing. V
 
-- refactor winner loser logic to gamemode! ;) 100iq move right there.
+- refactor winner loser logic to gamemode! ;) 100iq move right there. V
 
 - gamemode may has rules to chose from, not rule sets, but rules categories? :shrug:
 - add lint / format test

@@ -93,28 +93,10 @@ export function useGameState({
   );
   const roundHasEnded = useMemo(() => !state.deck.length, [state.deck.length]);
 
-  /**
-   * Sorts ICard by `#value` from low to high.
-   * @param a {ICard}
-   * @param b {ICard}
-   * @returns {number}
-   */
-  function sortCardsByValue(a: ICard, b: ICard) {
-    return a.value - b.value;
-  }
-
-  const [winner, loser] = useMemo<(ICard | null)[]>(() => {
-    const sorted = [...state.drawnCards].sort(sortCardsByValue);
-    const cardValues = sorted.map((c) => c.value);
-    const uniqueCardValues = new Set(cardValues);
-
-    const deltaSetLength = Math.abs(sorted.length - uniqueCardValues.size);
-    const allDraw = sorted.length === deltaSetLength + 1;
-
-    if (allDraw) return [null, null];
-
-    return [sorted[sorted.length - 1], sorted[0]];
-  }, [state.drawnCards]);
+  const [winner, loser] = useMemo<(ICard | null)[]>(
+    () => gameMode.handleWinner({ state }),
+    [state.drawnCards]
+  );
 
   const helpers: IGameHelpers = {
     winner,

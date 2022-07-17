@@ -41,6 +41,12 @@ export const GameOnboarding = ({
       <div className="relative py-8 px-4 mx-auto max-w-screen-xl  lg:py-16 lg:px-12">
         <form onSubmit={onSubmit}>
           <div className="relative z-0 mb-6 w-full group">
+            <h2
+              className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+              id="rule-sets"
+            >
+              Add Players
+            </h2>
             <input required className="hidden" value={gameRules ? "1" : ""} />
             <input required className="hidden" value={gameMode ? "1" : ""} />
             {inputs.map((input, index) => (
