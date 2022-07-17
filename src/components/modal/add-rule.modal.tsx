@@ -81,7 +81,7 @@ export const AddRuleModal = ({
                   <input
                     type="text"
                     name="email"
-                    id="email"
+                    id="add-rule-input"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     placeholder={placeholder || "No Rule Set"}
                     onChange={onChange}
@@ -91,6 +91,7 @@ export const AddRuleModal = ({
 
                 <button
                   type="submit"
+                  id="add-rule-submit"
                   className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
                   onClick={() => onSuccess(rule)}
                 >

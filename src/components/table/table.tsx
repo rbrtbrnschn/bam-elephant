@@ -18,6 +18,7 @@ export const MyTable = ({ head, body, ...props }: IMyTableProps) => {
         <tbody>
           {body.map((row, i) => (
             <tr
+              id={"table-row" + (i + 1)}
               key={"row#" + i}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
             >

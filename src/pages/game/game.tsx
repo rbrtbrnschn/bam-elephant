@@ -19,7 +19,7 @@ export const GamePage = () => {
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    gameMode: GAMEMODES.testing,
+    gameMode: GAMEMODES.basic,
   });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;

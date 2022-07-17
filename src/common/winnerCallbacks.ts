@@ -7,9 +7,9 @@ export const BASIC_CALLBACKS: WinnerCallbacks = {
     options.thunks.shuffle();
     toast.warn("Shuffling Leftover Cards.");
   },
-  [CardValue.JACK]: (options) => {
+  [CardValue.ACE]: (options) => {
     options.actions.toggleModal();
   },
 };
 
-export const TESTING_CALLBACKS: WinnerCallbacks = { ...BASIC_CALLBACKS };
+export const WALKTHROUGH_CALLBACKS: WinnerCallbacks = { ...BASIC_CALLBACKS };

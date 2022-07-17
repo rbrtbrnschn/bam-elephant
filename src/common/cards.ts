@@ -21,7 +21,16 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.KING,
     suit: CardSuit.CLUBS,
   },
-
+  {
+    code: "AS",
+    image: "https://deckofcardsapi.com/static/img/AS.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/AS.svg",
+      png: "https://deckofcardsapi.com/static/img/AS.png",
+    },
+    value: CardValue.ACE,
+    suit: CardSuit.SPADES,
+  },
   {
     code: "9D",
     image: "https://deckofcardsapi.com/static/img/9D.png",
@@ -113,16 +122,7 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.KING,
     suit: CardSuit.SPADES,
   },
-  {
-    code: "AS",
-    image: "https://deckofcardsapi.com/static/img/AS.png",
-    images: {
-      svg: "https://deckofcardsapi.com/static/img/AS.svg",
-      png: "https://deckofcardsapi.com/static/img/AS.png",
-    },
-    value: CardValue.ACE,
-    suit: CardSuit.SPADES,
-  },
+
   {
     code: "QH",
     image: "https://deckofcardsapi.com/static/img/QH.png",

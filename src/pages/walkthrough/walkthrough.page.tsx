@@ -19,7 +19,7 @@ export const WalkthroughPage = () => {
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    gameMode: GAMEMODES.testing,
+    gameMode: GAMEMODES.walkthrough,
   });
   const { deck, drawnCards, modalIsOpen, newRule, rule, rules, disposedCards } =
     state;
@@ -35,6 +35,7 @@ export const WalkthroughPage = () => {
   useEffect(() => {
     ReactTooltip.rebuild();
   }, [drawnCards]);
+
   const drawCards = (givenCards?: ICard[]) => {
     if (givenCards)
       return setDrawnCards(givenCards.map((c) => ({ ...c, isUndo: true })));

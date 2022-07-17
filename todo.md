@@ -38,6 +38,7 @@ Beta:
 - add home screen V
 - allow for game modes V
 - allow for rule sets V
+- add in card-value tooltip on right hand side
 - add How To Section ( Rules ) 
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 - add in player names somehow

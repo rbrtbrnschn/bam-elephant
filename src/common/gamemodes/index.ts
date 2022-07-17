@@ -1,7 +1,7 @@
 import { BASIC_GAMEMODE } from "./basic";
-import { TESTING_GAMEMODE } from "./testing";
+import { WALKTHROUGH_GAMEMODE } from "./walkthrough";
 
 export const GAMEMODES = {
   basic: BASIC_GAMEMODE,
-  testing: TESTING_GAMEMODE,
+  walkthrough: WALKTHROUGH_GAMEMODE,
 };

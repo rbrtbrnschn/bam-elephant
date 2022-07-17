@@ -208,17 +208,10 @@ export function useGameState({
     }, [state.drawnCards]);
   }
 
-  /**
-   * Shuffle deck on Mount.
-   */
-  function useShuffleDeck() {
-    useEffect(shuffle, []);
-  }
   /* HOOKS */
 
   useCleanupNewRuleDelegationDialoge();
   useDisposeLastDrawnCards();
-  useShuffleDeck();
 
   return {
     state,
