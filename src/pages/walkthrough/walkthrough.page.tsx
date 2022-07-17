@@ -1,4 +1,4 @@
-import { useTour } from "@reactour/tour";
+import { StepType, TourProvider, useTour } from "@reactour/tour";
 import { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { GAMEMODES } from "../../common/gamemodes";
@@ -13,9 +13,9 @@ import {
 } from "../../interfaces/card.interface";
 import { useGameState } from "../../store";
 
-export const GamePage = () => {
+export const WalkthroughPage = () => {
   const { setIsOpen } = useTour();
-  const [playerCount, setPlayerCount] = useState(3);
+  const [playerCount, setPlayerCount] = useState(2);
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
@@ -31,6 +31,7 @@ export const GamePage = () => {
   useEffect(() => {
     setIsOpen(true);
   }, []);
+
   useEffect(() => {
     ReactTooltip.rebuild();
   }, [drawnCards]);
