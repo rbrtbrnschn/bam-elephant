@@ -102,7 +102,7 @@ export const GameOnboarding = ({
           >
             Game Modes
           </h2>
-          <div className="grid md:grid-cols-3 md:gap-6 mb-6">
+          <div className="grid md:grid-cols-3 md:gap-6 gap-6 mb-6">
             <MyCard2
               title="Low-Key"
               description="Assign new Rules as fast as possible. Every face card gets you one step closer."
@@ -144,7 +144,7 @@ export const GameOnboarding = ({
           >
             Rule Sets
           </h2>
-          <div className="grid md:grid-cols-3 md:gap-6">
+          <div className="grid md:grid-cols-3 md:gap-6 gap-6">
             <MyCard2
               title="Basic"
               description="At this point I'm out of information."
@@ -173,7 +173,9 @@ export const GameOnboarding = ({
             />
           </div>
           <div className="mt-6"></div>
-          <div className={hasRuleSelection ? "w-full" : "hidden"}>
+          <div
+            className={`transition ${hasRuleSelection ? "w-full" : "hidden"}`}
+          >
             <h2
               className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
               id="rule-sets"
