@@ -14,8 +14,9 @@ import {
 import { useGameState } from "../../store";
 
 export const GamePage = () => {
+  const [players, setPlayers] = useState(["Pete", "David"]);
   const { setIsOpen } = useTour();
-  const [playerCount, setPlayerCount] = useState(3);
+  const [playerCount, setPlayerCount] = useState(players.length);
 
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
@@ -98,6 +99,11 @@ export const GamePage = () => {
                 imageUrl={c.images?.png}
                 title={c.code + ""}
               />
+              <div className="text-center">
+                <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+                  {players[i]}
+                </span>
+              </div>
             </div>
           ))}
         </div>

@@ -45,9 +45,9 @@ Beta:
 - rules page V
 - add How To Section ( Rules )V
 
+- add in players
 - game onboarding -> players -> gamemode -> ruleset
 -> tooltip showcase player
-- add in players
 - add in card-value tooltip on right hand side
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 - add in player names somehow
