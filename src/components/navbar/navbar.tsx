@@ -5,6 +5,8 @@ import { faqs } from "../../pages/rules/rules";
 export const MyNavbar = () => {
   const [isDropdown, setIsDropdown] = useState(false);
   const navigate = useNavigate();
+  const [hasExpandedMobile, setHasExpandedMobile] = useState(false);
+
   return (
     <nav className="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
@@ -39,7 +41,8 @@ export const MyNavbar = () => {
             type="button"
             className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-cta"
-            aria-expanded="false"
+            aria-expanded={hasExpandedMobile ? "true" : "false"}
+            onClick={() => setHasExpandedMobile((boo) => !boo)}
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -60,7 +63,9 @@ export const MyNavbar = () => {
 
         <div
           id="mega-menu-full"
-          className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
+          className={`${
+            !hasExpandedMobile ? "hidden" : ""
+          } justify-between items-center w-full md:flex md:w-auto md:order-1`}
         >
           <ul className="flex flex-col mt-4 text-sm font-medium md:flex-row md:space-x-8 md:mt-0">
             <li>
