@@ -134,22 +134,7 @@ export function useGameState({
    * Update Rule On New Win
    */
   useEffect(() => {
-    if (!state.drawnCards.length) return setRule("");
-    if (!winner) {
-      toast.error("It's a draw.");
-      return setRule("");
-    }
-
-    try {
-      gameMode.mode[winner.value]?.(gameInjections);
-    } catch (e) {
-      console.error(e);
-    }
-
-    const rule = state.gameRules.rules[winner.value];
-    const fallback = "";
-    setRule(rule?.title ?? fallback);
-    toast.success(rule?.title);
+    gameMode.handleNotification(gameInjections);
   }, [state.gameRules, winner]);
 
   /* HOOKS */

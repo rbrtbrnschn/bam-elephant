@@ -45,7 +45,7 @@ export const MyCard2 = ({
           {description}
         </p>
         <a
-          className={`cursor-pointer inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded ${
+          className={`transition cursor-pointer inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded ${
             disabled ? "opacity-25 cursor-not-allowed" : ""
           } ${
             isSelected

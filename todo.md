@@ -59,10 +59,10 @@ release:
 - refactor rule sets, gamemodes, presets V
 - allow for more detail on rulesets and gamemodes, more than the actual data themselves. V
 - add in gamemode description when playing. V
-
 - refactor winner loser logic to gamemode! ;) 100iq move right there. V
+- allow for toast/rule manipulation/creation via callback V
 
-- gamemode may has rules to chose from, not rule sets, but rules categories? :shrug:
+- gamemode may has rules to chose from, not rule sets, but rules categories? :shrug: 
 - add lint / format test
 
 - use joyride over current implementation ( dont work )
@@ -72,6 +72,6 @@ release:
 
 - allow to add in rules dynamically form onboarding via dropdown, 
   - each gamemode has it's own categories of rules to be picked from.
-- allow for toast/rule manipulation/creation via callback
+
 
 Ice Box:

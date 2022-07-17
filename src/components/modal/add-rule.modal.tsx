@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from "react";
-import { ICard } from "../../interfaces/card.interface";
+import { cardValueToName, ICard } from "../../interfaces/card.interface";
 
 interface IAddRuleModalProps extends React.HTMLAttributes<HTMLDivElement> {
   card?: ICard;
@@ -61,7 +61,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
               </button>
               <div className="py-6 px-6 lg:px-8">
                 <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-                  Add Rule to {card?.code}
+                  Add Rule to {cardValueToName((card as ICard)?.value)}
                 </h3>
                 <div className="flex justify-center align-center pb-2">
                   <img src={card?.image} alt={card?.code} />

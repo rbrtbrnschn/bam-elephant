@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import { CardValue, ICard } from "../interfaces/card.interface";
 import {
   GameMode,
+  IGameInjections,
   IGameModeWithDescription,
   IGameState,
 } from "../interfaces/game.interface";
@@ -29,6 +30,32 @@ const handleWinner = ({ state }: { state: IGameState }) => {
   return [sorted[sorted.length - 1], sorted[0]];
 };
 
+const handleNotification = ({
+  state,
+  actions,
+  helpers,
+  ...rest
+}: IGameInjections) => {
+  const { winner } = helpers;
+  const { setRule } = actions;
+  if (!state.drawnCards.length) return setRule("");
+  if (!winner) {
+    toast.error("It's a draw.");
+    return setRule("");
+  }
+
+  try {
+    state.gameMode.mode[winner.value]?.({ state, actions, helpers, ...rest });
+  } catch (e) {
+    console.error(e);
+  }
+
+  const rule = state.gameRules.rules[winner.value];
+  const fallback = "";
+  setRule(rule?.title ?? fallback);
+  // toast.success(rule?.title);
+};
+
 export const LOW_KEY_GAME_MODE: GameMode = {
   [CardValue.SEVEN]: (options) => {
     options.thunks.shuffle();
@@ -47,6 +74,7 @@ export const LOW_KEY_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
   `,
   mode: LOW_KEY_GAME_MODE,
   handleWinner,
+  handleNotification,
 };
 
 /* For Walkthrough Purposes Only */
@@ -59,6 +87,7 @@ export const WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
     description: "For educational purposes only.",
     mode: WALKTHROUGH_GAME_MODE,
     handleWinner,
+    handleNotification,
   };
 /* For Walkthrough Purposes Only */
 
@@ -84,6 +113,7 @@ export const OUTDOORS_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
   KING assing new rule`,
   mode: OUTDOORS_GAME_MODE,
   handleWinner,
+  handleNotification,
 };
 export const AT_THE_CLUB_GAME_MODE: GameMode = {
   ...OUTDOORS_GAME_MODE,
@@ -96,6 +126,7 @@ export const AT_THE_CLUB_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
     description: "WIP.",
     mode: AT_THE_CLUB_GAME_MODE,
     handleWinner,
+    handleNotification,
   };
 
 export const GAME_MODES_WITH_DESCRIPTION = [
