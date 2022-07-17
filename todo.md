@@ -44,12 +44,14 @@ Beta:
 - navbar #help links to rules sections V
 - rules page V
 - add How To Section ( Rules )V
-
 - add in players V
+- vercel
+
+release:
+- build out readme
 - add in gamemode description when playing.
 - add in card-value tooltip on right hand side
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
-- vercel
 
 Ice Box:
 - Tutorial Walkthrough V
