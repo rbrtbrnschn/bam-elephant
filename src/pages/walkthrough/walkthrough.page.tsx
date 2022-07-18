@@ -50,7 +50,7 @@ export const WalkthroughPage = () => {
 
   useEffect(() => {
     ReactTooltip.rebuild();
-  }, [drawnCards]);
+  }, [drawnCards, rule]);
 
   const drawCards = (givenCards?: ICard[]) => {
     if (givenCards)
@@ -187,11 +187,12 @@ export const WalkthroughPage = () => {
         className={!modalIsOpen ? "hidden" : ""}
       />
       <div className="h-0">
-        {rule && (
+        {rule.title && (
           <MyBanner
-            title={rule}
+            title={rule.title}
+            dataTip={rule.description}
             onClose={() => {
-              setRule("");
+              setRule({ title: "", description: "" });
             }}
           />
         )}

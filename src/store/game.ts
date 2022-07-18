@@ -12,7 +12,11 @@ import {
   IGameThunks,
   IUseGameStateOptions,
 } from "../interfaces/game.interface";
-import { IGameRulesWithDescription } from "../interfaces/rules.interface";
+import {
+  IBaseRule,
+  IExampleRule,
+  IGameRulesWithDescription,
+} from "../interfaces/rules.interface";
 import usePrevious from "./usePrevious.hook";
 
 export function useGameState({
@@ -35,7 +39,10 @@ export function useGameState({
     deck: [...STANDARD_DECK],
     drawnCards: [],
     disposedCards: [],
-    rule: "",
+    rule: {
+      title: "",
+      description: "",
+    },
     gameRules: { ...gameRules },
     gameMode: { ...gameMode },
     newRule: "",
@@ -56,7 +63,7 @@ export function useGameState({
     setState((oldState) => ({ ...oldState, disposedCards: newDisposedCards }));
   };
 
-  const setRule = (newRule: string) => {
+  const setRule = (newRule: IBaseRule) => {
     setState((oldState) => ({ ...oldState, rule: newRule }));
   };
 

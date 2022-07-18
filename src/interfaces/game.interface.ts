@@ -5,7 +5,7 @@ export interface IGameState {
   deck: ICard[];
   drawnCards: ICard[];
   disposedCards: ICard[];
-  rule: string;
+  rule: IBaseRule;
   gameRules: IGameRulesWithDescription;
   gameMode: IGameModeWithDescription;
   newRule: string;
@@ -15,7 +15,7 @@ export interface IGameActions {
   setDeck: (deck: ICard[]) => void;
   setDrawnCards: (cards: ICard[]) => void;
   setDisposedCards: (cards: ICard[]) => void;
-  setRule: (rule: string) => void;
+  setRule: (rule: IBaseRule) => void;
   setRules: (rules: IGameRulesWithDescription) => void;
   setNewRule: (newRule: string) => void;
   toggleModal: () => void;

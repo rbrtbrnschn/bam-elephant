@@ -52,7 +52,7 @@ export const Game = ({
 
   useEffect(() => {
     ReactTooltip.rebuild();
-  }, [drawnCards]);
+  }, [drawnCards, rule]);
   const drawCards = (givenCards?: ICard[]) => {
     if (givenCards)
       return setDrawnCards(givenCards.map((c) => ({ ...c, isUndo: true })));
@@ -100,11 +100,12 @@ export const Game = ({
 
       <div className="container mx-auto px-4">
         <div className="h-0">
-          {rule && (
+          {rule.title && (
             <MyBanner
-              title={rule}
+              title={rule.title}
+              dataTip={rule.description}
               onClose={() => {
-                setRule("");
+                setRule({ title: "", description: "" });
               }}
             />
           )}

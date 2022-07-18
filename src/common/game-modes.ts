@@ -38,10 +38,10 @@ const handleNotification = ({
 }: IGameInjections) => {
   const { winner } = helpers;
   const { setRule } = actions;
-  if (!state.drawnCards.length) return setRule("");
+  if (!state.drawnCards.length) return setRule({ title: "", description: "" });
   if (!winner) {
     toast.error("It's a draw.");
-    return setRule("");
+    return setRule({ title: "", description: "" });
   }
 
   try {
@@ -51,8 +51,8 @@ const handleNotification = ({
   }
 
   const rule = state.gameRules.rules[winner.value];
-  const fallback = "";
-  setRule(rule?.title ?? fallback);
+  const fallbackRule = { title: "", description: "" };
+  setRule(rule ?? fallbackRule);
   // toast.success(rule?.title);
 };
 

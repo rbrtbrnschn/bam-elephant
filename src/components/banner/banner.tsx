@@ -4,8 +4,14 @@ interface IMyBannerProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   onClose?: (e: any) => void;
   isDanger?: boolean;
+  dataTip?: string;
 }
-export const MyBanner = ({ title, onClose, isDanger }: IMyBannerProps) => {
+export const MyBanner = ({
+  title,
+  dataTip = "",
+  onClose,
+  isDanger,
+}: IMyBannerProps) => {
   const color = isDanger ? "red" : "blue";
   return (
     <div
@@ -17,6 +23,8 @@ export const MyBanner = ({ title, onClose, isDanger }: IMyBannerProps) => {
         className={`flex-shrink-0 w-5 h-5 text-${color}-700`}
         fill="currentColor"
         viewBox="0 0 20 20"
+        data-tip={dataTip}
+        data-for="main"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
