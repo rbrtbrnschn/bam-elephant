@@ -38,18 +38,30 @@ const chugTheNextDrink: IBaseRule = {
 /* RULES */
 
 /* CATEGORY */
-export const SHOT_CATEGORY: Record<string, IBaseRule> = {
-  halfAShot,
-  fullShot,
+interface IGameRuleCategory {
+  title: string;
+  description: string;
+  rules: { [index: string]: IBaseRule };
+}
+export const SHOT_CATEGORY: IGameRuleCategory = {
+  title: "Shots",
+  description: "",
+  rules: {
+    halfAShot,
+    fullShot,
+  },
 };
 
-export const DRINKING_GAMES_CATEGORY: Record<any, IExampleRule> = {
-  neverHaveIEver,
-  twoTruthsOneLie,
+export const DRINKING_GAMES_CATEGORY: IGameRuleCategory = {
+  title: "Drinking Games",
+  description: "",
+  rules: { neverHaveIEver, twoTruthsOneLie },
 };
 
-export const DARE_CATEGORY: Record<any, IBaseRule> = {
-  chugTheNextDrink,
+export const DARE_CATEGORY: IGameRuleCategory = {
+  title: "Dares",
+  description: "",
+  rules: { chugTheNextDrink },
 };
 /* CATEGORY */
 
@@ -57,9 +69,9 @@ export const DARE_CATEGORY: Record<any, IBaseRule> = {
 
 /* For Walkthrough Purposes */
 export const WALKTHROUGH_GAME_RULES: GameRules = {
-  [CardValue.JACK]: SHOT_CATEGORY.fullShot,
-  [CardValue.QUEEN]: DRINKING_GAMES_CATEGORY.neverHaveIEver,
-  [CardValue.KING]: DRINKING_GAMES_CATEGORY.twoTruthsOneLie,
+  [CardValue.JACK]: SHOT_CATEGORY.rules.fullShot,
+  [CardValue.QUEEN]: DRINKING_GAMES_CATEGORY.rules.neverHaveIEver,
+  [CardValue.KING]: DRINKING_GAMES_CATEGORY.rules.twoTruthsOneLie,
 };
 
 export const WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription =
@@ -72,9 +84,10 @@ export const WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription 
 /* For Walkthrough Purposes */
 
 export const BASIC_GAME_RULES: GameRules = {};
-BASIC_GAME_RULES[CardValue.JACK] = SHOT_CATEGORY.halfAShot;
-BASIC_GAME_RULES[CardValue.QUEEN] = DRINKING_GAMES_CATEGORY.neverHaveIEver;
-BASIC_GAME_RULES[CardValue.KING] = SHOT_CATEGORY.fullShot;
+BASIC_GAME_RULES[CardValue.JACK] = SHOT_CATEGORY.rules.halfAShot;
+BASIC_GAME_RULES[CardValue.QUEEN] =
+  DRINKING_GAMES_CATEGORY.rules.neverHaveIEver;
+BASIC_GAME_RULES[CardValue.KING] = SHOT_CATEGORY.rules.fullShot;
 
 export const BASIC_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
   title: "Basic",
@@ -87,7 +100,7 @@ export const BASIC_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
 
 export const CRAZY_GAME_RULES: GameRules = {
   ...BASIC_GAME_RULES,
-  [CardValue.THREE]: DARE_CATEGORY.chugTheNextDrink,
+  [CardValue.THREE]: DARE_CATEGORY.rules.chugTheNextDrink,
 };
 export const CRAZY_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
   title: "Crazy",

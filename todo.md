@@ -61,6 +61,11 @@ release:
 - add in gamemode description when playing. V
 - refactor winner loser logic to gamemode! ;) 100iq move right there. V
 - allow for toast/rule manipulation/creation via callback V
+- add loading page from onboarding to game
+- add in tooltip for i on banner
+- internationalization
+  - add locales for rules
+  - add strapi for rule management
 
 - gamemode may has rules to chose from, not rule sets, but rules categories? :shrug: 
 - add lint / format test

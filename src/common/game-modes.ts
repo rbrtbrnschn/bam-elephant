@@ -6,6 +6,7 @@ import {
   IGameModeWithDescription,
   IGameState,
 } from "../interfaces/game.interface";
+import { DRINKING_GAMES_CATEGORY } from "./game-rules";
 
 /**
  * Sorts ICard by `#value` from low to high.

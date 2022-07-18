@@ -1,5 +1,5 @@
 import { CardValue, ICard } from "./card.interface";
-import { IGameRulesWithDescription } from "./rules.interface";
+import { IBaseRule, IGameRulesWithDescription } from "./rules.interface";
 
 export interface IGameState {
   deck: ICard[];
@@ -48,6 +48,7 @@ export interface IGameModeWithDescription {
   mode: GameMode;
   handleWinner: ({ state }: { state: IGameState }) => (ICard | null)[];
   handleNotification: (gameInjections: IGameInjections) => void;
+  defaultRules: Record<string, Record<string, IBaseRule>>;
 }
 export interface IUseGameStateOptions {
   discardedPileSize?: number;
