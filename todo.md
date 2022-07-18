@@ -66,9 +66,9 @@ Release:
 - build out readme
 
 release 1.1
+- add lint / format test
 - add loading page from onboarding to game
 - add in tooltip for i on banner
-- add lint / format test
 
 - use joyride over current implementation ( dont work )
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
