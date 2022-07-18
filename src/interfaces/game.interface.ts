@@ -48,7 +48,7 @@ export interface IGameModeWithDescription {
   mode: GameMode;
   handleWinner: ({ state }: { state: IGameState }) => (ICard | null)[];
   handleNotification: (gameInjections: IGameInjections) => void;
-  defaultRules: Record<string, Record<string, IBaseRule>>;
+  defaultRules: IBaseRule[];
 }
 export interface IUseGameStateOptions {
   discardedPileSize?: number;

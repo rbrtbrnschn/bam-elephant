@@ -6,7 +6,6 @@ import {
   IGameModeWithDescription,
   IGameState,
 } from "../interfaces/game.interface";
-import { DRINKING_GAMES_CATEGORY } from "./game-rules";
 
 /**
  * Sorts ICard by `#value` from low to high.
@@ -76,6 +75,7 @@ export const LOW_KEY_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
   mode: LOW_KEY_GAME_MODE,
   handleWinner,
   handleNotification,
+  defaultRules: [],
 };
 
 /* For Walkthrough Purposes Only */
@@ -89,6 +89,7 @@ export const WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
     mode: WALKTHROUGH_GAME_MODE,
     handleWinner,
     handleNotification,
+    defaultRules: [],
   };
 /* For Walkthrough Purposes Only */
 
@@ -115,6 +116,7 @@ export const OUTDOORS_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
   mode: OUTDOORS_GAME_MODE,
   handleWinner,
   handleNotification,
+  defaultRules: [],
 };
 export const AT_THE_CLUB_GAME_MODE: GameMode = {
   ...OUTDOORS_GAME_MODE,
@@ -128,6 +130,7 @@ export const AT_THE_CLUB_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
     mode: AT_THE_CLUB_GAME_MODE,
     handleWinner,
     handleNotification,
+    defaultRules: [],
   };
 
 export const GAME_MODES_WITH_DESCRIPTION = [

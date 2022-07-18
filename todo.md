@@ -61,22 +61,28 @@ release:
 - add in gamemode description when playing. V
 - refactor winner loser logic to gamemode! ;) 100iq move right there. V
 - allow for toast/rule manipulation/creation via callback V
+
+Release:
+- build out readme
+
+release 1.1
 - add loading page from onboarding to game
 - add in tooltip for i on banner
-- internationalization
-  - add locales for rules
-  - add strapi for rule management
-
-- gamemode may has rules to chose from, not rule sets, but rules categories? :shrug: 
 - add lint / format test
 
 - use joyride over current implementation ( dont work )
-- add in card-value tooltip on right hand side
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
-- build out readme
 
+release 1.2
 - allow to add in rules dynamically form onboarding via dropdown, 
   - each gamemode has it's own categories of rules to be picked from.
+- add in card-value tooltip on right hand side
+- internationalization
+  - add locales for rules
+- gamemode may has rules to chose from, not rule sets, but rules categories? :shrug: 
+
 
 
 Ice Box:
+- add strapi for rule management
+- add skeletons for card images
