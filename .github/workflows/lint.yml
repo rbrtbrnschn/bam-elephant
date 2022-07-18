@@ -1,4 +1,4 @@
-name: "[BACKEND] Lint"
+name: "Lint"
 
 on:
   push:
