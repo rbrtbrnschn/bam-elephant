@@ -19,7 +19,7 @@ export const MyCard2 = ({
   return (
     <div
       className={`transition max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:-translate-y-2
-      ${isSelected ? "border-green-300 border-2" : ""}
+      ${isSelected ? "border-green-300 dark:border-white border-2" : ""}
       ${disabled ? "pointer-events-none " : ""}
          ${className}`}
       {...props}

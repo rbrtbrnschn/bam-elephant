@@ -42,7 +42,7 @@ export const GameOnboarding = ({
         <form onSubmit={onSubmit}>
           <div className="relative z-0 mb-6 w-full group">
             <h2
-              className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+              className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
               id="rule-sets"
             >
               Add Players
@@ -99,7 +99,7 @@ export const GameOnboarding = ({
           </div>
 
           <h2
-            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
             id="rule-sets"
           >
             Game Modes
@@ -128,7 +128,7 @@ export const GameOnboarding = ({
           </div>
 
           <div className={!gameMode ? "hidden" : ""}>
-            <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12">
+            <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white">
               About: {gameMode?.title}
             </h2>
             <p className="mb-6 font-normal text-gray-700 dark:text-gray-400">
@@ -137,7 +137,7 @@ export const GameOnboarding = ({
           </div>
 
           <h2
-            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
             id="rule-sets"
           >
             Game Rule
@@ -169,7 +169,7 @@ export const GameOnboarding = ({
             className={`transition ${hasRuleSelection ? "w-full" : "hidden"}`}
           >
             <h2
-              className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+              className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
               id="rule-sets"
             >
               Rule Set Preview

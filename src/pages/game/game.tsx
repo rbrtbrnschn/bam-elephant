@@ -76,7 +76,7 @@ export const Game = ({
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-screen">
       <MyNavbar />
       {modalIsOpen && (
         <AddRuleModal

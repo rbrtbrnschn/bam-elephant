@@ -152,7 +152,7 @@ export const WalkthroughPage = () => {
   ]);
   const [run, setRun] = useState(true);
   return (
-    <div className="relative">
+    <div className="relative h-screen">
       {/* <Joyride
         steps={steps}
         continuous
