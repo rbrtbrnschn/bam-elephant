@@ -5,6 +5,7 @@ import {
   Navigate,
   Route,
   Routes,
+  useNavigate,
 } from "react-router-dom";
 import { GamePage } from "./pages/game";
 import { HomePage } from "./pages/home/home";
@@ -57,7 +58,9 @@ function App() {
       selector: "html",
       content: "Okay, you got the hang of it. Have fun.",
       actionAfter: () => {
-        window.location.href = "/v1";
+        window.location.href = "";
+        window.location.pathname =
+          "/redirect?to=/v1&title=Walkthrough%20completed!&description=Now%20off%20to%20the%20real%20thing&duration=3000";
       },
     },
     // ...
@@ -79,18 +82,7 @@ function App() {
           <Route path="/tos" element={<TOSPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
 
-          <Route
-            path="/redirect"
-            element={
-              <Redirect
-                title="Redirecting..."
-                imageUrl={"/assets/elephant.png"}
-                description="You've got what it takes. Let's get you playing for real."
-                duration={3000}
-                path={"/"}
-              />
-            }
-          />
+          <Route path="/redirect" element={<Redirect />} />
           <Route path="/v1" element={<GamePage />} />
           <Route path="*" element={<GamePage />} />
         </Routes>

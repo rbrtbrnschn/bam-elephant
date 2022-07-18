@@ -21,7 +21,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
         <div
           id="add-rule-modal"
           aria-hidden="true"
-          className="h-full overflow-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+          className="h-full overflow-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full overflow-y-hidden"
           {...props}
         >
           <div

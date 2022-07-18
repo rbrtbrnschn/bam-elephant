@@ -137,7 +137,7 @@ export const Game = ({
             </div>
           ))}
         </div>
-        <div className="full-w flex items-center justify-center gap-4">
+        <div className="full-w flex items-center justify-center gap-4 mb-6">
           {!hasEnded && (
             <button
               id="draw-button"

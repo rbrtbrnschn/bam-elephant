@@ -71,7 +71,7 @@ release 1.1
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal V
 
 - add loading page from onboarding to game V
-- use redirect for onboarding completion
+- use redirect for onboarding completion V
 - use joyride over current implementation ( dont work )
 - rename workflow title
 
