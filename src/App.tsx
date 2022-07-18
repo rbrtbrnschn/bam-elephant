@@ -73,9 +73,9 @@ function App() {
           <Route
             path="/walk-through"
             element={
-              <TourProvider steps={steps}>
-                <WalkthroughPage />
-              </TourProvider>
+              // <TourProvider steps={steps}>
+              <WalkthroughPage />
+              // </TourProvider>
             }
           />
           <Route path="/guide" element={<RulesPage />} />

@@ -19,12 +19,12 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
       <div ref={ref} {...props}>
         <div className="absolute w-screen h-screen overflow-hidden bg-slate-700/50 z-10"></div>
         <div
-          id="add-rule-modal"
           aria-hidden="true"
           className="h-full overflow-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full overflow-y-hidden"
           {...props}
         >
           <div
+            id="add-rule-modal"
             className="relative p-4 w-full max-w-md h-full md:h-auto z-50"
             style={
               window.innerWidth > 678
@@ -68,7 +68,17 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                 <div className="flex justify-center align-center pb-2">
                   <img src={card?.image} alt={card?.code} />
                 </div>
-                <form className="space-y-6" action="#">
+                <form
+                  className="space-y-6"
+                  action="#"
+                  onSubmit={(e) => {
+                    console.log(e.currentTarget.id, e);
+                    e.preventDefault();
+                    if (e.currentTarget.id === "add-rule-input") {
+                      return;
+                    }
+                  }}
+                >
                   <div>
                     <label
                       htmlFor="email"

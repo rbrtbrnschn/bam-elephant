@@ -1,6 +1,6 @@
 import { StepType, TourProvider, useTour } from "@reactour/tour";
 import { useEffect, useRef, useState } from "react";
-import ReactJoyride, { Step } from "react-joyride";
+import ReactJoyride, { Props, Step } from "react-joyride";
 import { useNavigate } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { MyBanner } from "../../components/banner/banner";
@@ -22,10 +22,9 @@ import {
 import { IBaseRule } from "../../interfaces/rules.interface";
 
 export const WalkthroughPage = () => {
-  const { setIsOpen, isOpen } = useTour();
   const navigate = useNavigate();
   const [playerCount, setPlayerCount] = useState(2);
-
+  const [myIsOpen, setMyIsOpen] = useState(true);
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
     gameMode: WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION,
@@ -46,7 +45,7 @@ export const WalkthroughPage = () => {
   const { restart } = thunks;
 
   useEffect(() => {
-    setIsOpen(true);
+    // setMyIsOpen(true)
   }, []);
 
   useEffect(() => {
@@ -82,9 +81,8 @@ export const WalkthroughPage = () => {
   const [steps, setSteps] = useState<Array<Step>>([
     {
       content: <div>Click here to draw cards for each player.</div>,
-      disableOverlayClose: true,
       placementBeacon: "top",
-      spotlightClicks: false,
+      spotlightClicks: true,
       styles: {
         options: {
           zIndex: 10000,
@@ -92,10 +90,16 @@ export const WalkthroughPage = () => {
       },
       title: "Let's get started.",
       target: "button#draw-button",
-      showProgress: true,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
+      showProgress: false,
+      hideFooter: true,
+      hideCloseButton: true,
     },
     {
       spotlightClicks: false,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
       target: "#cards-view",
       content:
         "Now remember, KING is higher than JACK. JACK higher than 10, and so on.",
@@ -105,26 +109,40 @@ export const WalkthroughPage = () => {
         },
       },
       title: "Here is your draw.",
+      hideCloseButton: true,
     },
     {
       spotlightClicks: false,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
       target: "table.my-table",
       content:
         "Here you find all the rules, the actions you'll take or have others take when you win.",
+      hideCloseButton: true,
     },
     {
       target: "table.my-table tr#table-row3",
       spotlightClicks: false,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
       content:
         "The KING is the higher card here. Now, now you do whatever the rule says.",
+      hideCloseButton: true,
     },
     {
       target: "button#draw-button",
       content: "Draw another round.",
-      spotlightClicks: false,
+      spotlightClicks: true,
+      disableCloseOnEsc: true,
+      disableOverlayClose: true,
+      hideFooter: true,
+      showProgress: false,
+      hideCloseButton: true,
     },
     {
       target: "#add-rule-modal",
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
       styles: {
         options: {
           zIndex: 10000,
@@ -133,49 +151,66 @@ export const WalkthroughPage = () => {
 
       content:
         "A special card has been played. Whoever played the ACE must now assign a new rule to the lowest value card played that round.",
+      hideCloseButton: true,
     },
     {
       target: "#add-rule-input",
-      spotlightClicks: false,
-      content: "Set a new rule for the 9. Try: 'What are the odds?'",
+      spotlightClicks: true,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
+
+      title: "Don't click ENTER!",
+      content:
+        "Set a new rule for the 9. Try: 'What are the odds?'. Then click next.",
+      hideCloseButton: true,
     },
     {
       target: "#add-rule-submit",
       content: "Alright, submit the rule.",
-      spotlightClicks: false,
+      spotlightClicks: true,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
+      hideCloseButton: true,
     },
     {
-      target: "html",
-      spotlightClicks: false,
+      target: "#cards-view",
+      spotlightClicks: true,
       content: "Okay, you got the hang of it. Have fun.",
+      hideCloseButton: true,
     },
   ]);
-  const [run, setRun] = useState(true);
+  const [joyrideProps, setJoyrideProps] = useState<Partial<Props>>({
+    run: true,
+    continuous: true,
+  });
+  const [timesClickedDraw, setTimesClickedDraw] = useState(0);
+  const goToNextStep = () => {
+    setJoyrideProps((state) => ({
+      ...state,
+      stepIndex: timesClickedDraw === 0 ? 1 : 5,
+    }));
+    setTimesClickedDraw(timesClickedDraw + 1);
+  };
   return (
     <div className="relative h-screen">
-      {/* <Joyride
+      <Joyride
         steps={steps}
-        continuous
-        run={true}
-        showProgress
+        {...joyrideProps}
         callback={(data) => {
-          console.log(data.index, data.status);
-          if (
-            !drawnCards.length &&
-            data.index === 1 &&
-            data.status === "running"
-          ) {
-            drawButtonRef.current?.click();
-          } else if (data.index === 5 && data.status === "running") {
-            drawButtonRef.current?.click();
+          if (data.status === "finished") {
+            setMyIsOpen(false);
+          } else if (data.index === 8 && modalIsOpen) {
+            toggleModal();
           }
         }}
-      /> */}
+      />
+
       <AddRuleModal
         ref={modalRef}
         card={loser as ICard}
         onClose={toggleModal}
         onSuccess={(rule: IBaseRule) => {
+          setJoyrideProps((state) => ({ ...state, stepIndex: 8 }));
           setRules({
             ...gameRules,
             rules: {
@@ -231,12 +266,13 @@ export const WalkthroughPage = () => {
               ref={drawButtonRef}
               onClick={() => {
                 drawCards();
+                goToNextStep();
               }}
             >
               Draw
             </button>
           )}
-          {drawnCards.length && !isOpen && (
+          {drawnCards.length && !myIsOpen && (
             <button
               className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
               onClick={() => {

@@ -73,8 +73,9 @@ release 1.1
 - add loading page from onboarding to game V
 - use redirect for onboarding completion V
 - rename workflow title V
+- redo walkthrough, use joyride V
+- use joyride over current implementation ( dont work ) V
 - rework game component to allow walkthrough
-- use joyride over current implementation ( dont work )
 
 release 1.2
 - allow to add in rules dynamically form onboarding via dropdown, 
