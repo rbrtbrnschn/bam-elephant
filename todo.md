@@ -63,15 +63,17 @@ release:
 - allow for toast/rule manipulation/creation via callback V
 
 Release:
-- build out readme
+- build out readme V
 
 release 1.1
 - add lint test V
 - add in tooltip for i on banner V
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal V
 
-- add loading page from onboarding to game
+- add loading page from onboarding to game V
+- use redirect for onboarding completion
 - use joyride over current implementation ( dont work )
+- rename workflow title
 
 release 1.2
 - allow to add in rules dynamically form onboarding via dropdown, 

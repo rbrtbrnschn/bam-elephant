@@ -13,8 +13,7 @@ import { StepType, TourProvider } from "@reactour/tour";
 import { RulesPage } from "./pages/rules/rules";
 import { TOSPage } from "./pages/tos/tos";
 import { PrivacyPage } from "./pages/privacy/privacy";
-import { GameOnboarding } from "./pages/game/onboarding";
-
+import { Redirect } from "./components/redirect/redirect";
 function App() {
   const steps: StepType[] = [
     {
@@ -64,7 +63,7 @@ function App() {
     // ...
   ];
   return (
-    <div className="App">
+    <div className="App bg-white dark:bg-gray-900">
       <Router>
         <Routes>
           <Route index element={<HomePage />} />
@@ -80,6 +79,18 @@ function App() {
           <Route path="/tos" element={<TOSPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
 
+          <Route
+            path="/redirect"
+            element={
+              <Redirect
+                title="Redirecting..."
+                imageUrl={"/assets/elephant.png"}
+                description="You've got what it takes. Let's get you playing for real."
+                duration={3000}
+                path={"/"}
+              />
+            }
+          />
           <Route path="/v1" element={<GamePage />} />
           <Route path="*" element={<GamePage />} />
         </Routes>
