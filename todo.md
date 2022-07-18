@@ -68,10 +68,10 @@ Release:
 release 1.1
 - add lint test V
 - add in tooltip for i on banner V
-- add loading page from onboarding to game
+- maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal V
 
+- add loading page from onboarding to game
 - use joyride over current implementation ( dont work )
-- maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal
 
 release 1.2
 - allow to add in rules dynamically form onboarding via dropdown, 

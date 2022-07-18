@@ -19,6 +19,7 @@ import {
   WALKTHROUGH_GAME_RULES,
   WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION,
 } from "../../common/game-rules";
+import { IBaseRule } from "../../interfaces/rules.interface";
 
 export const WalkthroughPage = () => {
   const { setIsOpen, isOpen } = useTour();
@@ -174,12 +175,12 @@ export const WalkthroughPage = () => {
         ref={modalRef}
         card={loser as ICard}
         onClose={toggleModal}
-        onSuccess={(rule: string) => {
+        onSuccess={(rule: IBaseRule) => {
           setRules({
             ...gameRules,
             rules: {
               ...gameRules.rules,
-              [(loser as ICard)?.value]: { title: rule, description: "Custom" },
+              [(loser as ICard)?.value]: rule,
             },
           });
         }}

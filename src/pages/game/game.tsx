@@ -82,15 +82,13 @@ export const Game = ({
         <AddRuleModal
           card={loser as ICard}
           onClose={toggleModal}
-          onSuccess={(rule: string) => {
+          customRules={gameMode.defaultRules}
+          onSuccess={(rule: IBaseRule) => {
             setRules({
               ...gameRules,
               rules: {
                 ...gameRules.rules,
-                [(loser as ICard)?.value]: {
-                  title: rule,
-                  description: "Custom",
-                },
+                [(loser as ICard)?.value]: rule,
               },
             });
           }}

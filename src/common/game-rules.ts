@@ -6,16 +6,16 @@ import {
   IGameRulesWithDescription,
 } from "../interfaces/rules.interface";
 /* RULES */
-const halfAShot: IBaseRule = {
+export const halfAShot: IBaseRule = {
   title: "1/2 Shots",
   description: "Drink half a shot.",
 };
-const fullShot: IBaseRule = {
+export const fullShot: IBaseRule = {
   title: "1 Shots",
   description: "Drink a shot.",
 };
 
-const neverHaveIEver: IExampleRule = {
+export const neverHaveIEver: IExampleRule = {
   title: "Never Have I Ever",
   description:
     "You say 'Never have I ever done something before'. If the others have done it, drink up.",
@@ -23,7 +23,7 @@ const neverHaveIEver: IExampleRule = {
     "You say ie: 'Never Have I ever been arrested before.' Everyone who has been arrested, must drink.",
 };
 
-const twoTruthsOneLie: IExampleRule = {
+export const twoTruthsOneLie: IExampleRule = {
   title: "Two Truths 1 Lie",
   description:
     "You tell 3 statements, 2 truths, 1 lie. The others must guess which is the lie, you have to drink, if they are wrong, they have to drink.",
@@ -31,7 +31,7 @@ const twoTruthsOneLie: IExampleRule = {
     "I have a dog. I have a cat. I can fly. If you guessed 'I have a cat', you are right. Cat people, pff.",
 };
 
-const chugTheNextDrink: IBaseRule = {
+export const chugTheNextDrink: IBaseRule = {
   title: "Chug the next drink you see, in one go.",
   description: "Chug it. Chug it. Chug it!",
 };

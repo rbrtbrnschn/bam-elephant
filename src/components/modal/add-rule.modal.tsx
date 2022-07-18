@@ -1,17 +1,19 @@
 import React, { forwardRef, useState } from "react";
 import { cardValueToName, ICard } from "../../interfaces/card.interface";
+import { IBaseRule } from "../../interfaces/rules.interface";
 
 interface IAddRuleModalProps extends React.HTMLAttributes<HTMLDivElement> {
   card?: ICard;
   onClose: () => void;
-  onSuccess: (rule: string) => void;
+  onSuccess: (rule: IBaseRule) => void;
+  customRules?: IBaseRule[];
 }
 export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
   (props, ref) => {
-    const { onClose, onSuccess, card, placeholder } = props;
-    const [rule, setRule] = useState("");
+    const { onClose, onSuccess, card, placeholder, customRules } = props;
+    const [rule, setRule] = useState<IBaseRule>({ title: "", description: "" });
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setRule(e.currentTarget.value);
+      setRule({ title: e.currentTarget.value, description: "Custom" });
     };
     return (
       <div ref={ref} {...props}>
@@ -74,15 +76,43 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                     >
                       Your new Rule
                     </label>
+
                     <input
                       type="text"
                       name="email"
                       id="add-rule-input"
+                      value={rule.title}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       placeholder={placeholder || "No Rule Set"}
                       onChange={onChange}
                       required
                     />
+                  </div>
+
+                  <div className={!customRules?.length ? "hidden" : ""}>
+                    <label
+                      htmlFor="custom-rule"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Add Custom Rule Instead?
+                    </label>
+                    <select
+                      id="custom-rule"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      {customRules?.map((rule, i) => (
+                        <option
+                          data-tip={rule.description}
+                          data-for="main"
+                          onClick={() => {
+                            setRule(rule);
+                          }}
+                          value={rule.title}
+                        >
+                          {rule.title}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <button
