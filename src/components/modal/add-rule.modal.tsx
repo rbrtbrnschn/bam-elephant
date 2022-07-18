@@ -130,8 +130,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                     id="add-rule-submit"
                     className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
                     onClick={(e) => {
-                      e.preventDefault();
-                      onSuccess(rule);
+                      rule.title.length && onSuccess(rule);
                     }}
                   >
                     Set Rule

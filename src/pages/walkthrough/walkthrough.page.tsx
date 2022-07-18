@@ -199,6 +199,9 @@ export const WalkthroughPage = () => {
         callback={(data) => {
           if (data.status === "finished") {
             setMyIsOpen(false);
+            navigate(
+              "/redirect?to=/v1&title=Walkthrough%20completed!&description=Now%20off%20to%20the%20real%20thing&duration=3000"
+            );
           } else if (data.index === 8 && modalIsOpen) {
             toggleModal();
           }

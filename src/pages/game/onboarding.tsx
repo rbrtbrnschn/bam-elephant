@@ -1,3 +1,4 @@
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { GAME_MODES_WITH_DESCRIPTION } from "../../common/game-modes";
 import { GAME_RULES_WITH_DESCRIPTION } from "../../common/game-rules";
 import { MyCard2 } from "../../components/card/card2";
@@ -121,7 +122,11 @@ export const GameOnboarding = ({
                 onClick={() => {
                   setGameMode(gameModeWithDescription);
                 }}
+                onKeyDown={(e) => {
+                  e.key === "Enter" && setGameMode(gameModeWithDescription);
+                }}
                 disabled={i !== 1}
+                {...(i === 1 && { tabIndex: 0, role: "button" })}
                 key={"gameMode-" + (i + 1)}
               />
             ))}
@@ -160,6 +165,10 @@ export const GameOnboarding = ({
                   setGameRules(gameRuleWithDescription);
                 }}
                 disabled={i !== 1}
+                {...(i === 1 && { tabIndex: 0, role: "button" })}
+                onKeyDown={(e) => {
+                  e.key === "Enter" && setGameRules(gameRuleWithDescription);
+                }}
                 key={"gameRule-" + (i + 1)}
               />
             ))}
