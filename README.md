@@ -10,12 +10,16 @@
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/rbrtbrnschn/bam-elephant/Lint?label=Lint&style=for-the-badge"> <img alt="GitHub deployments" src="https://img.shields.io/github/deployments/rbrtbrnschn/bam-elephant/production?label=Deploy&style=for-the-badge">
 </p>
 
+<p align="center">
+<a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Ideas%3F"><img src="https://img.shields.io/badge/Share-Ideas%20-yellow?style=for-the-badge" /></a>
+<a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Feedback"><img src="https://img.shields.io/badge/Leave-Feedback%20-yellow?style=for-the-badge" /></a></p>
+
 
 <p align="center">
 <a href="https://bam-elephant.com"> <img style="width: 300px; height:auto;" src="https://raw.githubusercontent.com/rbrtbrnschn/bam-elephant/main/public/assets/elephant.png" alt="logo" /></a>
 </p>
 <p align="center">
-<a href=https://bam-elephant.com"><img src="https://img.shields.io/badge/Click-Me-blue?style=for-the-badge" /></a>
+<a href="https://bam-elephant.com"><img src="https://img.shields.io/badge/Click-Me-blue?style=for-the-badge" /></a>
 </p>
 
 
@@ -42,8 +46,9 @@ My best bet to explain the game to you is to say:
 Could not explain it better, and **I co-created** it.
 Be ready to be bamboozled. It's so good, you won't  see it coming.
 
-## Ideas?
-Leave an issue, or start a discussion in the wiki.
+## Ideas or Feedback?
+
+Leave an issue, or start a discussion in the <a href="https://github.com/rbrtbrnschn/bam-elephant/wiki"> wiki</a>.
 
 ## Roadmap
 **Future** and **past** roadmap layed out in [here](./todo.md)
