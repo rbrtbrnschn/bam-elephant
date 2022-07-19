@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "Home",
+    "help": "Help",
+    "guide": "Guide",
+    "walkthrough": "Walkthrough",
+    "getStarted": "Get Started!"
+  },
+  "guide": {
+    "faqs": {
+      "1": {
+        "title": "How does this work?",
+        "description": {
+          "prefix": "Check out the",
+          "suffix": "That should help with any questions or confusion."
+        }
+      },
+      "2": {
+        "title": "Can I play this with my friends?",
+        "description": "Yes, this is a multiplayer experience, though locally. Get your friends round. Join the fun. 1 Person acts as the 'Game Master' and leads the game."
+      },
+      "3": {
+        "title": "What are the different 'Game Modes'?",
+        "description": {
+          "1":"The 'Game Modes' are envisioned as a different start into game, for the different types of people or scenarios which you might find yourself in. If you play in a smaller group, you might aim for more of a low-key time. If you're out with the squad, maybe you want to try something more on the 'crazy' side. Check thet",
+          "2": "'Game Modes'",
+          "3": "section for more info."
+        }
+      },
+      "4": {
+        "title": "And what are 'Rule Sets'?",
+        "description": {
+          "1": "'Rule Sets'",
+          "2" : "are just a different starting points, regarding the pre-determined rules, applied to cards. Think of it like this. Haven't you ever played a card game with someone else, that tried to explain to you, that you've been playing a game wrong whole your life? People play the same games with different rules sometimes. We embrace this! Make it your own."
+        }
+      },
+      "5": {
+        "title": "How do I play?",
+        "description": {
+          "1":"Click the",
+          "2":"'Get Started'",
+          "3":"button in the top right corner"
+        }
+      }
+
+
+    }
+  }
+}

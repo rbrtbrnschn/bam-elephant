@@ -1,12 +1,23 @@
+import React from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { faqs } from "../../pages/rules/rules";
+import { ILocale, LOCALES } from "../../common/locales";
+import i18n from "../../i18n.config";
+import { useFaqs } from "../../pages/rules/rules";
 
 export const MyNavbar = () => {
   const [isDropdown, setIsDropdown] = useState(false);
   const navigate = useNavigate();
   const [hasExpandedMobile, setHasExpandedMobile] = useState(false);
+  const [hasLocaleExpanded, setHasLocaleExpanded] = useState(false);
 
+  const { t } = useTranslation();
+  const faqs = useFaqs();
+  const [locale, setLocale] = useState<ILocale>(
+    //@ts-ignore
+    LOCALES[i18n.language || "de"]
+  );
   return (
     <nav className="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
@@ -29,12 +40,58 @@ export const MyNavbar = () => {
         <div className="flex md:order-2">
           <button
             type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
+            data-dropdown-toggle="language-dropdown-menu"
+            className="inline-flex justify-center items-center p-2 text-sm text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white mr-2"
+            onClick={() => {
+              setHasLocaleExpanded(!hasLocaleExpanded);
+            }}
+          >
+            {React.cloneElement(locale.flag, {
+              className: "w-[20px] h-[20px] h-3.5 w-3.5 rounded-full mr-2",
+            })}
+            {locale.title}
+          </button>
+
+          <div
+            className={`${
+              !hasLocaleExpanded ? "hidden" : ""
+            } absolute z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 mt-12`}
+            id="language-dropdown-menu"
+          >
+            <ul className="py-1" role="none">
+              {Object.values(LOCALES).map((l) => {
+                return (
+                  <li
+                    key={"locale-" + l.languageCode}
+                    onClick={() => {
+                      i18n.changeLanguage(l.languageCode || "en");
+                      setLocale(l);
+                    }}
+                  >
+                    <a
+                      href="#"
+                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem"
+                    >
+                      <div className="inline-flex items-center">
+                        {l.flag}
+                        {l.title}
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <button
+            type="button"
+            className="hidden sm:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
             onClick={() => {
               navigate("/v1");
             }}
           >
-            Get started!
+            {t("navbar.getStarted")}
           </button>
           <button
             data-collapse-toggle="navbar-cta"
@@ -77,7 +134,7 @@ export const MyNavbar = () => {
                   navigate("/");
                 }}
               >
-                Home
+                {t("navbar.home")}
               </a>
             </li>
             <li>
@@ -87,7 +144,7 @@ export const MyNavbar = () => {
                 className="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-gray-700 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
                 onClick={() => setIsDropdown(!isDropdown)}
               >
-                Help{" "}
+                {t("navbar.help")}{" "}
                 <svg
                   className="ml-1 w-4 h-4"
                   fill="currentColor"
@@ -110,7 +167,7 @@ export const MyNavbar = () => {
                   navigate("/guide");
                 }}
               >
-                Guide
+                {t("navbar.guide")}
               </a>
             </li>
             <li>
@@ -121,7 +178,7 @@ export const MyNavbar = () => {
                   navigate("/walk-through");
                 }}
               >
-                Walkthrough
+                {t("navbar.walkthrough")}
               </a>
             </li>
 
@@ -209,17 +266,17 @@ export const MyNavbar = () => {
                     navigate("/v1");
                   }}
                 >
-                  <div className="font-semibold">Where do I play?</div>
+                  <div className="font-semibold">{t("guide.faqs.5.title")}</div>
                   <span className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Click the{" "}
+                    {t("guide.faqs.5.description.1")}{" "}
                     <a
                       href="#"
                       onClick={() => navigate("/v1")}
                       className="text-blue-600 underline"
                     >
-                      'Get Started'
+                      {t("guide.faqs.5.description.2")}
                     </a>{" "}
-                    button in the top right corner.
+                    {t("guide.faqs.5.description.3")}.
                   </span>
                 </a>
               </li>

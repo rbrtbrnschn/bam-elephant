@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 import ReactTooltip from "react-tooltip";
 import "react-toastify/dist/ReactToastify.css";
+import "./i18n.config";
 
 ReactDOM.render(
   <React.StrictMode>

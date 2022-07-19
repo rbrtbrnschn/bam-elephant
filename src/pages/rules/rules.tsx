@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
 import { IFAQProps, RulesFAQS } from "./faqs.rules";
@@ -5,61 +6,56 @@ import { Feature } from "./feature.rules";
 import { GetStarted } from "./get-started.rules";
 import { Testimonial } from "./testimonial.rules";
 
-export const faqs: IFAQProps[] = [
-  {
-    title: "How does this work?",
-    id: "how-does-this-work",
-    description: (
-      <span>
-        Check out the{" "}
-        <a href="#" className="text-blue-600 underline">
-          Walkthrough
-        </a>
-        . That should help with any questions or confusion.
-      </span>
-    ),
-  },
-  {
-    title: "Can I play this with my friends?",
-    id: "can-i-play-this-with-my-friends",
-    description:
-      "Yes, this is a multiplayer experience, though locally. Get your friends round. Join the fun. 1 Person acts as the 'Game Master' and leads the game.",
-  },
-  {
-    title: "What are the different 'Game Modes'?",
-    id: "what-are-the-different-game-modes",
-    description: (
-      <span>
-        The 'Game Modes' are envisioned as a different start into game, for the
-        different types of people or scenarios which you might find yourself in.
-        If you play in a smaller group, you might aim for more of a low-key
-        time. If you're out with the squad, maybe you want to try something more
-        on the 'crazy' side. Check the{" "}
-        <a href="#game-modes" className="text-blue-600 underline">
-          'Game Modes'
-        </a>{" "}
-        section for more info.
-      </span>
-    ),
-  },
-  {
-    title: "And what are 'Rule Sets'?",
-    id: "and-what-are-rule-sets",
-    description: (
-      <span>
-        <a href="#rule-sets" className="text-blue-600 underline">
-          'Rule Sets'
-        </a>{" "}
-        are just a different starting points, regarding the pre-determined
-        rules, applied to cards. Think of it like this. Haven't you ever played
-        a card game with someone else, that tried to explain to you, that you've
-        been playing a game wrong whole your life? People play the same games
-        with different rules sometimes. We embrace this! Make it your own.
-      </span>
-    ),
-  },
-];
+export const useFaqs = (): IFAQProps[] => {
+  const { t } = useTranslation();
+  return [
+    {
+      title: t("guide.faqs.1.title"),
+      id: "how-does-this-work",
+      description: (
+        <span>
+          {t("guide.faqs.1.description.prefix")}{" "}
+          <a href="#" className="text-blue-600 underline">
+            {t("navbar.walkthrough")}
+          </a>
+          . {t("guide.faqs.1.description.suffix")}
+        </span>
+      ),
+    },
+    {
+      title: t("guide.faqs.2.title"),
+      id: "can-i-play-this-with-my-friends",
+      description: t("guide.faqs.2.description"),
+    },
+    {
+      title: t("guide.faqs.3.title"),
+      id: "what-are-the-different-game-modes",
+      description: (
+        <span>
+          {t("guide.faqs.3.description.1")}{" "}
+          <a href="#game-modes" className="text-blue-600 underline">
+            {t("guide.faqs.3.description.2")}
+          </a>{" "}
+          {t("guide.faqs.3.description.3")}
+        </span>
+      ),
+    },
+    {
+      title: t("guide.faqs.4.title"),
+      id: "and-what-are-rule-sets",
+      description: (
+        <span>
+          <a href="#rule-sets" className="text-blue-600 underline">
+            {t("guide.faqs.4.description.1")}
+          </a>{" "}
+          {t("guide.faqs.4.description.2")}
+        </span>
+      ),
+    },
+  ];
+};
 export const RulesPage = () => {
+  const faqs = useFaqs();
   return (
     <div>
       <MyNavbar />

@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import { cardValueToName, ICard } from "../../interfaces/card.interface";
 import { IBaseRule } from "../../interfaces/rules.interface";
+import { MyCard } from "../card/card";
 
 interface IAddRuleModalProps extends React.HTMLAttributes<HTMLDivElement> {
   card?: ICard;
@@ -90,7 +91,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                   Add Rule to {cardValueToName((card as ICard)?.value)}
                 </h3>
                 <div className="flex justify-center align-center pb-2">
-                  <img src={card?.image} alt={card?.code} />
+                  <MyCard imageUrl={card?.image} />
                 </div>
                 <form
                   className="space-y-6"

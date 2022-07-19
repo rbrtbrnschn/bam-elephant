@@ -15,8 +15,13 @@
     "@types/react-dom": "^18.0.0",
     "add": "^2.0.6",
     "easy-peasy": "^5.0.4",
+    "i18next": "^21.8.14",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "i18next-http-backend": "^1.4.1",
+    "i18next-xhr-backend": "^3.2.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-i18next": "^11.18.1",
     "react-is": "^18.2.0",
     "react-joyride": "^2.5.0",
     "react-router-dom": "^6.3.0",
@@ -34,7 +39,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}' --fix",
     "format": "prettier --write './src/**/*.{ts,tsx,js,jsx}'"
-
   },
   "eslintConfig": {
     "extends": [

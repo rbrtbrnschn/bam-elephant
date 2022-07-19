@@ -84,16 +84,19 @@ release 1.1
 
 
 release 1.2
-- allow to add in rules dynamically form onboarding via dropdown, 
-  - each gamemode has it's own categories of rules to be picked from.
-- add in card-value tooltip on right hand side
+- add skeletons for card images V
 - internationalization
   - add locales for rules
-- gamemode may has rules to chose from, not rule sets, but rules categories? :shrug: 
-
+- gamemode about section -> table
+- SEO home page tos privacy
+- add in joyride to home page get started button -> guides 
+- add I'm still confused, what do I do now button in guides / faq to start joyride  
+- allow to add in rules dynamically form onboarding via dropdown, 
+  - each gamemode has it's own categories of rules to be picked from. (no idea what I had planned here)
+- add in card-value tooltip on right hand side
 
 
 Ice Box:
 - add strapi for rule management
-- add skeletons for card images
 - rework game component to allow walkthrough
+- per account custom rules, that maybe added to gamemodes  or game Rules
