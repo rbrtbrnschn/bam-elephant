@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import ReactTooltip from "react-tooltip";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
@@ -80,6 +81,8 @@ export const Game = ({
     //@ts-ignore
     modalRef?.current?.focusInput();
   }, [modalIsOpen]);
+
+  const { t } = useTranslation();
   return (
     <div className="relative h-screen max-h-screen overflow-y-scroll">
       <MyNavbar />
@@ -158,7 +161,7 @@ export const Game = ({
                 drawCards();
               }}
             >
-              Draw
+              {t("game.draw")}
             </button>
           )}
           {hasEnded && (
@@ -166,7 +169,7 @@ export const Game = ({
               className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
               onClick={restart}
             >
-              Renew
+              {t("game.shuffle")}
             </button>
           )}
           {!hasEnded && disposedCards.length ? (
@@ -176,13 +179,13 @@ export const Game = ({
                 undo();
               }}
             >
-              Undo
+              {t("game.undo")}
             </button>
           ) : null}
         </div>
 
         <MyTable
-          head={["Value", "Rule"]}
+          head={[t("game.value"), t("game.rule")]}
           body={Object.entries(gameRules.rules).map(([key, value], index) => {
             return [
               cardValueToName(parseInt(key) as unknown as CardValue),

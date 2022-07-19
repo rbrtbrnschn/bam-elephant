@@ -133,5 +133,27 @@
       "about": "I'm just making up words as I go now.",
       "description":"Wip."
     }
+  },
+  "game": {
+    "draw": "Draw",
+    "shuffle":"Shuffle",
+    "undo":"Undo",
+    "leave-demo":"Leave demo",
+    "value":"Value",
+    "rule":"Rule",
+    "onboarding":{
+      "add-player":"Add Player",
+      "add-player_other": "Add Players",
+      "remove-last-player":"Remove Last Player",
+      "name-player":"Name Player",
+      "select":"Select",
+      "submit":"Submit",
+      "headings":{
+        "gameModes":"Game Modes",
+        "gameRules": "Game Rules",
+        "about":"About",
+        "preview":"Game Rules Preview"
+      }
+    }
   }
 }

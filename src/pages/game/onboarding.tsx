@@ -1,5 +1,6 @@
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useGameModesWithDescription } from "../../common/game-modes";
 import { useGameRulesWithDescription } from "../../common/game-rules";
 import { MyCard2 } from "../../components/card/card2";
@@ -39,6 +40,7 @@ export const GameOnboarding = ({
   const hasGameModeSelection = Object.keys(gameMode || {}).length;
   const gameModes = useGameModesWithDescription();
   const allGameRules = useGameRulesWithDescription();
+  const { t } = useTranslation();
   return (
     <div>
       <MyNavbar />
@@ -49,7 +51,7 @@ export const GameOnboarding = ({
               className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
               id="rule-sets"
             >
-              Add Players
+              {t("game.onboarding.add-player", { count: 5 })}
             </h2>
             <input
               required
@@ -86,7 +88,7 @@ export const GameOnboarding = ({
                   htmlFor={"player-" + index + 1}
                   className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
-                  Name Player {index + 1}
+                  {t("game.onboarding.name-player")} {index + 1}
                 </label>
               </div>
             ))}
@@ -98,7 +100,7 @@ export const GameOnboarding = ({
                 }}
                 className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
               >
-                Add Player
+                {t("game.onboarding.add-player")}
               </button>
               <button
                 onClick={(e) => {
@@ -107,7 +109,7 @@ export const GameOnboarding = ({
                 }}
                 className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
               >
-                Remove Last Player
+                {t("game.onboarding.remove-last-player")}
               </button>
             </div>
           </div>
@@ -116,7 +118,7 @@ export const GameOnboarding = ({
             className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
             id="rule-sets"
           >
-            Game Modes
+            {t("game.onboarding.headings.gameModes")}
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6 mb-6">
             {gameModes.map((gameModeWithDescription, i) => (
@@ -130,7 +132,7 @@ export const GameOnboarding = ({
                     "/assets/sex-on-the-beach.png",
                   ][i]
                 }
-                c2a="Select"
+                c2a={t("game.onboarding.select")}
                 isSelected={gameMode?.title === gameModeWithDescription.title}
                 onClick={() => {
                   setGameMode(gameModeWithDescription);
@@ -147,7 +149,7 @@ export const GameOnboarding = ({
 
           <div className={!gameMode ? "hidden" : ""}>
             <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white">
-              About: {gameMode?.title}
+              {t("game.onboarding.headings.about")}: {gameMode?.title}
             </h2>
             <p className="mb-6 font-normal text-gray-700 dark:text-gray-400">
               {gameMode?.description}
@@ -158,7 +160,7 @@ export const GameOnboarding = ({
             className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
             id="rule-sets"
           >
-            Game Rule
+            {t("game.onboarding.headings.gameRules")}
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6">
             {allGameRules.map((gameRuleWithDescription, i) => (
@@ -172,7 +174,7 @@ export const GameOnboarding = ({
                     "/assets/beer.png",
                   ][i]
                 }
-                c2a="Select"
+                c2a={t("game.onboarding.select")}
                 isSelected={gameRules?.title === gameRuleWithDescription.title}
                 onClick={() => {
                   setGameRules(gameRuleWithDescription);
@@ -194,11 +196,11 @@ export const GameOnboarding = ({
               className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
               id="rule-sets"
             >
-              Rule Set Preview
+              {t("game.onboarding.headings.preview")}
             </h2>
             <div className="grid md:grid-cols-1 md:gap-6">
               <MyTable
-                head={["Card Value", "Rule"]}
+                head={[t("game.value"), t("game.rule")]}
                 body={Object.entries(gameRules?.rules || {}).map(
                   ([key, val]) => [cardValueToName(parseInt(key)), val]
                 )}
@@ -215,7 +217,7 @@ export const GameOnboarding = ({
             }`}
             onClick={onSubmit}
           >
-            Submit
+            {t("game.onboarding.submit")}
           </button>
         </form>
       </div>
