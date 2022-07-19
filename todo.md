@@ -85,8 +85,9 @@ release 1.1
 
 release 1.2
 - add skeletons for card images V
-- internationalization
-  - add locales for rules
+- internationalization V
+  - add locales for rules V
+  
 - gamemode about section -> table
 - SEO home page tos privacy
 - add in joyride to home page get started button -> guides 
