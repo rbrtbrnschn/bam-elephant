@@ -4,7 +4,7 @@ export const RulesFAQS = (props: React.PropsWithChildren<any>) => {
   const { children } = props;
   return (
     <div id="faqs" className="max-w-screen-xl mx-auto p-8">
-      <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12">
+      <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white">
         FAQs
       </h2>
       <ul className="flex items-start gap-8 flex-wrap justify-between">

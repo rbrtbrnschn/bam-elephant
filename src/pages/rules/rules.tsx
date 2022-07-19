@@ -75,7 +75,7 @@ export const RulesPage = () => {
           <GetStarted className="mb-24" />
 
           <h2
-            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
             id="game-modes"
           >
             Game Modes
@@ -133,7 +133,7 @@ export const RulesPage = () => {
               }
             />
           </div>
-          <hr />
+          <hr className="mb-12" />
           <Testimonial
             authorName={"York Treinis"}
             position={"Co Founder"}
@@ -142,7 +142,7 @@ export const RulesPage = () => {
             iconUrl={"https://www.tailwind-kit.com/icons/rocket.svg"}
           />
           <h2
-            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12"
+            className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white mt-6"
             id="rule-sets"
           >
             Rule Sets

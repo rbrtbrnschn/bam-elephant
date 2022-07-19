@@ -28,7 +28,7 @@ export const GetStarted = ({
           <div className="ml-3 inline-flex rounded-md shadow">
             <button
               type="button"
-              className="py-4 px-6  bg-white-200 hover:bg-slate-100 focus:ring-gray-500 focus:ring-offset-gray-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+              className="py-4 px-6  bg-white-200 hover:bg-slate-100 focus:ring-gray-500 focus:ring-offset-gray-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg dark:bg-white"
               onClick={() => {
                 navigate("/walk-through");
               }}
