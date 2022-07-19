@@ -92,6 +92,8 @@ release 1.2 V
 - add in joyride to home page get started button -> guides  V
   
 release 2.0
+- sound effects on wins
+- settings to disable sound effects
 - user can create client-side rules
   - which will be injected into current gameMode.defaultRules
 - add in animation for rocket
