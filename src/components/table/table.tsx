@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { cardValueToName, ICard } from "../../interfaces/card.interface";
 import { IBaseRule } from "../../interfaces/rules.interface";
 
@@ -14,13 +14,16 @@ export const MyTable = ({
   className,
   ...props
 }: IMyTableProps) => {
+  useEffect(() => {
+    console.log("changed:", body);
+  }, [body]);
   return (
     <div className={`overflow-x-auto relative ${className}`} {...props}>
       <table className="my-table w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             {head.map((entry, i) => (
-              <th key={"head#" + i} scope="col" className="py-3 px-6">
+              <th key={"head#" + i + entry} scope="col" className="py-3 px-6">
                 {entry}
               </th>
             ))}
@@ -30,7 +33,7 @@ export const MyTable = ({
           {body.map((row, i) => (
             <tr
               id={"table-row" + (i + 1)}
-              key={"row#" + i}
+              key={"row#" + i + row[0]}
               className={`${
                 (i + 1) % 2 === 0
                   ? "bg-gray-50 dark:bg-gray-800"
@@ -47,7 +50,7 @@ export const MyTable = ({
               {row.map((entry: unknown, index) =>
                 index === 0 ? (
                   <th
-                    key={"th#" + index}
+                    key={"th#" + index + entry}
                     scope="row"
                     className={`py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white ${
                       row.includes(cardValueToName((winner as ICard)?.value))
@@ -59,7 +62,7 @@ export const MyTable = ({
                   </th>
                 ) : (
                   <td
-                    key={"td#" + index}
+                    key={"td#" + index + (entry as IBaseRule).title}
                     className={`${
                       row.includes(cardValueToName((winner as ICard)?.value))
                         ? "bg-blue-500 text-white"

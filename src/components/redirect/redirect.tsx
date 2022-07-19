@@ -5,7 +5,6 @@ export const Redirect = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  console.log(params);
 
   const possibleParams = [
     "title",
@@ -17,7 +16,6 @@ export const Redirect = () => {
   let [title, description, imageUrl, to, duration] = possibleParams.map((e) => {
     return e === "duration" ? parseInt(params.get(e) || "0") : params.get(e);
   });
-  console.log(title, description, imageUrl, to, duration);
   const [isDone, setIsDone] = useState(false);
   const imgStyles = {
     ...(!isDone && {}),
@@ -30,7 +28,6 @@ export const Redirect = () => {
   }, []);
   useEffect(() => {
     if (!isDone) return;
-    console.log("first:", isDone);
     setTimeout(() => {
       navigate(to as string);
     }, 1000);

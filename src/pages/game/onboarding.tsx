@@ -124,7 +124,7 @@ export const GameOnboarding = ({
             {gameModes.map((gameModeWithDescription, i) => (
               <MyCard2
                 title={gameModeWithDescription.title}
-                description={gameModeWithDescription.about}
+                description={gameModeWithDescription.description}
                 imageUrl={
                   [
                     "/assets/beer-cocktail.png",
@@ -152,7 +152,11 @@ export const GameOnboarding = ({
               {t("game.onboarding.headings.about")}: {gameMode?.title}
             </h2>
             <p className="mb-6 font-normal text-gray-700 dark:text-gray-400">
-              {gameMode?.description}
+              {/* {gameMode?.about} */}
+              <MyTable
+                head={[t("game.value"), t("game.rule")]}
+                body={gameMode?.about || []}
+              />
             </p>
           </div>
 
@@ -166,7 +170,7 @@ export const GameOnboarding = ({
             {allGameRules.map((gameRuleWithDescription, i) => (
               <MyCard2
                 title={gameRuleWithDescription.title}
-                description={gameRuleWithDescription.about}
+                description={gameRuleWithDescription.description}
                 imageUrl={
                   [
                     "/assets/soft-drink.png",

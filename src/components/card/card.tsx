@@ -24,7 +24,6 @@ export const MyCard = ({
         className="w-full"
         src={imageUrl || "/img/card-top.jpg"}
         onLoad={(e) => {
-          console.log("loaded", e);
           setImageHasLoaded(true);
         }}
         alt="Sunset in the mountains"

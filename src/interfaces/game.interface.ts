@@ -43,7 +43,7 @@ export type GameMode = Partial<Record<CardValue, GameModeHook>>;
 
 export interface IGameModeWithDescription {
   title: string;
-  about: string;
+  about: [string, IBaseRule][];
   description: string;
   mode: GameMode;
   handleWinner: ({ state }: { state: IGameState }) => (ICard | null)[];

@@ -93,45 +93,45 @@
   "gameModes": {
     "walkthrough": {
       "title": "Walkthrough",
-      "about": "WIP.",
-      "description": "For educational purposes only."
+      "description": "WIP.",
+      "about": []
     },
     "outdoors": {
       "title": "Outdoors",
-      "about": "Share relevant, engaging, and inspirational brand messages to create a connection with your audience.",
-      "description": "Jack: assign new rule. Queen: assign new rule. KING assing new rule"
+      "description": "Share relevant, engaging, and inspirational brand messages to create a connection with your audience.",
+      "about": [["Jack",{"title":"assign new rule", "description": "abd"}], ["Queen", {"title":"assign new rule", "description": "abd"}], ["KING", {"title":"assing new rule", "description": "abd"}]]
     },
     "low-key": {
       "title": "Low-Key",
-      "about": "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
-      "description": "Seven: shuffle deck. Ace: assign new rule. Winner Determined: Highest Card Value."
+      "description": "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
+      "about": [["Seven", {"title":"shuffle deck", "description": "abd"}], ["Ace", {"title":"assign new rule", "description": "abd"}]]
     },
     "atTheClub": {
       "title": "@ The Club",
-      "about": "Let us help you level up your search engine game, explore our solutions for digital marketing for your business.",
-      "description": "WIP."
+      "description": "Let us help you level up your search engine game, explore our solutions for digital marketing for your business.",
+      "about": []
     }
   },
   "gameRules": {
     "walkthrough": {
       "title":"Walkthrough",
-      "about":"For educational purposes only.",
-      "description":"WIP."
+      "description":"For educational purposes only.",
+      "about":"WIP."
     },
     "basic": {
       "title":"Basic",
-      "about": "At this point I'm out of information.",
-      "description":"Wip."
+      "description": "At this point I'm out of information.",
+      "about":"Wip."
     },
     "crazy": {
       "title":"Crazy",
-      "about": "Lorem Ipsum. I don't even know, how to describe it. That's how crazy it is.",
-      "description":"Wip."
+      "description": "Lorem Ipsum. I don't even know, how to describe it. That's how crazy it is.",
+      "about":"Wip."
     },
     "adversity-rich": {
       "title":"Adversity-rich",
-      "about": "I'm just making up words as I go now.",
-      "description":"Wip."
+      "description": "I'm just making up words as I go now.",
+      "about":"Wip."
     }
   },
   "game": {

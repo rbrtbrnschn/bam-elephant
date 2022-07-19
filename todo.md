@@ -87,8 +87,8 @@ release 1.2
 - add skeletons for card images V
 - internationalization V
   - add locales for rules V
+- gamemode about section -> table V
   
-- gamemode about section -> table
 - SEO home page tos privacy
 - add in joyride to home page get started button -> guides 
 - add I'm still confused, what do I do now button in guides / faq to start joyride  

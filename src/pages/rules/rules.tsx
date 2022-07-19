@@ -88,7 +88,7 @@ export const RulesPage = () => {
             {gameModes.map((gm) => (
               <Feature
                 title={gm.title}
-                description={gm.about}
+                description={gm.description}
                 key={"gamemode-" + gm.title}
                 icon={
                   <svg
@@ -123,7 +123,7 @@ export const RulesPage = () => {
             {gameRules.map((gr) => (
               <Feature
                 title={gr.title}
-                description={gr.about}
+                description={gr.description}
                 key={"gamerule-" + gr.title}
                 icon={
                   <svg

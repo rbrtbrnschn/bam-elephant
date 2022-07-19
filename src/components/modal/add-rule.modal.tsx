@@ -87,7 +87,6 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                   className="space-y-6"
                   action="#"
                   onSubmit={(e) => {
-                    console.log(e.currentTarget.id, e);
                     e.preventDefault();
                     if (e.currentTarget.id === "add-rule-input") {
                       return;
