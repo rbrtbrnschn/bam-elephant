@@ -48,8 +48,18 @@ export const GameOnboarding = ({
             >
               Add Players
             </h2>
-            <input required className="hidden" value={gameRules ? "1" : ""} />
-            <input required className="hidden" value={gameMode ? "1" : ""} />
+            <input
+              required
+              className="hidden"
+              readOnly
+              value={gameRules ? "1" : ""}
+            />
+            <input
+              required
+              className="hidden"
+              readOnly
+              value={gameMode ? "1" : ""}
+            />
             {inputs.map((input, index) => (
               <div
                 key={"input-" + (index + 1)}

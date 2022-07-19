@@ -81,14 +81,14 @@ export const Game = ({
     modalRef?.current?.focusInput();
   }, [modalIsOpen]);
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen max-h-screen overflow-y-scroll">
       <MyNavbar />
       {modalIsOpen && (
         <AddRuleModal
           card={loser as ICard}
           ref={modalRef}
           onClose={toggleModal}
-          customRules={gameMode.defaultRules}
+          defaultRules={gameMode.defaultRules}
           onSuccess={(rule: IBaseRule) => {
             setRules({
               ...gameRules,

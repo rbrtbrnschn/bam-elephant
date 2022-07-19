@@ -274,7 +274,7 @@ export const WalkthroughPage = () => {
         card={loser as ICard}
         ref={modalRef}
         onClose={toggleModal}
-        customRules={gameMode.defaultRules}
+        defaultRules={gameMode.defaultRules}
         onSuccess={(rule: IBaseRule) => {
           setJoyrideProps((state) => ({
             ...state,

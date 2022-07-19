@@ -80,6 +80,7 @@ release 1.1
 - add in step for ace V
 - walkthrough with keys (could not figure out how)
 - add winner name to banner V
+- fix modal layout V
 
 
 release 1.2
