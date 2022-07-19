@@ -67,6 +67,10 @@ BASIC_GAME_RULES[CardValue.JACK] = halfAShot;
 BASIC_GAME_RULES[CardValue.QUEEN] = neverHaveIEver;
 BASIC_GAME_RULES[CardValue.KING] = fullShot;
 BASIC_GAME_RULES[CardValue.TWO] = threeKamikazeShots;
+BASIC_GAME_RULES[CardValue.THREE] = halfAShot;
+BASIC_GAME_RULES[CardValue.FOUR] = neverHaveIEver;
+BASIC_GAME_RULES[CardValue.FIVE] = fullShot;
+BASIC_GAME_RULES[CardValue.SEVEN] = threeKamikazeShots;
 
 export const useBasicGameRules = () => {
   const { t } = useTranslation();

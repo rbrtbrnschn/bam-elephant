@@ -7,7 +7,10 @@ import i18n from "../../i18n.config";
 import { useFaqs } from "../../pages/rules/rules";
 import { useStorage } from "../../utils/useStorage";
 
-export const MyNavbar = () => {
+export const MyNavbar = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const [isDropdown, setIsDropdown] = useState(false);
   const navigate = useNavigate();
   const [hasExpandedMobile, setHasExpandedMobile] = useState(false);
@@ -52,7 +55,10 @@ export const MyNavbar = () => {
   }
   useOutsideAlerter(localeDropdownRef);
   return (
-    <nav className="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
+    <nav
+      className={`bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 ${className}`}
+      {...props}
+    >
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
         <a
           href="#"

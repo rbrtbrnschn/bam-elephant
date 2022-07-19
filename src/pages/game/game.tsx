@@ -78,18 +78,19 @@ export const Game = ({
   };
 
   useEffect(() => {
-    if (false) return;
+    if (!modalIsOpen) return;
     //@ts-ignore
-    modalRef?.current?.focusInput();
+    if (window?.innerWidth > 700) modalRef?.current?.focusInput();
   }, [modalIsOpen]);
 
   const { t } = useTranslation();
   return (
-    <div className="relative h-screen max-h-screen overflow-y-scroll">
+    <div className="relative h-screen max-h-screen overflow-hidden">
       <MyNavbar />
       {modalIsOpen && (
         <AddRuleModal
           card={loser as ICard}
+          playerName={players[drawnCards.indexOf(loser as ICard) || 0]}
           ref={modalRef}
           onClose={toggleModal}
           defaultRules={gameMode.defaultRules}
@@ -129,8 +130,7 @@ export const Game = ({
       <div className="container mx-auto px-4">
         <div
           id="cards-view"
-          className="w-full flex justify-center items-center gap-10"
-          style={{ minHeight: "500px" }}
+          className="min-h-[300px] lg:min-h-[500px] w-full flex justify-center mt-20 lg:mt-0 lg:items-center gap-2 sm:gap-6 md:gap-10"
         >
           {drawnCards.map((c, i) => (
             <div
@@ -145,7 +145,9 @@ export const Game = ({
                 imageUrl={c.images?.png}
                 title={c.code + ""}
                 className={
-                  c.value === CardValue.ELEPHANT ? "border border-black" : ""
+                  c.value === CardValue.ELEPHANT
+                    ? "border border-black dark:bg-white"
+                    : ""
                 }
               />
               <div className="text-center">
@@ -197,6 +199,7 @@ export const Game = ({
             ];
           })}
           winner={winner as ICard}
+          className="h-80 overflow-y-scroll"
         />
       </div>
     </div>

@@ -163,7 +163,7 @@
       "add-rule-to":"Add rule to",
       "your-new-rule":"Your new rule",
       "custom-rule-instead": "Add Custom Rule Instead?",
-      "submit": "Set Rule",
+      "submit": "{{player}} Sets Rule",
       "no-rule-set": "No rule set",
       "skip": {
         "prefix": "Not mandatory",

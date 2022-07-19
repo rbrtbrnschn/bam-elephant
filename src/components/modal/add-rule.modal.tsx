@@ -4,8 +4,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useTranslation } from "react-i18next";
-import { cardValueToName, ICard } from "../../interfaces/card.interface";
+import { Trans, useTranslation } from "react-i18next";
+import {
+  CardValue,
+  cardValueToName,
+  ICard,
+} from "../../interfaces/card.interface";
 import { IBaseRule } from "../../interfaces/rules.interface";
 import { MyCard } from "../card/card";
 
@@ -14,6 +18,7 @@ interface IAddRuleModalProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose: () => void;
   onSuccess: (rule: IBaseRule) => void;
   defaultRules?: IBaseRule[];
+  playerName: string;
 }
 export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
   (props, ref) => {
@@ -23,6 +28,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
       card,
       placeholder,
       defaultRules: customRules,
+      playerName = "",
     } = props;
     const [rule, setRule] = useState<IBaseRule>({ title: "", description: "" });
     const inputRef = useRef<HTMLInputElement>(null);
@@ -81,7 +87,12 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                   {t("add-rule-to")} {cardValueToName((card as ICard)?.value)}
                 </h3>
                 <div className="flex justify-center align-center pb-2">
-                  <MyCard imageUrl={card?.image} />
+                  <MyCard
+                    imageUrl={card?.image}
+                    className={
+                      card?.value === CardValue.ELEPHANT ? "dark:bg-white" : ""
+                    }
+                  />
                 </div>
                 <form
                   className="space-y-6"
@@ -124,6 +135,15 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                     <select
                       id="custom-rule"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      onChange={(e) => {
+                        const rule = customRules?.find(
+                          (r) =>
+                            r.title.toLocaleLowerCase() ===
+                            e.currentTarget.value.toLocaleLowerCase()
+                        );
+                        if (!rule) return;
+                        setRule(rule);
+                      }}
                     >
                       {customRules?.map((rule, i) => (
                         <option
@@ -149,7 +169,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                       rule.title.length && tbd(rule);
                     }}
                   >
-                    {t("submit")}
+                    {t("submit", { player: playerName })}
                   </button>
                   <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     {t("skip.prefix")}.{" "}

@@ -91,14 +91,14 @@ release 1.2 V
 - add more info next to onboarding headers V
 - add in joyride to home page get started button -> guides  V
   
-release 1.3 
+release 1.3 V
 - bam-elephant card? V
 - extra cards by game-mode? V
-- mobile layout fudged
-- bam elephant card grey on dark mod
-- modal needs setTImeout to appear on mobile, otherwise you dont see the draw
-- onFocus after add-rule-modal shows up doenst work well on mobile
-- fix droddown mechanics, for accesibility. mobile cannot update rule by selecting from dropdown.
+- made it clearer who get's too choose new rule V
+- bam elephant card grey on dark mod V
+- onFocus after add-rule-modal shows up doenst work well on mobile V
+- fix droddown mechanics, for accesibility. mobile cannot update rule by selecting from dropdown. V
+- mobile layout fudged V
 
 release 2.0
 - cards that cannot be reruled like 2 in lowkey

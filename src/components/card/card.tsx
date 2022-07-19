@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { CardSkeleton } from "../skeletons/card";
 
 interface IMyCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -16,20 +16,24 @@ export const MyCard = ({
   ...props
 }: IMyCardProps) => {
   const [imageHasLoaded, setImageHasLoaded] = useState(false);
+  const classNames = useMemo(
+    () => (!imageHasLoaded ? " animate-pulse " : ""),
+    [imageHasLoaded]
+  );
   return (
     <div
       className={`max-w-sm rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1 cursor-pointer motion-reduce:transition-none motion-reduce:hover:transform-none ${className}`}
       {...props}
     >
       <img
-        className="w-full max-w-[226px] max-h-[314px]"
+        className={"w-full w-[226px] h-[314px]  " + classNames}
         src={imageUrl || "/img/card-top.jpg"}
         onLoad={(e) => {
+          console.log("ran");
           setImageHasLoaded(true);
         }}
-        alt="Sunset in the mountains"
+        alt={"card-" + title}
       />
-      {!imageHasLoaded ? <CardSkeleton /> : null}
     </div>
   );
 };

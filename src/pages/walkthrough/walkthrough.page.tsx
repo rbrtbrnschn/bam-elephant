@@ -274,6 +274,7 @@ export const WalkthroughPage = () => {
       <AddRuleModal
         card={loser as ICard}
         ref={modalRef}
+        playerName={players[drawnCards.indexOf(loser as ICard) || 0]}
         onClose={toggleModal}
         defaultRules={gameMode.defaultRules}
         onSuccess={(rule: IBaseRule) => {
