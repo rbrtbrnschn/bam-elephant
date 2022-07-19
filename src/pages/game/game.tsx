@@ -46,7 +46,6 @@ export const Game = ({
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
   const modalRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     thunks.shuffle();
   }, []);
@@ -107,7 +106,13 @@ export const Game = ({
         <div className="h-0">
           {rule.title && (
             <MyBanner
-              title={rule.title}
+              title={
+                players[
+                  drawnCards.findIndex((c) => c.code === winner?.code) ?? 0
+                ] +
+                ": " +
+                rule.title
+              }
               dataTip={rule.description}
               onClose={() => {
                 setRule({ title: "", description: "" });

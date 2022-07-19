@@ -297,7 +297,13 @@ export const WalkthroughPage = () => {
           {rule.title && (
             <MyBanner
               id="banner"
-              title={rule.title}
+              title={
+                players[
+                  drawnCards.findIndex((c) => c.code === winner?.code) ?? 0
+                ] +
+                ": " +
+                rule.title
+              }
               dataTip={rule.description}
               onClose={() => {
                 setRule({ title: "", description: "" });
