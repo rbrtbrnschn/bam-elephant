@@ -18,6 +18,7 @@ import { useWalkthroughGameMode } from "../../common/game-modes";
 import { IBaseRule } from "../../interfaces/rules.interface";
 import { MyNavbar } from "../../components/navbar/navbar";
 import { useWalkthroughGameRules } from "../../common/game-rules";
+import { useStorage } from "../../utils/useStorage";
 
 export const WalkthroughPage = () => {
   const navigate = useNavigate();
@@ -43,9 +44,10 @@ export const WalkthroughPage = () => {
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
-
+  const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
   useEffect(() => {
-    // setMyIsOpen(true)
+    if (getLocaleStorage("site.visited-walkthrough")) return;
+    setLocalStorage("site.visited-walkthrough", Date.now() + "");
   }, []);
 
   useEffect(() => {

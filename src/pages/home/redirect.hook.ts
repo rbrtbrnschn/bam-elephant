@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStorage } from "../../utils/useStorage";
 
 export function useGameRedirect() {
   const navigate = useNavigate();
-
+  const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
   useEffect(() => {
-    const lastVisited = window.localStorage.getItem("last_visited");
+    const lastVisited = getLocaleStorage("site.visited-walkthrough");
     if (!lastVisited) {
-      window?.localStorage?.setItem("last_visited", Date.now() + "");
+      setLocalStorage("site.visited-walkthrough", Date.now() + "");
       return navigate("/walk-through");
     }
   }, []);

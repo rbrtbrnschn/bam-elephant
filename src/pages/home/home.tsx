@@ -1,20 +1,37 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import ReactJoyride, { Step } from "react-joyride";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
+import { useStorage } from "../../utils/useStorage";
 import { Testimonial } from "../rules/testimonial.rules";
 import { useGameRedirect } from "./redirect.hook";
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { getLocaleStorage } = useStorage(localStorage);
+  const needsJoyride = !getLocaleStorage("site.visited-walkthrough");
+
+  const [steps] = useState<Step[]>([
+    {
+      target: "#home-news-alert",
+      placement: "left",
+      content:
+        "Jump right in. Get started. We'll even give you a quick walkthrough.",
+      spotlightClicks: true,
+    },
+  ]);
   return (
     <div>
+      {needsJoyride ? <ReactJoyride steps={steps} run={true} /> : null}
       <MyNavbar />
       <section className="bg-white dark:bg-gray-900">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
           <a
             href="#"
+            id="home-news-alert"
             className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
             role="alert"
             onClick={() => {
@@ -51,6 +68,7 @@ export const HomePage = () => {
           <div className="pt-4 flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             <a
               href="#"
+              id="get-started-button"
               className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
               onClick={() => {
                 navigate("/v1");

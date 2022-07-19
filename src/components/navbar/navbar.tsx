@@ -19,7 +19,7 @@ export const MyNavbar = () => {
   const localeDropdownRef = useRef<HTMLDivElement>(null);
   const [locale, setLocale] = useState<ILocale>(
     //@ts-ignore
-    LOCALES[localStorage.getItem("i18nextLng") || "de"]
+    LOCALES[localStorage.getItem("i18nextLng") || "en-US"]
   );
   const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
 
