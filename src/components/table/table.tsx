@@ -14,9 +14,7 @@ export const MyTable = ({
   className,
   ...props
 }: IMyTableProps) => {
-  useEffect(() => {
-    console.log("changed:", body);
-  }, [body]);
+  useEffect(() => {}, [body]);
   return (
     <div className={`overflow-x-auto relative ${className}`} {...props}>
       <table className="my-table w-full text-sm text-left text-gray-500 dark:text-gray-400">

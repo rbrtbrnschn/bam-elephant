@@ -99,12 +99,12 @@
     "outdoors": {
       "title": "Outdoors",
       "description": "Share relevant, engaging, and inspirational brand messages to create a connection with your audience.",
-      "about": [["Jack",{"title":"assign new rule", "description": "abd"}], ["Queen", {"title":"assign new rule", "description": "abd"}], ["KING", {"title":"assing new rule", "description": "abd"}]]
+      "about": [["Jack",{"title":"assign new rule"}], ["Queen", {"title":"assign new rule"}], ["KING", {"title":"assing new rule"}]]
     },
     "low-key": {
       "title": "Low-Key",
       "description": "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
-      "about": [["Seven", {"title":"shuffle deck", "description": "abd"}], ["Ace", {"title":"assign new rule", "description": "abd"}]]
+      "about": [["Seven", {"title":"shuffle deck", "description": "Shuffles left over cards."}], ["Ace", {"title":"assign new rule"}]]
     },
     "atTheClub": {
       "title": "@ The Club",

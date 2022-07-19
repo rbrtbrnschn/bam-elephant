@@ -89,12 +89,14 @@ release 1.2
   - add locales for rules V
 - gamemode about section -> table V
   
+- add more info next to onboarding headers
 - SEO home page tos privacy
 - add in joyride to home page get started button -> guides 
 - add I'm still confused, what do I do now button in guides / faq to start joyride  
-- allow to add in rules dynamically form onboarding via dropdown, 
+
+- allow to add in rules dynamically form onboarding via dropdown,  (not sure)
   - each gamemode has it's own categories of rules to be picked from. (no idea what I had planned here)
-- add in card-value tooltip on right hand side
+- add in card-value tooltip on right hand side (no clue)
 
 
 Ice Box:
