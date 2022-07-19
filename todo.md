@@ -79,6 +79,7 @@ release 1.1
 - add in step for notifactions to walkthrough V
 - add in step for ace V
 - walkthrough with keys (could not figure out how)
+- add winner name to banner V
 
 
 release 1.2
