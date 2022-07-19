@@ -1,7 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 export const MyFooter = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900 py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
       <div className="md:flex md:justify-between">
@@ -20,7 +22,7 @@ export const MyFooter = () => {
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Resources
+              {t("footer.resources._")}
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
@@ -31,7 +33,7 @@ export const MyFooter = () => {
                     navigate("/guide");
                   }}
                 >
-                  FAQS
+                  {t("footer.resources.faqs")}
                 </a>
               </li>
               <li>
@@ -42,14 +44,14 @@ export const MyFooter = () => {
                     navigate("/guide");
                   }}
                 >
-                  Game Modes
+                  {t("footer.resources.gameModes")}
                 </a>
               </li>
             </ul>
           </div>
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Follow us
+              {t("footer.followUs._")}
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
@@ -57,19 +59,19 @@ export const MyFooter = () => {
                   href="https://github.com/rbrtbrnschn/bam-elephant"
                   className="hover:underline "
                 >
-                  Github
+                  {t("footer.followUs.github")}
                 </a>
               </li>
               <li>
                 <a href="https://discord.com/" className="hover:underline">
-                  Discord
+                  {t("footer.followUs.discord")}
                 </a>
               </li>
             </ul>
           </div>
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Legal
+              {t("footer.legal._")}
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
@@ -80,7 +82,7 @@ export const MyFooter = () => {
                   }}
                   className="hover:underline"
                 >
-                  Privacy Policy
+                  {t("footer.legal.privacy")}
                 </a>
               </li>
               <li>
@@ -91,7 +93,7 @@ export const MyFooter = () => {
                   href="#"
                   className="hover:underline"
                 >
-                  Terms &amp; Conditions
+                  {t("footer.legal.toc")}
                 </a>
               </li>
             </ul>
@@ -105,7 +107,7 @@ export const MyFooter = () => {
           <a href="/" className="hover:underline">
             Bam Elephant™
           </a>
-          . All Rights Reserved.
+          . {t("footer.allRightsReserved")}.
         </span>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
           <a

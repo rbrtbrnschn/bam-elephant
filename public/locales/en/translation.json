@@ -6,6 +6,24 @@
     "walkthrough": "Walkthrough",
     "getStarted": "Get Started!"
   },
+  "footer": {
+    "resources": {
+      "_":"Resources",
+      "faqs":"FAQS",
+      "gameModes":"Game Modes"
+    },
+    "followUs": {
+      "_":"Follow Us",
+      "github":"Github",
+      "discord":"Discord"
+    },
+    "legal":{
+      "_": "Legal",
+      "privacy":"Privacy Policy",
+      "toc": "Terms & Conditions"
+    },
+    "allRightsReserved": "All Rights Reserved"
+  },
   "home": {
     "tag": {
       "badge": "New",
