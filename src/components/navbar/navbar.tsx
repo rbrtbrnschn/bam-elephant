@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -14,10 +14,35 @@ export const MyNavbar = () => {
 
   const { t } = useTranslation();
   const faqs = useFaqs();
+  const localeRef = useRef<HTMLDivElement>(null);
   const [locale, setLocale] = useState<ILocale>(
     //@ts-ignore
-    LOCALES[i18n.language || "de"]
+    LOCALES[localStorage.getItem("i18nextLng") || "de"]
   );
+  /**
+   * Hook that alerts clicks outside of the passed ref
+   */
+  function useOutsideAlerter(ref: React.RefObject<HTMLDivElement>) {
+    useEffect(() => {
+      if (!hasLocaleExpanded) return;
+
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event: any) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setHasLocaleExpanded(false);
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref, hasLocaleExpanded]);
+  }
+  useOutsideAlerter(localeRef);
   return (
     <nav className="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
@@ -57,6 +82,7 @@ export const MyNavbar = () => {
               !hasLocaleExpanded ? "hidden" : ""
             } absolute z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 mt-12`}
             id="language-dropdown-menu"
+            ref={localeRef}
           >
             <ul className="py-1" role="none">
               {Object.values(LOCALES).map((l) => {

@@ -8,7 +8,7 @@ export interface ILocale {
 
 const germanLocale: ILocale = {
   title: "Deutsch (DE)",
-  languageCode: "de",
+  languageCode: "de-DE",
   flag: (
     <svg
       className="h-3.5 w-3.5 rounded-full mr-2"
@@ -26,7 +26,7 @@ const germanLocale: ILocale = {
 
 const englishLocale: ILocale = {
   title: "English (US)",
-  languageCode: "en",
+  languageCode: "en-US",
   flag: (
     <svg
       {...{ ["aria-hidden"]: true }}
@@ -60,6 +60,6 @@ const englishLocale: ILocale = {
 };
 
 export const LOCALES = {
-  de: germanLocale,
-  en: englishLocale,
+  [germanLocale.languageCode]: germanLocale,
+  [englishLocale.languageCode]: englishLocale,
 } as const;
