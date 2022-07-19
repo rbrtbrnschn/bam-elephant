@@ -75,7 +75,11 @@ release 1.1
 - rename workflow title V
 - redo walkthrough, use joyride V
 - use joyride over current implementation ( dont work ) V
-- rework game component to allow walkthrough
+- rework walkthrough to look like game
+- add in step for notifactions to walkthrough
+- add in step for ace
+- walkthrough with keys
+
 
 release 1.2
 - allow to add in rules dynamically form onboarding via dropdown, 
@@ -90,3 +94,4 @@ release 1.2
 Ice Box:
 - add strapi for rule management
 - add skeletons for card images
+- rework game component to allow walkthrough

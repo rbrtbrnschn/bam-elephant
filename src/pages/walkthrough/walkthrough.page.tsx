@@ -20,6 +20,7 @@ import {
   WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION,
 } from "../../common/game-rules";
 import { IBaseRule } from "../../interfaces/rules.interface";
+import { MyNavbar } from "../../components/navbar/navbar";
 
 export const WalkthroughPage = () => {
   const navigate = useNavigate();
@@ -191,8 +192,11 @@ export const WalkthroughPage = () => {
     }));
     setTimesClickedDraw(timesClickedDraw + 1);
   };
+  const gameMode = WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION;
+  const players = ["Pete", "Davidson"];
   return (
     <div className="relative h-screen">
+      <MyNavbar />
       <Joyride
         steps={steps}
         {...joyrideProps}
@@ -209,9 +213,9 @@ export const WalkthroughPage = () => {
       />
 
       <AddRuleModal
-        ref={modalRef}
         card={loser as ICard}
         onClose={toggleModal}
+        customRules={gameMode.defaultRules}
         onSuccess={(rule: IBaseRule) => {
           setJoyrideProps((state) => ({ ...state, stepIndex: 8 }));
           setRules({
@@ -225,16 +229,19 @@ export const WalkthroughPage = () => {
         placeholder={gameRules.rules[(loser as ICard)?.value]?.title}
         className={!modalIsOpen ? "hidden" : ""}
       />
-      <div className="h-0">
-        {rule.title && (
-          <MyBanner
-            title={rule.title}
-            dataTip={rule.description}
-            onClose={() => {
-              setRule({ title: "", description: "" });
-            }}
-          />
-        )}
+
+      <div className="container mx-auto px-4">
+        <div className="h-0">
+          {rule.title && (
+            <MyBanner
+              title={rule.title}
+              dataTip={rule.description}
+              onClose={() => {
+                setRule({ title: "", description: "" });
+              }}
+            />
+          )}
+        </div>
       </div>
 
       <div className="container mx-auto px-4">
@@ -258,6 +265,11 @@ export const WalkthroughPage = () => {
                 imageUrl={c.images?.png}
                 title={c.code + ""}
               />
+              <div className="text-center">
+                <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+                  {players[i]}
+                </span>
+              </div>
             </div>
           ))}
         </div>
@@ -305,36 +317,6 @@ export const WalkthroughPage = () => {
           ) : null}
         </div>
 
-        {modalIsOpen && (
-          <div>
-            <input
-              value={newRule}
-              placeholder={`Assign ${cardValueToName(
-                loser?.value as CardValue
-              )} a new rule`}
-              onChange={(e) => {
-                setNewRule(e.currentTarget.value);
-              }}
-            />
-            <button
-              type="submit"
-              onClick={() => {
-                const newGameRules = { ...gameRules };
-                if (loser?.code.length) {
-                  newGameRules.rules[loser.value] = {
-                    title: newRule,
-                    description: "",
-                  };
-                }
-                setRules(newGameRules);
-                setNewRule("");
-                toggleModal();
-              }}
-            >
-              Submit
-            </button>
-          </div>
-        )}
         <MyTable
           head={["Value", "Rule"]}
           body={Object.entries(gameRules.rules).map(([key, value], index) => {
