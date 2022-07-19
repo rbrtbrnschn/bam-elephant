@@ -11,13 +11,14 @@ export const MyBanner = ({
   dataTip = "",
   onClose,
   isDanger,
+  ...props
 }: IMyBannerProps) => {
   const color = isDanger ? "red" : "blue";
   return (
     <div
-      id="alert-border-1"
       className={`flex p-4 mb-4 bg-${color}-100 border-t-4 border-${color}-500 dark:bg-${color}-200`}
       role="alert"
+      {...props}
     >
       <svg
         className={`flex-shrink-0 w-5 h-5 text-${color}-700`}

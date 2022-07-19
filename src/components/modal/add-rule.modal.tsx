@@ -1,4 +1,9 @@
-import React, { forwardRef, useState } from "react";
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { cardValueToName, ICard } from "../../interfaces/card.interface";
 import { IBaseRule } from "../../interfaces/rules.interface";
 
@@ -12,9 +17,21 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
   (props, ref) => {
     const { onClose, onSuccess, card, placeholder, customRules } = props;
     const [rule, setRule] = useState<IBaseRule>({ title: "", description: "" });
+    const inputRef = useRef<HTMLInputElement>(null);
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setRule({ title: e.currentTarget.value, description: "Custom" });
     };
+    useImperativeHandle(
+      ref,
+      //@ts-ignore
+      () => ({
+        focusInput: (e: React.ChangeEvent<HTMLInputElement>) => {
+          //@TODO remove - sadly not working with react-joyride
+          inputRef?.current?.focus();
+        },
+      }),
+      []
+    );
     return (
       <div ref={ref} {...props}>
         <div className="absolute w-screen h-screen overflow-hidden bg-slate-700/50 z-10"></div>
@@ -91,6 +108,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                       type="text"
                       name="email"
                       id="add-rule-input"
+                      ref={inputRef}
                       value={rule.title}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       placeholder={placeholder || "No Rule Set"}

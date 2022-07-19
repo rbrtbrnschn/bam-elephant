@@ -75,8 +75,6 @@ export const WalkthroughPage = () => {
     drawCards(previouslyDiscardedCards);
   };
   const drawButtonRef = useRef<HTMLButtonElement>(null);
-  const image1Ref = useRef<HTMLDivElement>(null);
-  const image2Ref = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const [steps, setSteps] = useState<Array<Step>>([
@@ -93,7 +91,7 @@ export const WalkthroughPage = () => {
       target: "button#draw-button",
       disableOverlayClose: true,
       disableCloseOnEsc: true,
-      showProgress: false,
+      showProgress: true,
       hideFooter: true,
       hideCloseButton: true,
     },
@@ -110,6 +108,33 @@ export const WalkthroughPage = () => {
         },
       },
       title: "Here is your draw.",
+      showProgress: true,
+      hideCloseButton: true,
+    },
+    {
+      spotlightClicks: false,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
+      showProgress: true,
+      target: "#image-wrapper2",
+      content:
+        "Davidsons' King is higher than Petes' Jack. He wins this round.",
+      styles: {
+        options: {
+          zIndex: 10000,
+        },
+      },
+      hideCloseButton: true,
+    },
+    {
+      spotlightClicks: false,
+      disableOverlayClose: true,
+      disableCloseOnEsc: true,
+      showProgress: true,
+      target: "#banner",
+      content:
+        "This banner shows the 'Winning Rule'. Whoever wins the draw must perform 'the rule'. To find out more info, you may hover over the 'i' next to the text. TOOLTIPS DO NOT WORK IN THE WALKTHROUGH.",
+
       hideCloseButton: true,
     },
     {
@@ -119,6 +144,7 @@ export const WalkthroughPage = () => {
       target: "table.my-table",
       content:
         "Here you find all the rules, the actions you'll take or have others take when you win.",
+      showProgress: true,
       hideCloseButton: true,
     },
     {
@@ -128,6 +154,7 @@ export const WalkthroughPage = () => {
       disableCloseOnEsc: true,
       content:
         "The KING is the higher card here. Now, now you do whatever the rule says.",
+      showProgress: true,
       hideCloseButton: true,
     },
     {
@@ -137,8 +164,18 @@ export const WalkthroughPage = () => {
       disableCloseOnEsc: true,
       disableOverlayClose: true,
       hideFooter: true,
-      showProgress: false,
+      showProgress: true,
       hideCloseButton: true,
+    },
+    {
+      target: "#image-wrapper1",
+      title: "The Special Ace",
+      content:
+        "The ace is a special card in the 'LOW KEY' gamemode, which we are playing right now. It allows you to assign the 'loser card' value a new rule.",
+      spotlightClicks: true,
+      disableCloseOnEsc: true,
+      disableOverlayClose: true,
+      showProgress: true,
     },
     {
       target: "#add-rule-modal",
@@ -153,6 +190,8 @@ export const WalkthroughPage = () => {
       content:
         "A special card has been played. Whoever played the ACE must now assign a new rule to the lowest value card played that round.",
       hideCloseButton: true,
+      showProgress: true,
+      title: "Adding A Rule",
     },
     {
       target: "#add-rule-input",
@@ -163,6 +202,7 @@ export const WalkthroughPage = () => {
       title: "Don't click ENTER!",
       content:
         "Set a new rule for the 9. Try: 'What are the odds?'. Then click next.",
+      showProgress: true,
       hideCloseButton: true,
     },
     {
@@ -171,15 +211,21 @@ export const WalkthroughPage = () => {
       spotlightClicks: true,
       disableOverlayClose: true,
       disableCloseOnEsc: true,
+      showProgress: true,
       hideCloseButton: true,
     },
     {
       target: "#cards-view",
       spotlightClicks: true,
-      content: "Okay, you got the hang of it. Have fun.",
+      content:
+        "Now, this concept goes on until the bottles are empty. I believe, you got the hang of it. Have fun.",
       hideCloseButton: true,
+      title: "Congrats.",
     },
   ]);
+  const getStepByTitle = (title: string) =>
+    steps.indexOf(steps.find((steps) => steps.title === title) as Step);
+
   const [joyrideProps, setJoyrideProps] = useState<Partial<Props>>({
     run: true,
     continuous: true,
@@ -188,7 +234,10 @@ export const WalkthroughPage = () => {
   const goToNextStep = () => {
     setJoyrideProps((state) => ({
       ...state,
-      stepIndex: timesClickedDraw === 0 ? 1 : 5,
+      stepIndex:
+        timesClickedDraw <= 0
+          ? getStepByTitle("Here is your draw.")
+          : getStepByTitle("The Special Ace"),
     }));
     setTimesClickedDraw(timesClickedDraw + 1);
   };
@@ -201,12 +250,21 @@ export const WalkthroughPage = () => {
         steps={steps}
         {...joyrideProps}
         callback={(data) => {
+          if (data.status !== "finished" && !joyrideProps.run) {
+            return setJoyrideProps((state) => ({ ...state, run: true }));
+          }
           if (data.status === "finished") {
             setMyIsOpen(false);
             navigate(
               "/redirect?to=/v1&title=Walkthrough%20completed!&description=Now%20off%20to%20the%20real%20thing&duration=3000"
             );
-          } else if (data.index === 8 && modalIsOpen) {
+          } else if (data.index === getStepByTitle("Don't click ENTER!")) {
+            //@ts-ignore
+            modalRef?.current?.focusInput();
+          } else if (
+            data.index === getStepByTitle("Congrats.") &&
+            modalIsOpen
+          ) {
             toggleModal();
           }
         }}
@@ -214,10 +272,14 @@ export const WalkthroughPage = () => {
 
       <AddRuleModal
         card={loser as ICard}
+        ref={modalRef}
         onClose={toggleModal}
         customRules={gameMode.defaultRules}
         onSuccess={(rule: IBaseRule) => {
-          setJoyrideProps((state) => ({ ...state, stepIndex: 8 }));
+          setJoyrideProps((state) => ({
+            ...state,
+            stepIndex: getStepByTitle("Congrats."),
+          }));
           setRules({
             ...gameRules,
             rules: {
@@ -234,6 +296,7 @@ export const WalkthroughPage = () => {
         <div className="h-0">
           {rule.title && (
             <MyBanner
+              id="banner"
               title={rule.title}
               dataTip={rule.description}
               onClose={() => {
@@ -280,8 +343,13 @@ export const WalkthroughPage = () => {
               className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
               ref={drawButtonRef}
               onClick={() => {
-                drawCards();
+                setJoyrideProps((state) => ({
+                  ...state,
+                  run: false,
+                  stepIndex: 1,
+                }));
                 goToNextStep();
+                drawCards();
               }}
             >
               Draw

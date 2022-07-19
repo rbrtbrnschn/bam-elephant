@@ -76,9 +76,9 @@ release 1.1
 - redo walkthrough, use joyride V
 - use joyride over current implementation ( dont work ) V
 - rework walkthrough to look like game
-- add in step for notifactions to walkthrough
-- add in step for ace
-- walkthrough with keys
+- add in step for notifactions to walkthrough V
+- add in step for ace V
+- walkthrough with keys (could not figure out how)
 
 
 release 1.2

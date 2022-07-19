@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
@@ -45,6 +45,7 @@ export const Game = ({
     actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     thunks.shuffle();
@@ -75,12 +76,18 @@ export const Game = ({
     drawCards(previouslyDiscardedCards);
   };
 
+  useEffect(() => {
+    if (false) return;
+    //@ts-ignore
+    modalRef?.current?.focusInput();
+  }, [modalIsOpen]);
   return (
     <div className="relative h-screen">
       <MyNavbar />
       {modalIsOpen && (
         <AddRuleModal
           card={loser as ICard}
+          ref={modalRef}
           onClose={toggleModal}
           customRules={gameMode.defaultRules}
           onSuccess={(rule: IBaseRule) => {
