@@ -4,6 +4,10 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ILocale, LOCALES } from "../../common/locales";
 import i18n from "../../i18n.config";
+import {
+  getLocaleStorage,
+  setLocalStorage,
+} from "../../interfaces/localstorage.interface";
 import { useFaqs } from "../../pages/rules/rules";
 
 export const MyNavbar = () => {
@@ -14,11 +18,15 @@ export const MyNavbar = () => {
 
   const { t } = useTranslation();
   const faqs = useFaqs();
-  const localeRef = useRef<HTMLDivElement>(null);
+  const localeButtonRef = useRef<HTMLButtonElement>(null);
+  const localeDropdownRef = useRef<HTMLDivElement>(null);
   const [locale, setLocale] = useState<ILocale>(
     //@ts-ignore
     LOCALES[localStorage.getItem("i18nextLng") || "de"]
   );
+
+  const hasClickedLocales = getLocaleStorage("navbar.hasClickedLocales");
+
   /**
    * Hook that alerts clicks outside of the passed ref
    */
@@ -30,6 +38,8 @@ export const MyNavbar = () => {
        * Alert if clicked on outside of element
        */
       function handleClickOutside(event: any) {
+        if (localeButtonRef.current?.contains(event.target)) return;
+
         if (ref.current && !ref.current.contains(event.target)) {
           setHasLocaleExpanded(false);
         }
@@ -42,7 +52,7 @@ export const MyNavbar = () => {
       };
     }, [ref, hasLocaleExpanded]);
   }
-  useOutsideAlerter(localeRef);
+  useOutsideAlerter(localeDropdownRef);
   return (
     <nav className="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
@@ -66,11 +76,23 @@ export const MyNavbar = () => {
           <button
             type="button"
             data-dropdown-toggle="language-dropdown-menu"
-            className="inline-flex justify-center items-center p-2 text-sm text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white mr-2"
+            className="relative inline-flex justify-center items-center p-2 text-sm text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white mr-2"
+            ref={localeButtonRef}
             onClick={() => {
               setHasLocaleExpanded(!hasLocaleExpanded);
+              !hasClickedLocales &&
+                setLocalStorage("navbar.hasClickedLocales", Date.now() + "");
             }}
           >
+            {!hasClickedLocales ? (
+              <div className="absolute right-0 top-0 translate-x-1 -translate-y-1 flex justify-center items-center">
+                <span className="flex h-3 w-3 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75 "></span>
+                  <span className="relative inline-flex rounded-full h-full w-full bg-sky-500"></span>
+                </span>
+              </div>
+            ) : null}
+
             {React.cloneElement(locale.flag, {
               className: "w-[20px] h-[20px] h-3.5 w-3.5 rounded-full mr-2",
             })}
@@ -82,7 +104,7 @@ export const MyNavbar = () => {
               !hasLocaleExpanded ? "hidden" : ""
             } absolute z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 mt-12`}
             id="language-dropdown-menu"
-            ref={localeRef}
+            ref={localeDropdownRef}
           >
             <ul className="py-1" role="none">
               {Object.values(LOCALES).map((l) => {
