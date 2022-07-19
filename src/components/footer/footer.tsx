@@ -12,7 +12,7 @@ export const MyFooter = () => {
             <img
               src="/assets/elephant.png"
               className="mr-3 h-8"
-              alt="FlowBite Logo"
+              alt="Bam Elephant Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Bam Elephant

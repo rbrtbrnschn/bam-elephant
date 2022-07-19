@@ -32,7 +32,7 @@ export const MyCard2 = ({
         <img
           className={`rounded-t-lg w-64 ${disabled ? "opacity-25" : ""}`}
           src={imageUrl}
-          alt=""
+          alt="bam elephant card"
         />
       </a>
       <div className={`p-5 ${disabled ? "opacity-25 cursor-not-allowed" : ""}`}>

@@ -100,7 +100,13 @@ release 1.3 V
 - fix droddown mechanics, for accesibility. mobile cannot update rule by selecting from dropdown. V
 - mobile layout fudged V
 
+release 1.3.1
+- SEO home V
+  - guide 
+  - page tos privacy
+
 release 2.0
+
 - cards that cannot be reruled like 2 in lowkey
 - add onclick for info component, so that mobile works
 
@@ -121,7 +127,6 @@ Ice Box:
 - add strapi for rule management
 - rework game component to allow walkthrough
 - per account custom rules, that maybe added to gamemodes or game Rules
-- SEO home page tos privacy
 
 - think about moving to next 
   - could create static sites that would work as documentation for all the gamemodes and game rules and rules that were created.
