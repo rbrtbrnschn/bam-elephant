@@ -1,6 +1,7 @@
 import { isDisabled } from "@testing-library/user-event/dist/utils";
-import { GAME_MODES_WITH_DESCRIPTION } from "../../common/game-modes";
-import { GAME_RULES_WITH_DESCRIPTION } from "../../common/game-rules";
+import { useEffect } from "react";
+import { useGameModesWithDescription } from "../../common/game-modes";
+import { useGameRulesWithDescription } from "../../common/game-rules";
 import { MyCard2 } from "../../components/card/card2";
 import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
@@ -36,6 +37,8 @@ export const GameOnboarding = ({
 }: IGameOnboardingProps) => {
   const hasRuleSelection = Object.keys(gameRules || {}).length;
   const hasGameModeSelection = Object.keys(gameMode || {}).length;
+  const gameModes = useGameModesWithDescription();
+  const allGameRules = useGameRulesWithDescription();
   return (
     <div>
       <MyNavbar />
@@ -116,7 +119,7 @@ export const GameOnboarding = ({
             Game Modes
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6 mb-6">
-            {GAME_MODES_WITH_DESCRIPTION.map((gameModeWithDescription, i) => (
+            {gameModes.map((gameModeWithDescription, i) => (
               <MyCard2
                 title={gameModeWithDescription.title}
                 description={gameModeWithDescription.about}
@@ -128,7 +131,7 @@ export const GameOnboarding = ({
                   ][i]
                 }
                 c2a="Select"
-                isSelected={gameMode === gameModeWithDescription}
+                isSelected={gameMode?.title === gameModeWithDescription.title}
                 onClick={() => {
                   setGameMode(gameModeWithDescription);
                 }}
@@ -158,7 +161,7 @@ export const GameOnboarding = ({
             Game Rule
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6">
-            {GAME_RULES_WITH_DESCRIPTION.map((gameRuleWithDescription, i) => (
+            {allGameRules.map((gameRuleWithDescription, i) => (
               <MyCard2
                 title={gameRuleWithDescription.title}
                 description={gameRuleWithDescription.about}
@@ -170,7 +173,7 @@ export const GameOnboarding = ({
                   ][i]
                 }
                 c2a="Select"
-                isSelected={gameRules === gameRuleWithDescription}
+                isSelected={gameRules?.title === gameRuleWithDescription.title}
                 onClick={() => {
                   setGameRules(gameRuleWithDescription);
                 }}

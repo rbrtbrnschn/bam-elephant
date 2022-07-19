@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 export const GetStarted = ({
@@ -6,12 +7,15 @@ export const GetStarted = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <div className={"bg-white dark:bg-gray-800 " + className} {...props}>
       <div className="lg:flex lg:items-center lg:justify-between w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
         <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
-          <span className="block">Got it? Get started!</span>
-          <span className="block text-indigo-500">It&#x27;s now or never.</span>
+          <span className="block">{t("guide.hero.title")}</span>
+          <span className="block text-indigo-500">
+            {t("guide.hero.subTitle")}
+          </span>
         </h2>
         <div className="lg:mt-0 lg:flex-shrink-0">
           <div className=" inline-flex rounded-md shadow">
@@ -22,7 +26,7 @@ export const GetStarted = ({
                 navigate("/v1");
               }}
             >
-              Get started!
+              {t("guide.hero.c2a.1")}
             </button>
           </div>
           <div className="ml-3 inline-flex rounded-md shadow">
@@ -33,7 +37,7 @@ export const GetStarted = ({
                 navigate("/walk-through");
               }}
             >
-              Help me!
+              {t("guide.hero.c2a.2")}
             </button>
           </div>
         </div>

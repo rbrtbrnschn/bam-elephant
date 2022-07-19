@@ -14,22 +14,21 @@ import {
 } from "../../interfaces/card.interface";
 import { useGameState } from "../../store/game";
 import Joyride from "react-joyride";
-import { WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION } from "../../common/game-modes";
-import {
-  WALKTHROUGH_GAME_RULES,
-  WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION,
-} from "../../common/game-rules";
+import { useWalkthroughGameMode } from "../../common/game-modes";
 import { IBaseRule } from "../../interfaces/rules.interface";
 import { MyNavbar } from "../../components/navbar/navbar";
+import { useWalkthroughGameRules } from "../../common/game-rules";
 
 export const WalkthroughPage = () => {
   const navigate = useNavigate();
   const [playerCount, setPlayerCount] = useState(2);
   const [myIsOpen, setMyIsOpen] = useState(true);
+  const walkthroughGameRules = useWalkthroughGameRules();
+  const walkthroughGameMode = useWalkthroughGameMode();
   const { state, actions, helpers, thunks } = useGameState({
     playerCount,
-    gameMode: WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION,
-    gameRules: WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION,
+    gameMode: walkthroughGameMode,
+    gameRules: walkthroughGameRules,
   });
   const {
     deck,
@@ -241,7 +240,7 @@ export const WalkthroughPage = () => {
     }));
     setTimesClickedDraw(timesClickedDraw + 1);
   };
-  const gameMode = WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION;
+  const gameMode = useWalkthroughGameMode();
   const players = ["Pete", "Davidson"];
   return (
     <div className="relative h-screen">

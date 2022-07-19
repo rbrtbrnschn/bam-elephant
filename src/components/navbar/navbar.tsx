@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ILocale, LOCALES } from "../../common/locales";
 import i18n from "../../i18n.config";
-import { useStorage } from "../../interfaces/localstorage.interface";
 import { useFaqs } from "../../pages/rules/rules";
+import { useStorage } from "../../utils/useStorage";
 
 export const MyNavbar = () => {
   const [isDropdown, setIsDropdown] = useState(false);

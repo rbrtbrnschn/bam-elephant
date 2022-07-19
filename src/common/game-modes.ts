@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { CardValue, ICard } from "../interfaces/card.interface";
 import {
@@ -56,7 +57,6 @@ const handleNotification = ({
   setRule(rule ?? fallbackRule);
   // toast.success(rule?.title);
 };
-
 export const LOW_KEY_GAME_MODE: GameMode = {
   [CardValue.SEVEN]: (options) => {
     options.thunks.shuffle();
@@ -66,32 +66,36 @@ export const LOW_KEY_GAME_MODE: GameMode = {
     options.actions.toggleModal();
   },
 };
-
-export const LOW_KEY_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
-  title: "Low-Key",
-  about:
-    "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
-  description: `Seven: shuffle deck. Ace: assign new rule. Winner Determined: Highest Card Value.
-  `,
-  mode: LOW_KEY_GAME_MODE,
-  handleWinner,
-  handleNotification,
-  defaultRules: [halfAShot, fullShot, neverHaveIEver],
+export const useLowKeyGameMode = () => {
+  const { t } = useTranslation();
+  const LOW_KEY_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
+    title: t("gameModes.low-key.title"),
+    about: t("gameModes.low-key.about"),
+    description: t("gameModes.low-key.description"),
+    mode: LOW_KEY_GAME_MODE,
+    handleWinner,
+    handleNotification,
+    defaultRules: [halfAShot, fullShot, neverHaveIEver],
+  };
+  return LOW_KEY_GAME_MODE_WITH_DESCRIPTION;
 };
 
 /* For Walkthrough Purposes Only */
 export const WALKTHROUGH_GAME_MODE: GameMode = { ...LOW_KEY_GAME_MODE };
 
-export const WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
-  {
-    title: "Walkthrough",
-    about: "",
-    description: "For educational purposes only.",
+export const useWalkthroughGameMode = () => {
+  const { t } = useTranslation();
+  const WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
+    title: t("gameModes.walkthrough.title"),
+    about: t("gameModes.walkthrough.about"),
+    description: t("gameModes.walkthrough.description"),
     mode: WALKTHROUGH_GAME_MODE,
     handleWinner,
     handleNotification,
     defaultRules: [halfAShot, fullShot, neverHaveIEver],
   };
+  return WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION;
+};
 /* For Walkthrough Purposes Only */
 
 export const OUTDOORS_GAME_MODE: GameMode = {
@@ -105,37 +109,44 @@ export const OUTDOORS_GAME_MODE: GameMode = {
     options.actions.toggleModal();
   },
 };
-
-export const OUTDOORS_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
-  title: "Outdoors",
-  about:
-    "Share relevant, engaging, and inspirational brand messages to create a connection with your audience.",
-  description: `
-  Jack: assign new rule
-  Queen: assign new rule
-  KING assing new rule`,
-  mode: OUTDOORS_GAME_MODE,
-  handleWinner,
-  handleNotification,
-  defaultRules: [halfAShot, fullShot, neverHaveIEver],
+export const useOutdoorsGameMode = () => {
+  const { t } = useTranslation();
+  const OUTDOORS_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
+    title: t("gameModes.outdoors.title"),
+    about: t("gameModes.outdoors.about"),
+    description: t("gameModes.outdoors.description"),
+    mode: OUTDOORS_GAME_MODE,
+    handleWinner,
+    handleNotification,
+    defaultRules: [halfAShot, fullShot, neverHaveIEver],
+  };
+  return OUTDOORS_GAME_MODE_WITH_DESCRIPTION;
 };
+
 export const AT_THE_CLUB_GAME_MODE: GameMode = {
   ...OUTDOORS_GAME_MODE,
 };
-export const AT_THE_CLUB_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription =
-  {
-    title: "@ the club",
-    about:
-      "Let us help you level up your search engine game, explore our solutions for digital marketing for your business.",
-    description: "WIP.",
+export const useAtTheClubGameMode = () => {
+  const { t } = useTranslation();
+  const At_THE_CLUB_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
+    title: t("gameModes.atTheClub.title"),
+    about: t("gameModes.atTheClub.about"),
+    description: t("gameModes.atTheClub.description"),
     mode: AT_THE_CLUB_GAME_MODE,
     handleWinner,
     handleNotification,
     defaultRules: [halfAShot, fullShot, neverHaveIEver],
   };
+  return At_THE_CLUB_GAME_MODE_WITH_DESCRIPTION;
+};
 
-export const GAME_MODES_WITH_DESCRIPTION = [
-  OUTDOORS_GAME_MODE_WITH_DESCRIPTION,
-  LOW_KEY_GAME_MODE_WITH_DESCRIPTION,
-  AT_THE_CLUB_GAME_MODE_WITH_DESCRIPTION,
-];
+export const useGameModesWithDescription = (): IGameModeWithDescription[] => {
+  const OUTDOORS_GAME_MODE_WITH_DESCRIPTION = useOutdoorsGameMode();
+  const LOW_KEY_GAME_MODE_WITH_DESCRIPTION = useLowKeyGameMode();
+  const AT_THE_CLUB_GAME_MODE_WITH_DESCRIPTION = useAtTheClubGameMode();
+  return [
+    OUTDOORS_GAME_MODE_WITH_DESCRIPTION,
+    LOW_KEY_GAME_MODE_WITH_DESCRIPTION,
+    AT_THE_CLUB_GAME_MODE_WITH_DESCRIPTION,
+  ];
+};

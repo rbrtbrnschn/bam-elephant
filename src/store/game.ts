@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { STANDARD_DECK } from "../common/cards";
-import { LOW_KEY_GAME_MODE_WITH_DESCRIPTION } from "../common/game-modes";
-import { BASIC_GAME_RULES_WITH_DESCRIPTION } from "../common/game-rules";
+import { useLowKeyGameMode } from "../common/game-modes";
+import { useBasicGameRules } from "../common/game-rules";
 import { CardValue, ICard, IUndoCard } from "../interfaces/card.interface";
 import {
   IGameActions,
   IGameHelpers,
   IGameInjections,
+  IGameModeWithDescription,
   IGameState,
   IGameThunks,
   IUseGameStateOptions,
@@ -22,9 +23,14 @@ import usePrevious from "./usePrevious.hook";
 export function useGameState({
   discardedPileSize: DISCARDED_PILE_SIZE = 30,
   playerCount: PLAYER_COUNT = 2,
-  gameMode = LOW_KEY_GAME_MODE_WITH_DESCRIPTION,
-  gameRules = BASIC_GAME_RULES_WITH_DESCRIPTION,
+  gameMode,
+  gameRules,
 }: IUseGameStateOptions = {}) {
+  const lowKeyGameModeWithDescription = useLowKeyGameMode();
+  const basicGameRulesWithDescription = useBasicGameRules();
+  if (!gameMode) gameMode = lowKeyGameModeWithDescription;
+  if (!gameRules) gameRules = basicGameRulesWithDescription;
+
   /*TODO refactor constants */
   const MAX_PLAYER_COUNT = 8;
 
@@ -101,7 +107,7 @@ export function useGameState({
   const roundHasEnded = useMemo(() => !state.deck.length, [state.deck.length]);
 
   const [winner, loser] = useMemo<(ICard | null)[]>(
-    () => gameMode.handleWinner({ state }),
+    () => (gameMode as IGameModeWithDescription).handleWinner({ state }),
     [state.drawnCards]
   );
 
@@ -141,7 +147,7 @@ export function useGameState({
    * Update Rule On New Win
    */
   useEffect(() => {
-    gameMode.handleNotification(gameInjections);
+    (gameMode as IGameModeWithDescription).handleNotification(gameInjections);
   }, [state.gameRules, winner]);
 
   /* HOOKS */

@@ -1,4 +1,4 @@
-interface IFeatureProps extends React.HTMLAttributes<HTMLElement> {
+export interface IFeatureProps extends React.HTMLAttributes<HTMLElement> {
   title: string;
   icon: JSX.Element;
   description: string;

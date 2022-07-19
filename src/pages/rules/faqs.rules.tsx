@@ -22,7 +22,9 @@ export interface IFAQProps {
 const FAQ = ({ title, description, id }: IFAQProps) => {
   return (
     <li id={id} className="w-auto md:w-2/5">
-      <p className="text-lg font-medium leading-6 text-gray-900">{title}</p>
+      <p className="text-lg font-medium leading-6 text-gray-900 dark:text-white">
+        {title}
+      </p>
       <p className="mt-2">
         <p className="text-base leading-6 text-gray-500">{description}</p>
       </p>

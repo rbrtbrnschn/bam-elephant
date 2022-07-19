@@ -1,6 +1,5 @@
-export interface IStorage {
-  "navbar.hasClickedLocales": string;
-}
+import { IStorage } from "../interfaces/storage.interface";
+
 export function useStorage(storage: Storage) {
   const setLocalStorage = (key: keyof IStorage, value: string) => {
     return storage.setItem(key, value);

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { CardValue } from "../interfaces/card.interface";
 import {
   GameRules,
@@ -37,8 +38,6 @@ export const chugTheNextDrink: IBaseRule = {
 };
 /* RULES */
 
-/* CATEGORY */
-
 /* GAME RULES */
 
 /* For Walkthrough Purposes */
@@ -47,14 +46,16 @@ export const WALKTHROUGH_GAME_RULES: GameRules = {
   [CardValue.QUEEN]: neverHaveIEver,
   [CardValue.KING]: twoTruthsOneLie,
 };
-
-export const WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription =
-  {
-    title: "Walkthrough",
-    about: "",
-    description: "For educational purposes only.",
+export const useWalkthroughGameRules = () => {
+  const { t } = useTranslation();
+  const WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
+    title: t("gameRules.walkthrough.title"),
+    about: t("gameRules.walkthrough.about"),
+    description: t("gameRules.walkthrough.description"),
     rules: WALKTHROUGH_GAME_RULES,
   };
+  return WALKTHROUGH_GAME_RULES_WITH_DESCRIPTION;
+};
 /* For Walkthrough Purposes */
 
 export const BASIC_GAME_RULES: GameRules = {};
@@ -62,42 +63,50 @@ BASIC_GAME_RULES[CardValue.JACK] = halfAShot;
 BASIC_GAME_RULES[CardValue.QUEEN] = neverHaveIEver;
 BASIC_GAME_RULES[CardValue.KING] = fullShot;
 
-export const BASIC_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
-  title: "Basic",
-  about: "At this point I'm out of information.",
-  description: `JACK: half a Shot;
-  QUEEN: never have I ever;
-  KING: a full shot;`,
-  rules: BASIC_GAME_RULES,
+export const useBasicGameRules = () => {
+  const { t } = useTranslation();
+  const BASIC_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
+    title: t("gameRules.basic.title"),
+    about: t("gameRules.basic.about"),
+    description: t("gameRules.basic.description"),
+    rules: BASIC_GAME_RULES,
+  };
+  return BASIC_GAME_RULES_WITH_DESCRIPTION;
 };
 
 export const CRAZY_GAME_RULES: GameRules = {
   ...BASIC_GAME_RULES,
   [CardValue.THREE]: chugTheNextDrink,
 };
-export const CRAZY_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
-  title: "Crazy",
-  about:
-    "Lorem Ipsum. I don't even know, how to describe it. That's how crazy it is.",
-  description: `WIP.`,
-  rules: CRAZY_GAME_RULES,
+export const useCrazyGameRules = () => {
+  const { t } = useTranslation();
+  const CRAZY_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription = {
+    title: t("gameRules.crazy.title"),
+    about: t("gameRules.crazy.about"),
+    description: t("gameRules.crazy.description"),
+    rules: CRAZY_GAME_RULES,
+  };
+  return CRAZY_GAME_RULES_WITH_DESCRIPTION;
 };
-
 export const ADVERSITY_RICH_GAME_RULES: GameRules = {
   ...BASIC_GAME_RULES,
 };
-export const ADVERSITY_RICH_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription =
-  {
-    title: "Adversity-Rich",
-    about: "I'm just making up words as I go now.",
-    description: `WIP.`,
-    rules: ADVERSITY_RICH_GAME_RULES,
-  };
-
+export const useAdversityRichGameRules = () => {
+  const { t } = useTranslation();
+  const ADVERSITY_RICH_GAME_RULES_WITH_DESCRIPTION: IGameRulesWithDescription =
+    {
+      title: t("gameRules.adversity-rich.title"),
+      about: t("gameRules.adversity-rich.about"),
+      description: t("gameRules.adversity-rich.description"),
+      rules: ADVERSITY_RICH_GAME_RULES,
+    };
+  return ADVERSITY_RICH_GAME_RULES_WITH_DESCRIPTION;
+};
 /* GAME RULES */
 
-export const GAME_RULES_WITH_DESCRIPTION = [
-  CRAZY_GAME_RULES_WITH_DESCRIPTION,
-  BASIC_GAME_RULES_WITH_DESCRIPTION,
-  ADVERSITY_RICH_GAME_RULES_WITH_DESCRIPTION,
-];
+export const useGameRulesWithDescription = () => {
+  const crazyGameRules = useCrazyGameRules();
+  const basicGameRules = useBasicGameRules();
+  const adversityRichGamrRules = useAdversityRichGameRules();
+  return [crazyGameRules, basicGameRules, adversityRichGamrRules];
+};
