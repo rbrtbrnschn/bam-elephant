@@ -83,7 +83,7 @@ release 1.1
 - fix modal layout V
 
 
-release 1.2
+release 1.2 V
 - add skeletons for card images V
 - internationalization V
   - add locales for rules V
@@ -91,10 +91,23 @@ release 1.2
 - add more info next to onboarding headers V
 - add in joyride to home page get started button -> guides  V
   
-
+release 2.0
+- user can create client-side rules
+  - which will be injected into current gameMode.defaultRules
+- add in animation for rocket
+- add in real photos
+- whole page detailing game modes / game rules / rule with search functionality and add functionality (after next upgrade?)
+  
 
 Ice Box:
 - add strapi for rule management
 - rework game component to allow walkthrough
 - per account custom rules, that maybe added to gamemodes or game Rules
 - SEO home page tos privacy
+
+- think about moving to next 
+  - could create static sites that would work as documentation for all the gamemodes and game rules and rules that were created.
+  - add in strapi, 
+  - allow user login
+  - user can create rules, game rules / no gamemodes (least wouldnt know how)
+    
