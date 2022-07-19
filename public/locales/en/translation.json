@@ -6,6 +6,19 @@
     "walkthrough": "Walkthrough",
     "getStarted": "Get Started!"
   },
+  "home": {
+    "tag": {
+      "badge": "New",
+      "text": "Walkthrough is out now! See how it works"
+    },
+    "header":"The Casual Drinking Game",
+    "subHeader": "Bam Elephant is a quality \"Made In Germany\" drinking game, suited for all ages. Recommended ages are 6-99.",
+    "c2a": {
+      "1": "Get Started!",
+      "2": "Read Rules"
+    },
+    "quote": "Bam Elephant! This is not how the fish eats it's food."
+  },
   "guide": {
     "faqs": {
       "1": {

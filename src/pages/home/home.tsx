@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MyFooter } from "../../components/footer/footer";
 import { MyNavbar } from "../../components/navbar/navbar";
@@ -6,6 +7,7 @@ import { useGameRedirect } from "./redirect.hook";
 
 export const HomePage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <div>
       <MyNavbar />
@@ -20,11 +22,9 @@ export const HomePage = () => {
             }}
           >
             <span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
-              New
+              {t("home.tag.badge")}
             </span>{" "}
-            <span className="text-sm font-medium">
-              Walkthrough is out now! See how it works
-            </span>
+            <span className="text-sm font-medium">{t("home.tag.text")}</span>
             <svg
               className="ml-2 w-5 h-5"
               fill="currentColor"
@@ -39,11 +39,10 @@ export const HomePage = () => {
             </svg>
           </a>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            The Casual Drinking Game
+            {t("home.header")}
           </h1>
           <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Bam Elephant is a quality "Made In Germany" drinking game, suited
-            for all ages. Recommended ages are 6-99.
+            {t("home.subHeader")}
           </p>
 
           <div className="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
@@ -57,7 +56,7 @@ export const HomePage = () => {
                 navigate("/v1");
               }}
             >
-              Get Started!
+              {t("home.c2a.1")}
               <svg
                 className="ml-2 -mr-1 w-5 h-5"
                 fill="currentColor"
@@ -86,7 +85,7 @@ export const HomePage = () => {
               >
                 <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
               </svg>
-              Read Rules
+              {t("home.c2a.2")}
             </a>
           </div>
           <hr />
@@ -94,7 +93,7 @@ export const HomePage = () => {
           <Testimonial
             authorName={"Robert Bornschein"}
             position={"Co Founder"}
-            quote={"Bam Elephant! This is not how the fish eats it's food."}
+            quote={t("home.quote")}
             authorImageUrl={"https://www.tailwind-kit.com/images/person/1.jpg"}
             iconUrl={"https://www.tailwind-kit.com/icons/rocket.svg"}
           />
