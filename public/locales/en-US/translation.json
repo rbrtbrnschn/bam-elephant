@@ -160,6 +160,7 @@
       "your-new-rule":"Your new rule",
       "custom-rule-instead": "Add Custom Rule Instead?",
       "submit": "Set Rule",
+      "no-rule-set": "No rule set",
       "skip": {
         "prefix": "Not mandatory",
         "c2c": "Click to skip" 
