@@ -4,10 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ILocale, LOCALES } from "../../common/locales";
 import i18n from "../../i18n.config";
-import {
-  getLocaleStorage,
-  setLocalStorage,
-} from "../../interfaces/localstorage.interface";
+import { useStorage } from "../../interfaces/localstorage.interface";
 import { useFaqs } from "../../pages/rules/rules";
 
 export const MyNavbar = () => {
@@ -24,6 +21,7 @@ export const MyNavbar = () => {
     //@ts-ignore
     LOCALES[localStorage.getItem("i18nextLng") || "de"]
   );
+  const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
 
   const hasClickedLocales = getLocaleStorage("navbar.hasClickedLocales");
 
