@@ -100,7 +100,7 @@ release 1.3 V
 - fix droddown mechanics, for accesibility. mobile cannot update rule by selecting from dropdown. V
 - mobile layout fudged V
 
-release 1.3.1
+release 1.3.1 V
 - SEO home V
   - guide V
   - alt tags V

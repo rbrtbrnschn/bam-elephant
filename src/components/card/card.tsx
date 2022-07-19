@@ -26,7 +26,7 @@ export const MyCard = ({
       {...props}
     >
       <img
-        className={"w-full w-[226px] h-[314px]  " + classNames}
+        className={"w-full max-w-[226px] max-h-[314px]  " + classNames}
         src={imageUrl || "/img/card-top.jpg"}
         onLoad={(e) => {
           console.log("ran");
