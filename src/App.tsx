@@ -15,6 +15,7 @@ import { RulesPage } from "./pages/rules/rules";
 import { TOSPage } from "./pages/tos/tos";
 import { PrivacyPage } from "./pages/privacy/privacy";
 import { Redirect } from "./components/redirect/redirect";
+import ScrollToTop from "./components/scroll2Top/scroll2Top";
 function App() {
   const steps: StepType[] = [
     {
@@ -68,6 +69,7 @@ function App() {
   return (
     <div className="App bg-white dark:bg-gray-900">
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route index element={<HomePage />} />
           <Route

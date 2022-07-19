@@ -26,7 +26,9 @@ const FAQ = ({ title, description, id }: IFAQProps) => {
         {title}
       </p>
       <p className="mt-2">
-        <p className="text-base leading-6 text-gray-500">{description}</p>
+        <p className="text-base leading-6 text-gray-500 dark:text-gray-300">
+          {description}
+        </p>
       </p>
     </li>
   );

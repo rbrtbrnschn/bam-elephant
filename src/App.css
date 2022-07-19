@@ -4,6 +4,9 @@
   top: 50%;
   transform: translate(-50%, -50%);
 } */
+html,body {
+  scroll-behavior: smooth;
+}
 .h-full-with-nav {
   height: calc(100vh - 60px);
 }

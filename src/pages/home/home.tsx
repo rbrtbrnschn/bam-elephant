@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactJoyride, { Step } from "react-joyride";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,6 +14,8 @@ export const HomePage = () => {
   const { getLocaleStorage } = useStorage(localStorage);
   const needsJoyride = !getLocaleStorage("site.visited-walkthrough");
 
+  const getStartedAnchorRef = useRef<HTMLAnchorElement>(null);
+
   const [steps] = useState<Step[]>([
     {
       target: "#home-news-alert",
@@ -23,6 +25,9 @@ export const HomePage = () => {
       spotlightClicks: true,
     },
   ]);
+  useEffect(() => {
+    getStartedAnchorRef.current?.focus();
+  }, []);
   return (
     <div>
       {needsJoyride ? <ReactJoyride steps={steps} run={true} /> : null}
@@ -70,6 +75,7 @@ export const HomePage = () => {
               href="#"
               id="get-started-button"
               className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+              ref={getStartedAnchorRef}
               onClick={() => {
                 navigate("/v1");
               }}

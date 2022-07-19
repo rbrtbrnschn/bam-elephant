@@ -102,11 +102,12 @@ release 1.3 V
 
 release 1.3.1
 - SEO home V
-  - guide 
-  - page tos privacy
+  - guide V
+  - alt tags V
+  - headers V
 
 release 2.0
-
+- add in cookies section
 - cards that cannot be reruled like 2 in lowkey
 - add onclick for info component, so that mobile works
 

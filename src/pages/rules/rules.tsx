@@ -1,5 +1,7 @@
 import { t } from "i18next";
+import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { useGameModesWithDescription } from "../../common/game-modes";
 import { useGameRulesWithDescription } from "../../common/game-rules";
 import { MyFooter } from "../../components/footer/footer";
@@ -62,12 +64,43 @@ export const useFaqs = (): IFAQProps[] => {
 export const RulesPage = () => {
   const faqs = useFaqs();
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const gameModes = useGameModesWithDescription();
   const gameRules = useGameRulesWithDescription();
+  const getStartedButtonRef = useRef<HTMLButtonElement>(null);
+  const getStartedBannerRef = useRef<HTMLDivElement>(null);
   return (
     <div>
       <MyNavbar />
       <div className="container mx-auto px-4 pt-4">
+        <div className="max-w-screen-xl mx-auto p-8 pb-0">
+          <h1 className="text-4xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white mt-6">
+            {t("guide.h1")}
+          </h1>
+          <p className="mt-2">
+            <p className="text-md text-gray-500 dark:text-gray-300 py-4">
+              {t("guide.description.1")}{" "}
+              <a className="text-blue-500" href="#game-modes">
+                {t("guide.description.2")}
+              </a>{" "}
+              {t("guide.description.3")}{" "}
+              <a className="text-blue-500" href="#rule-sets">
+                {t("guide.description.4")}
+              </a>{" "}
+              {t("guide.description.5")}{" "}
+              <span
+                className="cursor-pointer text-blue-500"
+                onClick={() => {
+                  getStartedBannerRef.current?.scrollIntoView(true);
+                  getStartedButtonRef.current?.focus();
+                }}
+              >
+                {t("guide.description.6")}
+              </span>
+              .
+            </p>
+          </p>
+        </div>
         {/* RulesPage Showcase different game modes / rulesets / general rules */}
         <RulesFAQS>
           {faqs.map((faq) => (
@@ -75,8 +108,42 @@ export const RulesPage = () => {
           ))}
         </RulesFAQS>
 
-        <div className="max-w-screen-xl mx-auto p-8">
-          <GetStarted className="mb-24" />
+        <div className="max-w-screen-xl mx-auto p-8" ref={getStartedBannerRef}>
+          <div className={"bg-white dark:bg-gray-800 mb-24 "}>
+            <div className="lg:flex lg:items-center lg:justify-between w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+              <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
+                <span className="block">{t("guide.hero.title")}</span>
+                <span className="block text-indigo-500">
+                  {t("guide.hero.subTitle")}
+                </span>
+              </h2>
+              <div className="lg:mt-0 lg:flex-shrink-0">
+                <div className=" inline-flex rounded-md shadow">
+                  <button
+                    type="button"
+                    ref={getStartedButtonRef}
+                    className="py-4 px-6  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                    onClick={() => {
+                      navigate("/v1");
+                    }}
+                  >
+                    {t("guide.hero.c2a.1")}
+                  </button>
+                </div>
+                <div className="ml-3 inline-flex rounded-md shadow">
+                  <button
+                    type="button"
+                    className="py-4 px-6  bg-white-200 hover:bg-slate-100 focus:ring-gray-500 focus:ring-offset-gray-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg dark:bg-white"
+                    onClick={() => {
+                      navigate("/walk-through");
+                    }}
+                  >
+                    {t("guide.hero.c2a.2")}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <h2
             className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
