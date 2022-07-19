@@ -4,6 +4,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { cardValueToName, ICard } from "../../interfaces/card.interface";
 import { IBaseRule } from "../../interfaces/rules.interface";
 import { MyCard } from "../card/card";
@@ -39,6 +40,9 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
       }),
       []
     );
+    const { t } = useTranslation("translation", {
+      keyPrefix: "game.add-rule-modal",
+    });
     return (
       <div ref={ref} {...props}>
         <div className="absolute w-screen h-full-with-nav overflow-hidden bg-slate-700/50 z-10"></div>
@@ -46,21 +50,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
           aria-hidden="true"
           className="absolute h-full w-full overflow-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center"
         >
-          <div
-            className="relative p-4 w-full max-w-md h-full h-auto z-50"
-            // style={
-            //   window.innerWidth > 678
-            //     ? {
-            //         position: "absolute",
-            //         top: 0,
-            //         left: 0,
-            //         transform: "translate(166%,30%)",
-            //       }
-            //     : {
-            //         transform: "translateY(15%)",
-            //       }
-            // }
-          >
+          <div className="relative p-4 w-full max-w-md h-full h-auto z-50">
             <div
               id="add-rule-modal"
               className="relative bg-white rounded-lg shadow dark:bg-gray-700"
@@ -88,7 +78,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
               </button>
               <div className="py-6 px-6 lg:px-8">
                 <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-                  Add Rule to {cardValueToName((card as ICard)?.value)}
+                  {t("add-rule-to")} {cardValueToName((card as ICard)?.value)}
                 </h3>
                 <div className="flex justify-center align-center pb-2">
                   <MyCard imageUrl={card?.image} />
@@ -109,7 +99,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                       htmlFor="email"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
-                      Your new Rule
+                      {t("your-new-rule")}
                     </label>
 
                     <input
@@ -130,7 +120,7 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                       htmlFor="custom-rule"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
-                      Add Custom Rule Instead?
+                      {t("custom-rule-instead")}
                     </label>
                     <select
                       id="custom-rule"
@@ -160,16 +150,16 @@ export const AddRuleModal = forwardRef<HTMLDivElement, IAddRuleModalProps>(
                       rule.title.length && tbd(rule);
                     }}
                   >
-                    Set Rule
+                    {t("submit")}
                   </button>
                   <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Not mandatory.{" "}
+                    {t("skip.prefix")}.{" "}
                     <a
                       href="#"
                       className="text-blue-700 hover:underline dark:text-blue-500"
                       onClick={onClose}
                     >
-                      Click to skip.
+                      {t("skip.c2c")}.
                     </a>
                   </div>
                 </form>

@@ -154,6 +154,16 @@
         "about":"About",
         "preview":"Game Rules Preview"
       }
+    },
+    "add-rule-modal":{
+      "add-rule-to":"Add rule to",
+      "your-new-rule":"Your new rule",
+      "custom-rule-instead": "Add Custom Rule Instead?",
+      "submit": "Set Rule",
+      "skip": {
+        "prefix": "Not mandatory",
+        "c2c": "Click to skip" 
+      }
     }
   }
 }
