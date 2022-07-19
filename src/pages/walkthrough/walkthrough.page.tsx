@@ -287,7 +287,7 @@ export const WalkthroughPage = () => {
               Draw
             </button>
           )}
-          {drawnCards.length && !myIsOpen && (
+          {drawnCards.length && !myIsOpen ? (
             <button
               className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
               onClick={() => {
@@ -296,7 +296,7 @@ export const WalkthroughPage = () => {
             >
               Leave Demo.
             </button>
-          )}
+          ) : null}
           {hasEnded && (
             <button
               className="bg-green-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
