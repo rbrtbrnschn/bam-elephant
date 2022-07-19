@@ -153,6 +153,10 @@
         "gameRules": "Game Rules",
         "about":"About",
         "preview":"Game Rules Preview"
+      },
+      "dataTips": {
+        "gameModes": "A 'Game Mode' is what will happen to you in the game.",
+        "gameRules": "A 'Game Rule' is what you will end up doing."
       }
     },
     "add-rule-modal":{

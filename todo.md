@@ -88,8 +88,8 @@ release 1.2
 - internationalization V
   - add locales for rules V
 - gamemode about section -> table V
+- add more info next to onboarding headers V
   
-- add more info next to onboarding headers
 - SEO home page tos privacy
 - add in joyride to home page get started button -> guides 
 - add I'm still confused, what do I do now button in guides / faq to start joyride  

@@ -5,6 +5,7 @@ import { useGameModesWithDescription } from "../../common/game-modes";
 import { useGameRulesWithDescription } from "../../common/game-rules";
 import { MyCard2 } from "../../components/card/card2";
 import { MyFooter } from "../../components/footer/footer";
+import { Info } from "../../components/info/info";
 import { MyNavbar } from "../../components/navbar/navbar";
 import { MyTable } from "../../components/table/table";
 import { CardValue, cardValueToName } from "../../interfaces/card.interface";
@@ -51,7 +52,7 @@ export const GameOnboarding = ({
               className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
               id="rule-sets"
             >
-              {t("game.onboarding.add-player", { count: 5 })}
+              {t("game.onboarding.add-player", { count: 5 })}{" "}
             </h2>
             <input
               required
@@ -119,6 +120,10 @@ export const GameOnboarding = ({
             id="rule-sets"
           >
             {t("game.onboarding.headings.gameModes")}
+            <Info
+              className="ml-2 h-7 w-7"
+              dataTip={t("game.onboarding.dataTips.gameModes")}
+            />
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6 mb-6">
             {gameModes.map((gameModeWithDescription, i) => (
@@ -149,7 +154,7 @@ export const GameOnboarding = ({
 
           <div className={!gameMode ? "hidden" : ""}>
             <h2 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white">
-              {t("game.onboarding.headings.about")}: {gameMode?.title}
+              {t("game.onboarding.headings.about")}:
             </h2>
             <p className="mb-6 font-normal text-gray-700 dark:text-gray-400">
               {/* {gameMode?.about} */}
@@ -165,6 +170,10 @@ export const GameOnboarding = ({
             id="rule-sets"
           >
             {t("game.onboarding.headings.gameRules")}
+            <Info
+              className="ml-2 h-7 w-7"
+              dataTip={t("game.onboarding.dataTips.gameRules")}
+            />
           </h2>
           <div className="grid md:grid-cols-3 md:gap-6 gap-6">
             {allGameRules.map((gameRuleWithDescription, i) => (
