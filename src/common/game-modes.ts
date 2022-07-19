@@ -7,6 +7,7 @@ import {
   IGameModeWithDescription,
   IGameState,
 } from "../interfaces/game.interface";
+import { LOW_KEY_STANDARD_DECK } from "./cards";
 import { fullShot, halfAShot, neverHaveIEver } from "./game-rules";
 
 /**
@@ -28,8 +29,31 @@ const handleWinner = ({ state }: { state: IGameState }) => {
   const allDraw = sorted.length === deltaSetLength + 1;
 
   if (allDraw) return [null, null];
+  if (sorted?.length < 2) return [null, null];
 
-  return [sorted[sorted.length - 1], sorted[0]];
+  const higher = sorted[sorted.length - 1];
+  const lower = sorted[0];
+
+  return [higher, lower];
+};
+
+const handleLowKeyWinner = ({ state }: { state: IGameState }) => {
+  const sorted = [...state.drawnCards].sort(sortCardsByValue);
+  const cardValues = sorted.map((c) => c.value);
+  const uniqueCardValues = new Set(cardValues);
+
+  const deltaSetLength = Math.abs(sorted.length - uniqueCardValues.size);
+  const allDraw = sorted.length === deltaSetLength + 1;
+
+  if (allDraw) return [null, null];
+  if (sorted?.length < 2) return [null, null];
+
+  const higher = sorted[sorted.length - 1];
+  const lower = sorted[0];
+
+  // Bam Elephant reverse winner and loser allows for a 2 to win
+  if (higher?.value === CardValue.ELEPHANT) return [lower, higher];
+  return [higher, lower];
 };
 
 const handleNotification = ({
@@ -65,6 +89,9 @@ export const LOW_KEY_GAME_MODE: GameMode = {
   [CardValue.ACE]: (options) => {
     options.actions.toggleModal();
   },
+  [CardValue.ELEPHANT]: (options) => {
+    // reverse winner loser mechanic
+  },
 };
 export const useLowKeyGameMode = () => {
   const { t } = useTranslation();
@@ -73,9 +100,10 @@ export const useLowKeyGameMode = () => {
     about: t("gameModes.low-key.about"),
     description: t("gameModes.low-key.description"),
     mode: LOW_KEY_GAME_MODE,
-    handleWinner,
+    handleWinner: handleLowKeyWinner,
     handleNotification,
     defaultRules: [halfAShot, fullShot, neverHaveIEver],
+    deck: [...LOW_KEY_STANDARD_DECK],
   };
   return LOW_KEY_GAME_MODE_WITH_DESCRIPTION;
 };

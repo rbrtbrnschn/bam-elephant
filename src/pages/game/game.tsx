@@ -31,6 +31,7 @@ export const Game = ({
     playerCount: players.length,
     gameMode: givenGameMode,
     gameRules: givenGameRules,
+    deck: givenGameMode.deck,
   });
   const {
     deck,
@@ -143,6 +144,9 @@ export const Game = ({
                 key={"card#" + i}
                 imageUrl={c.images?.png}
                 title={c.code + ""}
+                className={
+                  c.value === CardValue.ELEPHANT ? "border border-black" : ""
+                }
               />
               <div className="text-center">
                 <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">

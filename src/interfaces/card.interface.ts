@@ -2,7 +2,10 @@ export type Numbers = "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "0";
 export type FaceAbbreviations = "J" | "Q" | "K" | "A";
 export type SuitAbbreviation = "S" | "D" | "C" | "H";
 export type ValueAbbreviation = Numbers | FaceAbbreviations;
-export type CardCode = `${ValueAbbreviation}${SuitAbbreviation}`;
+export type BamElephantCode = "BE";
+export type CardCode =
+  | `${ValueAbbreviation}${SuitAbbreviation}`
+  | BamElephantCode;
 export enum CardValue {
   TWO = 2,
   THREE,
@@ -17,6 +20,7 @@ export enum CardValue {
   QUEEN,
   KING,
   ACE,
+  ELEPHANT,
 }
 /**
  * Turns CardValue enum value into readable value.
@@ -32,13 +36,18 @@ export const cardValueToName = (cardValue: CardValue) => {
     ? "queen"
     : cardValue === 13
     ? "king"
-    : "ace";
+    : cardValue === 14
+    ? "ace"
+    : cardValue === 15
+    ? "Bam Elephant"
+    : "unknown";
 };
 export enum CardSuit {
   DIAMONDS = 1,
   HEARTS,
   SPADES,
   CLUBS,
+  OTHER,
 }
 /**
  * Turns CardSuit to readable value.
@@ -46,14 +55,14 @@ export enum CardSuit {
  * @returns {string}
  */
 export const cardSuitToName = (cardSuit: CardSuit) => {
-  const suits = { 1: "diamonds", 2: "hearts", 3: "spades", 4: "clubs" };
+  const suits = { 1: "diamonds", 2: "hearts", 3: "spades", 4: "clubs", 5: "" };
   return suits[cardSuit];
 };
 export interface ICard {
   code: CardCode;
   image: string;
   images?: {
-    svg: string;
+    svg?: string;
     png: string;
   };
   value: CardValue;

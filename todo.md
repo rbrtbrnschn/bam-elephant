@@ -92,8 +92,15 @@ release 1.2 V
 - add in joyride to home page get started button -> guides  V
   
 release 2.0
+- bam-elephant card? V
+- extra cards by game-mode? V
+
+- fix shuffle (seems to be very much the same every iteration)
 - sound effects on wins
 - settings to disable sound effects
+- save game?
+- add cookies message saying, we dont keep cookies. (accept or decline)
+- jokers?
 - user can create client-side rules
   - which will be injected into current gameMode.defaultRules
 - add in animation for rocket

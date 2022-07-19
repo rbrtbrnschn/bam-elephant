@@ -104,7 +104,7 @@
     "low-key": {
       "title": "Low-Key",
       "description": "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
-      "about": [["Seven", {"title":"shuffle deck", "description": "Shuffles left over cards."}], ["Ace", {"title":"assign new rule"}]]
+      "about": [["Seven", {"title":"shuffle deck", "description": "Shuffles left over cards."}], ["Ace", {"title":"assign new rule"}],["Bam Elephant", {"title":"Reverse Winner","description": "Winner becomes loser, loser becomes winner. A 2 can actually win."}]]
     },
     "atTheClub": {
       "title": "@ The Club",

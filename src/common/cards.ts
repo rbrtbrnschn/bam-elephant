@@ -91,7 +91,6 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.TWO,
     suit: CardSuit.SPADES,
   },
-
   {
     code: "6S",
     image: "https://deckofcardsapi.com/static/img/6S.png",
@@ -522,5 +521,19 @@ export const STANDARD_DECK: ICard[] = [
     },
     value: CardValue.EIGHT,
     suit: CardSuit.CLUBS,
+  },
+];
+
+export const LOW_KEY_STANDARD_DECK: ICard[] = [
+  ...STANDARD_DECK,
+  {
+    code: "BE",
+    image: "/assets/elephant-card.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/8C.svg",
+      png: "/assets/elephant-card.png",
+    },
+    value: CardValue.ELEPHANT,
+    suit: CardSuit.OTHER,
   },
 ];

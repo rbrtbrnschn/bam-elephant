@@ -15,7 +15,11 @@ export const fullShot: IBaseRule = {
   title: "1 Shots",
   description: "Drink a shot.",
 };
-
+export const threeKamikazeShots = {
+  title: "3 Kamikaze Shots",
+  description:
+    "Chug 3 shots after one another. But what are the odds of a 2 winning, right?",
+};
 export const neverHaveIEver: IExampleRule = {
   title: "Never Have I Ever",
   description:
@@ -62,6 +66,7 @@ export const BASIC_GAME_RULES: GameRules = {};
 BASIC_GAME_RULES[CardValue.JACK] = halfAShot;
 BASIC_GAME_RULES[CardValue.QUEEN] = neverHaveIEver;
 BASIC_GAME_RULES[CardValue.KING] = fullShot;
+BASIC_GAME_RULES[CardValue.TWO] = threeKamikazeShots;
 
 export const useBasicGameRules = () => {
   const { t } = useTranslation();

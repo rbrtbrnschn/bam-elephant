@@ -25,6 +25,7 @@ export function useGameState({
   playerCount: PLAYER_COUNT = 2,
   gameMode,
   gameRules,
+  deck = [...STANDARD_DECK],
 }: IUseGameStateOptions = {}) {
   const lowKeyGameModeWithDescription = useLowKeyGameMode();
   const basicGameRulesWithDescription = useBasicGameRules();
@@ -42,7 +43,7 @@ export function useGameState({
   /* Error Handling */
 
   const [state, setState] = useState<IGameState>({
-    deck: [...STANDARD_DECK],
+    deck,
     drawnCards: [],
     disposedCards: [],
     rule: {

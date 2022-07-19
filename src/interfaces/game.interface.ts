@@ -49,10 +49,12 @@ export interface IGameModeWithDescription {
   handleWinner: ({ state }: { state: IGameState }) => (ICard | null)[];
   handleNotification: (gameInjections: IGameInjections) => void;
   defaultRules: IBaseRule[];
+  deck?: ICard[];
 }
 export interface IUseGameStateOptions {
   discardedPileSize?: number;
   playerCount?: number;
   gameMode?: IGameModeWithDescription;
   gameRules?: IGameRulesWithDescription;
+  deck?: ICard[];
 }

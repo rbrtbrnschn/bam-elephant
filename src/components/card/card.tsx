@@ -12,16 +12,17 @@ export const MyCard = ({
   title,
   subTitle,
   tags,
+  className,
   ...props
 }: IMyCardProps) => {
   const [imageHasLoaded, setImageHasLoaded] = useState(false);
   return (
     <div
-      className="max-w-sm rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1 cursor-pointer motion-reduce:transition-none motion-reduce:hover:transform-none"
+      className={`max-w-sm rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1 cursor-pointer motion-reduce:transition-none motion-reduce:hover:transform-none ${className}`}
       {...props}
     >
       <img
-        className="w-full"
+        className="w-full max-w-[226px] max-h-[314px]"
         src={imageUrl || "/img/card-top.jpg"}
         onLoad={(e) => {
           setImageHasLoaded(true);
