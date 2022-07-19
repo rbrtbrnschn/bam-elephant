@@ -91,9 +91,18 @@ release 1.2 V
 - add more info next to onboarding headers V
 - add in joyride to home page get started button -> guides  V
   
-release 2.0
+release 1.3 
 - bam-elephant card? V
 - extra cards by game-mode? V
+- mobile layout fudged
+- bam elephant card grey on dark mod
+- modal needs setTImeout to appear on mobile, otherwise you dont see the draw
+- onFocus after add-rule-modal shows up doenst work well on mobile
+- fix droddown mechanics, for accesibility. mobile cannot update rule by selecting from dropdown.
+
+release 2.0
+- cards that cannot be reruled like 2 in lowkey
+- add onclick for info component, so that mobile works
 
 - fix shuffle (seems to be very much the same every iteration)
 - sound effects on wins
@@ -119,4 +128,4 @@ Ice Box:
   - add in strapi, 
   - allow user login
   - user can create rules, game rules / no gamemodes (least wouldnt know how)
-    
+  - user can upload custom cards / decks
