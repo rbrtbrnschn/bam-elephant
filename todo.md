@@ -117,18 +117,7 @@ release 2.0
   - create banner and/or joyride
   - maybe even as home page footer
 
-- fix shuffle (seems to be very much the same every iteration)
-- sound effects on wins
-- settings to disable sound effects
-- save game?
-- add cookies message saying, we dont keep cookies. (accept or decline)
-- jokers?
-- user can create client-side rules
-  - which will be injected into current gameMode.defaultRules
-- add in animation for rocket
-- add in real photos
-- whole page detailing game modes / game rules / rule with search functionality and add functionality (after next upgrade?)
-  - add - ctrl-k for some sort of (game) search
+
 
   
 
@@ -145,3 +134,17 @@ Ice Box:
   - user can create rules, game rules / no gamemodes (least wouldnt know how)
   - user can upload custom cards / decks
 - mobile game could have a tab view for nav + rule/notifs + card view + buttons / table / settings 
+
+  Releas 2.0 Ideas:
+  - fix shuffle (seems to be very much the same every iteration)
+  - sound effects on wins
+  - settings to disable sound effects
+  - save game?
+  - add cookies message saying, we dont keep cookies. (accept or decline)
+  - jokers?
+  - user can create client-side rules
+    - which will be injected into current gameMode.defaultRules
+  - add in animation for rocket
+  - add in real photos
+  - whole page detailing game modes / game rules / rule with search functionality and add functionality (after next upgrade?)
+    - add - ctrl-k for some sort of (game) search
