@@ -113,7 +113,7 @@ release 2.0
 - remove title from locale swithcer for small devices, only flag V
 - set defaults for translation keys V
 
-- setup crowdin for translations
+- setup crowdin for translations V
   - create banner and/or joyride
   - maybe even as home page footer
 
@@ -144,3 +144,4 @@ Ice Box:
   - allow user login
   - user can create rules, game rules / no gamemodes (least wouldnt know how)
   - user can upload custom cards / decks
+- mobile game could have a tab view for nav + rule/notifs + card view + buttons / table / settings 
