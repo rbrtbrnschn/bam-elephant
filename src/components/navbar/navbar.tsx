@@ -23,7 +23,7 @@ export const MyNavbar = ({
   const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
   const [locale, setLocale] = useState<ILocale>(
     //@ts-ignore
-    LOCALES[getLocaleStorage("i18nextLng") || "de_DE"]
+    LOCALES[getLocaleStorage("i18nextLng") || "en_US"] || LOCALES["en_US"]
   );
 
   const hasClickedLocales = getLocaleStorage("navbar.hasClickedLocales");
