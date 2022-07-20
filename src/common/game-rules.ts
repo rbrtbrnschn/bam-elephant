@@ -18,7 +18,7 @@ export const fullShot: IBaseRule = {
 export const threeKamikazeShots = {
   title: "3 Kamikaze Shots",
   description:
-    "Chug 3 shots after one another. But what are the odds of a 2 winning, right?",
+    "Chug 3 shots after one another. But what are the odds of a 2 winning, right? Rule cannot be reassinged.",
 };
 export const neverHaveIEver: IExampleRule = {
   title: "Never Have I Ever",

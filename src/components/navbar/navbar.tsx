@@ -54,6 +54,8 @@ export const MyNavbar = ({
     }, [ref, hasLocaleExpanded]);
   }
   useOutsideAlerter(localeDropdownRef);
+  const tooSmallForLocaleName = window.innerWidth < 389;
+
   return (
     <nav
       className={`bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 ${className}`}
@@ -100,7 +102,7 @@ export const MyNavbar = ({
             {React.cloneElement(locale.flag, {
               className: "w-[20px] h-[20px] h-3.5 w-3.5 rounded-full mr-2",
             })}
-            {locale.title}
+            {!tooSmallForLocaleName ? locale.title : null}
           </button>
 
           <div
@@ -118,6 +120,7 @@ export const MyNavbar = ({
                     onClick={() => {
                       i18n.changeLanguage(l.languageCode || "en");
                       setLocale(l);
+                      setHasLocaleExpanded(!hasLocaleExpanded);
                     }}
                   >
                     <a

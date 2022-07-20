@@ -70,6 +70,7 @@ export function useGameState({
   };
 
   const setRule = (newRule: IBaseRule) => {
+    console.log("newRule:", newRule);
     setState((oldState) => ({ ...oldState, rule: newRule }));
   };
 

@@ -107,13 +107,15 @@ release 1.3.1 V
   - headers V
 
 release 2.0
+- refactor gamerule.rule handle to not use hardcode card valus like ACE V
+- cards that cannot be reruled like 2 in lowkey V
+- add onclick for info component, so that mobile works V (it does on native anyways)
+- remove title from locale swithcer for small devices, only flag V
+
+- set defaults for translation keys
 - setup crowdin for translations
   - create banner and/or joyride
   - maybe even as home page footer
-- refactor gamerule.rule handle to not use hardcode card valus like ACE V
-- cards that cannot be reruled like 2 in lowkey
-- add onclick for info component, so that mobile works
-
 
 - fix shuffle (seems to be very much the same every iteration)
 - sound effects on wins
@@ -126,10 +128,11 @@ release 2.0
 - add in animation for rocket
 - add in real photos
 - whole page detailing game modes / game rules / rule with search functionality and add functionality (after next upgrade?)
+  - add - ctrl-k for some sort of (game) search
+
   
 
 Ice Box:
-- remove title from locale swithcer for small devices, only flag
 - add in cookies section
 - add strapi for rule management
 - rework game component to allow walkthrough

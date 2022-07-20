@@ -2,6 +2,36 @@ import { CardSuit, CardValue, ICard } from "../interfaces/card.interface";
 
 export const STANDARD_DECK: ICard[] = [
   {
+    code: "AS",
+    image: "https://deckofcardsapi.com/static/img/AS.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/AS.svg",
+      png: "https://deckofcardsapi.com/static/img/AS.png",
+    },
+    value: CardValue.ACE,
+    suit: CardSuit.SPADES,
+  },
+  {
+    code: "2S",
+    image: "https://deckofcardsapi.com/static/img/2S.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/2S.svg",
+      png: "https://deckofcardsapi.com/static/img/2S.png",
+    },
+    value: CardValue.TWO,
+    suit: CardSuit.SPADES,
+  },
+  {
+    code: "AC",
+    image: "https://deckofcardsapi.com/static/img/AC.png",
+    images: {
+      svg: "https://deckofcardsapi.com/static/img/AC.svg",
+      png: "https://deckofcardsapi.com/static/img/AC.png",
+    },
+    value: CardValue.ACE,
+    suit: CardSuit.CLUBS,
+  },
+  {
     code: "JD",
     image: "https://deckofcardsapi.com/static/img/JD.png",
     images: {
@@ -21,16 +51,7 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.KING,
     suit: CardSuit.CLUBS,
   },
-  {
-    code: "AS",
-    image: "https://deckofcardsapi.com/static/img/AS.png",
-    images: {
-      svg: "https://deckofcardsapi.com/static/img/AS.svg",
-      png: "https://deckofcardsapi.com/static/img/AS.png",
-    },
-    value: CardValue.ACE,
-    suit: CardSuit.SPADES,
-  },
+
   {
     code: "9D",
     image: "https://deckofcardsapi.com/static/img/9D.png",
@@ -81,16 +102,7 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.FIVE,
     suit: CardSuit.CLUBS,
   },
-  {
-    code: "2S",
-    image: "https://deckofcardsapi.com/static/img/2S.png",
-    images: {
-      svg: "https://deckofcardsapi.com/static/img/2S.svg",
-      png: "https://deckofcardsapi.com/static/img/2S.png",
-    },
-    value: CardValue.TWO,
-    suit: CardSuit.SPADES,
-  },
+
   {
     code: "6S",
     image: "https://deckofcardsapi.com/static/img/6S.png",
@@ -502,16 +514,7 @@ export const STANDARD_DECK: ICard[] = [
     value: CardValue.QUEEN,
     suit: CardSuit.CLUBS,
   },
-  {
-    code: "AC",
-    image: "https://deckofcardsapi.com/static/img/AC.png",
-    images: {
-      svg: "https://deckofcardsapi.com/static/img/AC.svg",
-      png: "https://deckofcardsapi.com/static/img/AC.png",
-    },
-    value: CardValue.ACE,
-    suit: CardSuit.CLUBS,
-  },
+
   {
     code: "8C",
     image: "https://deckofcardsapi.com/static/img/8C.png",
@@ -525,7 +528,6 @@ export const STANDARD_DECK: ICard[] = [
 ];
 
 export const LOW_KEY_STANDARD_DECK: ICard[] = [
-  ...STANDARD_DECK,
   {
     code: "BE",
     image: "/assets/elephant-card.png",
@@ -536,4 +538,5 @@ export const LOW_KEY_STANDARD_DECK: ICard[] = [
     value: CardValue.ELEPHANT,
     suit: CardSuit.OTHER,
   },
+  ...STANDARD_DECK,
 ];

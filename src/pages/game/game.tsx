@@ -15,6 +15,7 @@ import { IGameModeWithDescription } from "../../interfaces/game.interface";
 import {
   IBaseRule,
   IGameRulesWithDescription,
+  IWarningRule,
 } from "../../interfaces/rules.interface";
 import { useGameState } from "../../store/game";
 interface IGameProps {
@@ -46,6 +47,7 @@ export const Game = ({
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
   const modalRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     thunks.shuffle();
   }, []);
@@ -110,16 +112,19 @@ export const Game = ({
           {rule.title && (
             <MyBanner
               title={
-                players[
-                  drawnCards.findIndex((c) => c.code === winner?.code) ?? 0
-                ] +
-                ": " +
-                rule.title
+                !(rule as IWarningRule).isWarning
+                  ? players[
+                      drawnCards.findIndex((c) => c.code === winner?.code) ?? 0
+                    ] +
+                    ": " +
+                    rule.title
+                  : rule.title
               }
               dataTip={rule.description}
               onClose={() => {
-                setRule({ title: "", description: "" });
+                setRule({ title: "", description: "asdd" });
               }}
+              isDanger={(rule as IWarningRule).isWarning}
             />
           )}
         </div>

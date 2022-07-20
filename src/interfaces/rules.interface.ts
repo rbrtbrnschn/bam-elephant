@@ -7,6 +7,10 @@ export interface IExampleRule extends IBaseRule {
   example?: string;
 }
 
+export interface IWarningRule extends IBaseRule {
+  isWarning: boolean;
+}
+
 export type GameRules = Partial<Record<CardValue, IBaseRule>>;
 export interface IGameRulesWithDescription {
   title: string;

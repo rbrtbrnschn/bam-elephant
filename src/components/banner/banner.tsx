@@ -16,7 +16,7 @@ export const MyBanner = ({
   const color = isDanger ? "red" : "blue";
   return (
     <div
-      className={`flex p-4 mb-4 bg-${color}-100 border-t-4 border-${color}-500 dark:bg-${color}-200`}
+      className={`flex p-4 mb-4 border-t-4 border-${color}-500 dark:bg-${color}-200 bg-${color}-100`}
       role="alert"
       {...props}
     >
