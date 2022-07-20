@@ -94,7 +94,7 @@
     "gameModes": {
       "title": "Game Modes"
     },
-    "quote": "Why did we call this Bam Elephant again?",
+    "quote":"Why did we call this Bam Elephant again?",
     "gameRules": {
       "title": "Game Rules"
     }
@@ -108,52 +108,12 @@
     "outdoors": {
       "title": "Outdoors",
       "description": "Share relevant, engaging, and inspirational brand messages to create a connection with your audience.",
-      "about": [
-        [
-          "Jack",
-          {
-            "title": "assign new rule"
-          }
-        ],
-        [
-          "Queen",
-          {
-            "title": "assign new rule"
-          }
-        ],
-        [
-          "KING",
-          {
-            "title": "assing new rule"
-          }
-        ]
-      ]
+      "about": [["Jack",{"title":"assign new rule"}], ["Queen", {"title":"assign new rule"}], ["KING", {"title":"assing new rule"}]]
     },
     "low-key": {
       "title": "Low-Key",
       "description": "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
-      "about": [
-        [
-          "Seven",
-          {
-            "title": "shuffle deck",
-            "description": "Shuffles left over cards."
-          }
-        ],
-        [
-          "Ace",
-          {
-            "title": "assign new rule"
-          }
-        ],
-        [
-          "Bam Elephant",
-          {
-            "title": "Reverse Winner",
-            "description": "Winner becomes loser, loser becomes winner. A 2 can actually win."
-          }
-        ]
-      ]
+      "about": [["Seven", {"title":"shuffle deck", "description": "Shuffles left over cards."}], ["Ace", {"title":"assign new rule"}],["Bam Elephant", {"title":"Reverse Winner","description": "Winner becomes loser, loser becomes winner. A 2 can actually win."}]]
     },
     "atTheClub": {
       "title": "@ The Club",
@@ -163,60 +123,60 @@
   },
   "gameRules": {
     "walkthrough": {
-      "title": "Walkthrough",
-      "description": "For educational purposes only.",
-      "about": "WIP."
+      "title":"Walkthrough",
+      "description":"For educational purposes only.",
+      "about":"WIP."
     },
     "basic": {
-      "title": "Basic",
+      "title":"Basic",
       "description": "At this point I'm out of information.",
-      "about": "Wip."
+      "about":"Wip."
     },
     "crazy": {
-      "title": "Crazy",
+      "title":"Crazy",
       "description": "Lorem Ipsum. I don't even know, how to describe it. That's how crazy it is.",
-      "about": "Wip."
+      "about":"Wip."
     },
     "adversity-rich": {
-      "title": "Adversity-rich",
+      "title":"Adversity-rich",
       "description": "I'm just making up words as I go now.",
-      "about": "Wip."
+      "about":"Wip."
     }
   },
   "game": {
     "draw": "Draw",
-    "shuffle": "Shuffle",
-    "undo": "Undo",
-    "leave-demo": "Leave demo",
-    "value": "Value",
-    "rule": "Rule",
-    "onboarding": {
-      "add-player": "Add Player",
+    "shuffle":"Shuffle",
+    "undo":"Undo",
+    "leave-demo":"Leave demo",
+    "value":"Value",
+    "rule":"Rule",
+    "onboarding":{
+      "add-player":"Add Player",
       "add-player_other": "Add Players",
-      "remove-last-player": "Remove Last Player",
-      "name-player": "Name Player",
-      "select": "Select",
-      "submit": "Submit",
-      "headings": {
-        "gameModes": "Game Modes",
+      "remove-last-player":"Remove Last Player",
+      "name-player":"Name Player",
+      "select":"Select",
+      "submit":"Submit",
+      "headings":{
+        "gameModes":"Game Modes",
         "gameRules": "Game Rules",
-        "about": "About",
-        "preview": "Game Rules Preview"
+        "about":"About",
+        "preview":"Game Rules Preview"
       },
       "dataTips": {
         "gameModes": "A 'Game Mode' is what will happen to you in the game.",
         "gameRules": "A 'Game Rule' is what you will end up doing."
       }
     },
-    "add-rule-modal": {
-      "add-rule-to": "Add rule to",
-      "your-new-rule": "Your new rule",
+    "add-rule-modal":{
+      "add-rule-to":"Add rule to",
+      "your-new-rule":"Your new rule",
       "custom-rule-instead": "Add Custom Rule Instead?",
       "submit": "{{player}} Sets Rule",
       "no-rule-set": "No rule set",
       "skip": {
         "prefix": "Not mandatory",
-        "c2c": "Click to skip"
+        "c2c": "Click to skip" 
       }
     }
   },
