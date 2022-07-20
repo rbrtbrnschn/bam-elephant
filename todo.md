@@ -117,6 +117,7 @@ release 2.0
   - create banner and/or joyride V
   - fix dark mode on banner and onClick/onClose issue. V
   - maybe even as home page footer
+- fix locale misloading saved V
 
 
 

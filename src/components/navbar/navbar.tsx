@@ -20,11 +20,11 @@ export const MyNavbar = ({
   const faqs = useFaqs();
   const localeButtonRef = useRef<HTMLButtonElement>(null);
   const localeDropdownRef = useRef<HTMLDivElement>(null);
+  const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
   const [locale, setLocale] = useState<ILocale>(
     //@ts-ignore
-    LOCALES[localStorage.getItem("i18nextLng") || "en_US"]
+    LOCALES[getLocaleStorage("i18nextLng") || "de_DE"]
   );
-  const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
 
   const hasClickedLocales = getLocaleStorage("navbar.hasClickedLocales");
 
