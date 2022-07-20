@@ -37,14 +37,12 @@ export const Game = ({
     deck,
     drawnCards,
     modalIsOpen,
-    newRule,
     rule,
     gameRules,
     gameMode,
     disposedCards,
   } = state;
-  const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
-    actions;
+  const { setDeck, setDrawnCards, setRules, toggleModal, setRule } = actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
   const modalRef = useRef<HTMLDivElement>(null);

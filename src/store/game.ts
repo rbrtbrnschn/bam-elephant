@@ -52,7 +52,6 @@ export function useGameState({
     },
     gameRules: { ...gameRules },
     gameMode: { ...gameMode },
-    newRule: "",
     modalIsOpen: false,
   });
   const previousDrawnCards = usePrevious<ICard[]>(state.drawnCards);
@@ -81,10 +80,6 @@ export function useGameState({
     }));
   };
 
-  const setNewRule = (newRule: string) => {
-    setState((oldState) => ({ ...oldState, newRule }));
-  };
-
   const toggleModal = () => {
     setState((oldState) => ({ ...oldState, modalIsOpen: !state.modalIsOpen }));
   };
@@ -95,7 +90,6 @@ export function useGameState({
     setDisposedCards,
     setRule,
     setRules,
-    setNewRule,
     toggleModal,
   };
   /* ACTIONS */
@@ -189,7 +183,6 @@ export function useGameState({
       setDisposedCards,
       setRule,
       setRules,
-      setNewRule,
     },
     helpers: {
       hasStarted: roundHasStarted,
