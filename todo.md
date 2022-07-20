@@ -107,9 +107,13 @@ release 1.3.1 V
   - headers V
 
 release 2.0
-- add in cookies section
+- setup crowdin for translations
+  - create banner and/or joyride
+  - maybe even as home page footer
+- refactor gamerule.rule handle to not use hardcode card valus like ACE V
 - cards that cannot be reruled like 2 in lowkey
 - add onclick for info component, so that mobile works
+
 
 - fix shuffle (seems to be very much the same every iteration)
 - sound effects on wins
@@ -125,6 +129,8 @@ release 2.0
   
 
 Ice Box:
+- remove title from locale swithcer for small devices, only flag
+- add in cookies section
 - add strapi for rule management
 - rework game component to allow walkthrough
 - per account custom rules, that maybe added to gamemodes or game Rules

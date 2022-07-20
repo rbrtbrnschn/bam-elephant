@@ -152,19 +152,6 @@ export function useGameState({
   }, [state.gameRules, winner]);
 
   /* HOOKS */
-  /**
-   * Cleanup New Rule Modal
-   * if skipped.
-   */
-  function useCleanupNewRuleDelegationDialoge() {
-    useEffect(() => {
-      const noAce = winner?.value !== CardValue.ACE;
-      const modalIsOpen = state.modalIsOpen === true;
-      if (noAce && modalIsOpen) {
-        toggleModal();
-      }
-    }, [state.drawnCards]);
-  }
 
   /**
    * Shift old `drawnCards` to `disposedCards` pile for history
@@ -190,7 +177,6 @@ export function useGameState({
 
   /* HOOKS */
 
-  useCleanupNewRuleDelegationDialoge();
   useDisposeLastDrawnCards();
 
   return {
