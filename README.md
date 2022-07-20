@@ -8,11 +8,15 @@
 <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/rbrtbrnschn/bam-elephant?style=for-the-badge">
 <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/rbrtbrnschn/bam-elephant?style=for-the-badge">
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/rbrtbrnschn/bam-elephant/Lint?label=Lint&style=for-the-badge"> <img alt="GitHub deployments" src="https://img.shields.io/github/deployments/rbrtbrnschn/bam-elephant/production?label=Deploy&style=for-the-badge">
+<a href="https://bam-elephant.com"><img src="https://img.shields.io/github/workflow/status/rbrtbrnschn/bam-elephant/Crowdin%20Sync?label=Translations&style=for-the-badge" alt="crowdin-sinc workflow" /></a>
+<a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Ideas%3F"><img src="https://img.shields.io/badge/Share-Ideas%20-yellow?style=for-the-badge" /></a>
+<a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Feedback"><img src="https://img.shields.io/badge/Leave-Feedback%20-yellow?style=for-the-badge" />
 </p>
 
-<p align="center">
-<a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Ideas%3F"><img src="https://img.shields.io/badge/Share-Ideas%20-yellow?style=for-the-badge" /></a>
-<a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Feedback"><img src="https://img.shields.io/badge/Leave-Feedback%20-yellow?style=for-the-badge" /></a></p>
+
+
+
+
 
 
 <p align="center">
