@@ -7,12 +7,14 @@ import { MyNavbar } from "../../components/navbar/navbar";
 import { useStorage } from "../../utils/useStorage";
 import { Testimonial } from "../rules/testimonial.rules";
 import { useGameRedirect } from "./redirect.hook";
+import { MyBanner } from "../../components/banner/banner";
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { getLocaleStorage } = useStorage(localStorage);
+  const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
   const needsJoyride = !getLocaleStorage("site.visited-walkthrough");
+  const needsLocaleBanner = !getLocaleStorage("site.show-crowdin-banner");
 
   const getStartedAnchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -28,9 +30,22 @@ export const HomePage = () => {
   useEffect(() => {
     getStartedAnchorRef.current?.focus();
   }, []);
+
+  const [showingLocaleBanner, setShowingLocaleBanner] = useState(false);
   return (
     <div>
       {needsJoyride ? <ReactJoyride steps={steps} run={true} /> : null}
+      {false ? (
+        <div className="px-4 mx-auto max-w-screen-xl text-center lg:px-12 ">
+          <MyBanner
+            title="New Internationilization Feature! To add translations for your language, click here."
+            dataTip="We're using 'Crowdin' for language support."
+            color="teal"
+            onClick={() => {}}
+            onClose={() => {}}
+          />
+        </div>
+      ) : null}
       <MyNavbar />
       <section className="bg-white dark:bg-gray-900">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">

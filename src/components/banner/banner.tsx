@@ -5,18 +5,21 @@ interface IMyBannerProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: (e: any) => void;
   isDanger?: boolean;
   dataTip?: string;
+  color?: string;
 }
 export const MyBanner = ({
   title,
   dataTip = "",
   onClose,
   isDanger,
+  color = "blue",
+  className,
   ...props
 }: IMyBannerProps) => {
-  const color = isDanger ? "red" : "blue";
+  if (isDanger && color === "red") color = "red";
   return (
     <div
-      className={`flex p-4 mb-4 border-t-4 border-${color}-500 dark:bg-${color}-200 bg-${color}-100`}
+      className={`flex p-4 mb-4 border-t-4 border-${color}-500 dark:bg-${color}-200 bg-${color}-100 ${className}`}
       role="alert"
       {...props}
     >

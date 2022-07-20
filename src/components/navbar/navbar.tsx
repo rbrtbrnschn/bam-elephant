@@ -21,6 +21,7 @@ export const MyNavbar = ({
   const localeButtonRef = useRef<HTMLButtonElement>(null);
   const localeDropdownRef = useRef<HTMLDivElement>(null);
   const [locale, setLocale] = useState<ILocale>(
+    //@ts-ignore
     LOCALES[localStorage.getItem("i18nextLng") || "en_US"]
   );
   const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
@@ -57,10 +58,10 @@ export const MyNavbar = ({
 
   return (
     <nav
-      className={`bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 ${className}`}
+      className={`bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900   px-4 mx-auto max-w-screen-xl lg:px-12 ${className}`}
       {...props}
     >
-      <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
+      <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl py-2.5">
         <a
           href="#"
           className="flex items-center"
