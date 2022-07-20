@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../common/useTranslation";
 import { useNavigate } from "react-router-dom";
 import { ILocale, LOCALES } from "../../common/locales";
 import i18n from "../../i18n.config";

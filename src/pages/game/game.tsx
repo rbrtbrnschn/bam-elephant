@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../common/useTranslation";
 import ReactTooltip from "react-tooltip";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";

@@ -1,6 +1,6 @@
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../common/useTranslation";
 import { useGameModesWithDescription } from "../../common/game-modes";
 import { useGameRulesWithDescription } from "../../common/game-rules";
 import { MyCard2 } from "../../components/card/card2";
@@ -42,6 +42,7 @@ export const GameOnboarding = ({
   const gameModes = useGameModesWithDescription();
   const allGameRules = useGameRulesWithDescription();
   const { t } = useTranslation();
+
   return (
     <div>
       <MyNavbar />

@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../common/useTranslation";
 import { CardValue } from "../interfaces/card.interface";
 import {
   GameRules,

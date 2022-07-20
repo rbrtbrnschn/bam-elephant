@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../common/useTranslation";
 import ReactJoyride, { Step } from "react-joyride";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MyFooter } from "../../components/footer/footer";

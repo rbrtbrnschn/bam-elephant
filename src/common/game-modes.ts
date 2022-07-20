@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../common/useTranslation";
 import { toast } from "react-toastify";
 import { CardValue, ICard } from "../interfaces/card.interface";
 import {
@@ -133,7 +133,7 @@ export const useLowKeyGameMode = () => {
   const { t } = useTranslation();
   const LOW_KEY_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
     title: t("gameModes.low-key.title"),
-    about: t("gameModes.low-key.about"),
+    about: t("gameModes.low-key.about") as unknown as [string, IBaseRule][],
     description: t("gameModes.low-key.description"),
     mode: LOW_KEY_GAME_MODE,
     handleWinner: handleLowKeyWinner,
@@ -151,7 +151,7 @@ export const useWalkthroughGameMode = () => {
   const { t } = useTranslation();
   const WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
     title: t("gameModes.walkthrough.title"),
-    about: t("gameModes.walkthrough.about"),
+    about: t("gameModes.walkthrough.about") as unknown as [string, IBaseRule][],
     description: t("gameModes.walkthrough.description"),
     mode: WALKTHROUGH_GAME_MODE,
     handleWinner,
@@ -177,7 +177,7 @@ export const useOutdoorsGameMode = () => {
   const { t } = useTranslation();
   const OUTDOORS_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
     title: t("gameModes.outdoors.title"),
-    about: t("gameModes.outdoors.about"),
+    about: t("gameModes.outdoors.about") as unknown as [string, IBaseRule][],
     description: t("gameModes.outdoors.description"),
     mode: OUTDOORS_GAME_MODE,
     handleWinner,
@@ -194,7 +194,7 @@ export const useAtTheClubGameMode = () => {
   const { t } = useTranslation();
   const At_THE_CLUB_GAME_MODE_WITH_DESCRIPTION: IGameModeWithDescription = {
     title: t("gameModes.atTheClub.title"),
-    about: t("gameModes.atTheClub.about"),
+    about: t("gameModes.atTheClub.about") as unknown as [string, IBaseRule][],
     description: t("gameModes.atTheClub.description"),
     mode: AT_THE_CLUB_GAME_MODE,
     handleWinner,

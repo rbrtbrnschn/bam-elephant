@@ -111,8 +111,8 @@ release 2.0
 - cards that cannot be reruled like 2 in lowkey V
 - add onclick for info component, so that mobile works V (it does on native anyways)
 - remove title from locale swithcer for small devices, only flag V
+- set defaults for translation keys V
 
-- set defaults for translation keys
 - setup crowdin for translations
   - create banner and/or joyride
   - maybe even as home page footer
