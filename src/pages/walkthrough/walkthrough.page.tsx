@@ -31,17 +31,9 @@ export const WalkthroughPage = () => {
     gameMode: walkthroughGameMode,
     gameRules: walkthroughGameRules,
   });
-  const {
-    deck,
-    drawnCards,
-    modalIsOpen,
-    newRule,
-    rule,
-    gameRules,
-    disposedCards,
-  } = state;
-  const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
-    actions;
+  const { deck, drawnCards, modalIsOpen, rule, gameRules, disposedCards } =
+    state;
+  const { setDeck, setDrawnCards, setRules, toggleModal, setRule } = actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
   const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);

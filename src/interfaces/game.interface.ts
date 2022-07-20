@@ -8,7 +8,6 @@ export interface IGameState {
   rule: IBaseRule;
   gameRules: IGameRulesWithDescription;
   gameMode: IGameModeWithDescription;
-  newRule: string;
   modalIsOpen: boolean;
 }
 export interface IGameActions {
@@ -17,7 +16,6 @@ export interface IGameActions {
   setDisposedCards: (cards: ICard[]) => void;
   setRule: (rule: IBaseRule) => void;
   setRules: (rules: IGameRulesWithDescription) => void;
-  setNewRule: (newRule: string) => void;
   toggleModal: () => void;
 }
 

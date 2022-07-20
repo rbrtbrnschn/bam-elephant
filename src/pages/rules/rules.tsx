@@ -1,6 +1,6 @@
 import { t } from "i18next";
 import React, { useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../common/useTranslation";
 import { useNavigate } from "react-router-dom";
 import { useGameModesWithDescription } from "../../common/game-modes";
 import { useGameRulesWithDescription } from "../../common/game-rules";

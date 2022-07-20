@@ -107,24 +107,22 @@ release 1.3.1 V
   - headers V
 
 release 2.0
-- add in cookies section
-- cards that cannot be reruled like 2 in lowkey
-- add onclick for info component, so that mobile works
+- refactor gamerule.rule handle to not use hardcode card valus like ACE V
+- cards that cannot be reruled like 2 in lowkey V
+- add onclick for info component, so that mobile works V (it does on native anyways)
+- remove title from locale swithcer for small devices, only flag V
+- set defaults for translation keys V
 
-- fix shuffle (seems to be very much the same every iteration)
-- sound effects on wins
-- settings to disable sound effects
-- save game?
-- add cookies message saying, we dont keep cookies. (accept or decline)
-- jokers?
-- user can create client-side rules
-  - which will be injected into current gameMode.defaultRules
-- add in animation for rocket
-- add in real photos
-- whole page detailing game modes / game rules / rule with search functionality and add functionality (after next upgrade?)
+- setup crowdin for translations V
+  - create banner and/or joyride
+  - maybe even as home page footer
+
+
+
   
 
 Ice Box:
+- add in cookies section
 - add strapi for rule management
 - rework game component to allow walkthrough
 - per account custom rules, that maybe added to gamemodes or game Rules
@@ -135,3 +133,18 @@ Ice Box:
   - allow user login
   - user can create rules, game rules / no gamemodes (least wouldnt know how)
   - user can upload custom cards / decks
+- mobile game could have a tab view for nav + rule/notifs + card view + buttons / table / settings 
+
+  Releas 2.0 Ideas:
+  - fix shuffle (seems to be very much the same every iteration)
+  - sound effects on wins
+  - settings to disable sound effects
+  - save game?
+  - add cookies message saying, we dont keep cookies. (accept or decline)
+  - jokers?
+  - user can create client-side rules
+    - which will be injected into current gameMode.defaultRules
+  - add in animation for rocket
+  - add in real photos
+  - whole page detailing game modes / game rules / rule with search functionality and add functionality (after next upgrade?)
+    - add - ctrl-k for some sort of (game) search

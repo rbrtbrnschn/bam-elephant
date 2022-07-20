@@ -52,7 +52,6 @@ export function useGameState({
     },
     gameRules: { ...gameRules },
     gameMode: { ...gameMode },
-    newRule: "",
     modalIsOpen: false,
   });
   const previousDrawnCards = usePrevious<ICard[]>(state.drawnCards);
@@ -71,6 +70,7 @@ export function useGameState({
   };
 
   const setRule = (newRule: IBaseRule) => {
+    console.log("newRule:", newRule);
     setState((oldState) => ({ ...oldState, rule: newRule }));
   };
 
@@ -79,10 +79,6 @@ export function useGameState({
       ...oldState,
       gameRules: newRules,
     }));
-  };
-
-  const setNewRule = (newRule: string) => {
-    setState((oldState) => ({ ...oldState, newRule }));
   };
 
   const toggleModal = () => {
@@ -95,7 +91,6 @@ export function useGameState({
     setDisposedCards,
     setRule,
     setRules,
-    setNewRule,
     toggleModal,
   };
   /* ACTIONS */
@@ -152,19 +147,6 @@ export function useGameState({
   }, [state.gameRules, winner]);
 
   /* HOOKS */
-  /**
-   * Cleanup New Rule Modal
-   * if skipped.
-   */
-  function useCleanupNewRuleDelegationDialoge() {
-    useEffect(() => {
-      const noAce = winner?.value !== CardValue.ACE;
-      const modalIsOpen = state.modalIsOpen === true;
-      if (noAce && modalIsOpen) {
-        toggleModal();
-      }
-    }, [state.drawnCards]);
-  }
 
   /**
    * Shift old `drawnCards` to `disposedCards` pile for history
@@ -190,7 +172,6 @@ export function useGameState({
 
   /* HOOKS */
 
-  useCleanupNewRuleDelegationDialoge();
   useDisposeLastDrawnCards();
 
   return {
@@ -203,7 +184,6 @@ export function useGameState({
       setDisposedCards,
       setRule,
       setRules,
-      setNewRule,
     },
     helpers: {
       hasStarted: roundHasStarted,

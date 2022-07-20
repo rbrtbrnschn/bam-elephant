@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../common/useTranslation";
 import { useNavigate } from "react-router-dom";
 import { ILocale, LOCALES } from "../../common/locales";
 import i18n from "../../i18n.config";
@@ -21,8 +21,7 @@ export const MyNavbar = ({
   const localeButtonRef = useRef<HTMLButtonElement>(null);
   const localeDropdownRef = useRef<HTMLDivElement>(null);
   const [locale, setLocale] = useState<ILocale>(
-    //@ts-ignore
-    LOCALES[localStorage.getItem("i18nextLng") || "en-US"]
+    LOCALES[localStorage.getItem("i18nextLng") || "en_US"]
   );
   const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
 
@@ -54,6 +53,8 @@ export const MyNavbar = ({
     }, [ref, hasLocaleExpanded]);
   }
   useOutsideAlerter(localeDropdownRef);
+  const tooSmallForLocaleName = window.innerWidth < 389;
+
   return (
     <nav
       className={`bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 ${className}`}
@@ -100,7 +101,7 @@ export const MyNavbar = ({
             {React.cloneElement(locale.flag, {
               className: "w-[20px] h-[20px] h-3.5 w-3.5 rounded-full mr-2",
             })}
-            {locale.title}
+            {!tooSmallForLocaleName ? locale.title : null}
           </button>
 
           <div
@@ -118,6 +119,7 @@ export const MyNavbar = ({
                     onClick={() => {
                       i18n.changeLanguage(l.languageCode || "en");
                       setLocale(l);
+                      setHasLocaleExpanded(!hasLocaleExpanded);
                     }}
                   >
                     <a

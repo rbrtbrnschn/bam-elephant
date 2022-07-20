@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../common/useTranslation";
 import ReactTooltip from "react-tooltip";
 import { MyBanner } from "../../components/banner/banner";
 import { MyCard } from "../../components/card/card";
@@ -15,6 +15,7 @@ import { IGameModeWithDescription } from "../../interfaces/game.interface";
 import {
   IBaseRule,
   IGameRulesWithDescription,
+  IWarningRule,
 } from "../../interfaces/rules.interface";
 import { useGameState } from "../../store/game";
 interface IGameProps {
@@ -37,17 +38,16 @@ export const Game = ({
     deck,
     drawnCards,
     modalIsOpen,
-    newRule,
     rule,
     gameRules,
     gameMode,
     disposedCards,
   } = state;
-  const { setDeck, setDrawnCards, setNewRule, setRules, toggleModal, setRule } =
-    actions;
+  const { setDeck, setDrawnCards, setRules, toggleModal, setRule } = actions;
   const { hasEnded, hasStarted, winner, loser } = helpers;
   const { restart } = thunks;
   const modalRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     thunks.shuffle();
   }, []);
@@ -112,16 +112,19 @@ export const Game = ({
           {rule.title && (
             <MyBanner
               title={
-                players[
-                  drawnCards.findIndex((c) => c.code === winner?.code) ?? 0
-                ] +
-                ": " +
-                rule.title
+                !(rule as IWarningRule).isWarning
+                  ? players[
+                      drawnCards.findIndex((c) => c.code === winner?.code) ?? 0
+                    ] +
+                    ": " +
+                    rule.title
+                  : rule.title
               }
               dataTip={rule.description}
               onClose={() => {
-                setRule({ title: "", description: "" });
+                setRule({ title: "", description: "asdd" });
               }}
+              isDanger={(rule as IWarningRule).isWarning}
             />
           )}
         </div>
