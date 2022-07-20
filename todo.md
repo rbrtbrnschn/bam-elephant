@@ -114,7 +114,7 @@ release 2.0
 - set defaults for translation keys V
 
 - setup crowdin for translations V
-  - create banner and/or joyride
+  - create banner and/or joyride V
   - maybe even as home page footer
 
 

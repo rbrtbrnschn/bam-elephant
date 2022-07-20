@@ -14,7 +14,15 @@ export const HomePage = () => {
   const { t } = useTranslation();
   const { getLocaleStorage, setLocalStorage } = useStorage(localStorage);
   const needsJoyride = !getLocaleStorage("site.visited-walkthrough");
+
   const needsLocaleBanner = !getLocaleStorage("site.show-crowdin-banner");
+  const [showLocaleBanner, setShowLocaleBanner] = useState(
+    !!needsLocaleBanner ?? false
+  );
+  const disableLocaleBanner = () => {
+    setShowLocaleBanner(false);
+    setLocalStorage("site.show-crowdin-banner", Date.now() + "");
+  };
 
   const getStartedAnchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -31,18 +39,23 @@ export const HomePage = () => {
     getStartedAnchorRef.current?.focus();
   }, []);
 
-  const [showingLocaleBanner, setShowingLocaleBanner] = useState(false);
   return (
     <div>
       {needsJoyride ? <ReactJoyride steps={steps} run={true} /> : null}
-      {false ? (
+      {showLocaleBanner ? (
         <div className="px-4 mx-auto max-w-screen-xl text-center lg:px-12 ">
           <MyBanner
             title="New Internationilization Feature! To add translations for your language, click here."
             dataTip="We're using 'Crowdin' for language support."
             color="teal"
-            onClick={() => {}}
-            onClose={() => {}}
+            className="cursor-pointer"
+            onClick={() => {
+              disableLocaleBanner();
+              window.open("https://crowdin.com/project/bam-elephant", "_blank");
+            }}
+            onClose={() => {
+              disableLocaleBanner();
+            }}
           />
         </div>
       ) : null}
