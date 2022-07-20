@@ -45,14 +45,25 @@ export const HomePage = () => {
       {showLocaleBanner ? (
         <div className="px-4 mx-auto max-w-screen-xl text-center lg:px-12 ">
           <MyBanner
-            title="New Internationilization Feature! To add translations for your language, click here."
+            title={
+              <span>
+                "New Internationilization Feature!" To add translations for your
+                language{" "}
+                <a
+                  href="https://crowdin.com/project/bam-elephant"
+                  target={"_blank"}
+                  className="text-blue-500 underline "
+                  onClick={() => {
+                    disableLocaleBanner();
+                  }}
+                >
+                  click here.
+                </a>
+              </span>
+            }
             dataTip="We're using 'Crowdin' for language support."
             color="teal"
-            className="cursor-pointer"
-            onClick={() => {
-              disableLocaleBanner();
-              window.open("https://crowdin.com/project/bam-elephant", "_blank");
-            }}
+            className={"dark:text-white"}
             onClose={() => {
               disableLocaleBanner();
             }}

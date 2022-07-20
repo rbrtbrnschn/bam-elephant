@@ -1,7 +1,9 @@
 import React from "react";
+import { Info } from "../info/info";
 
-interface IMyBannerProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string;
+interface IMyBannerProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
+  title: string | React.ReactElement;
   onClose?: (e: any) => void;
   isDanger?: boolean;
   dataTip?: string;
@@ -23,26 +25,12 @@ export const MyBanner = ({
       role="alert"
       {...props}
     >
-      <svg
-        className={`flex-shrink-0 w-5 h-5 text-${color}-700`}
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        data-tip={dataTip}
-        data-for="main"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fillRule="evenodd"
-          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-          clipRule="evenodd"
-        ></path>
-      </svg>
-      <div className={`ml-3 text-sm font-medium text-${color}-700`}>
-        {title}
-      </div>
+      <Info dataTip={dataTip} className={`text-${color}-700`} />
+
+      <div className={`text-sm font-medium text-${color}-700`}>{title}</div>
       <button
         type="button"
-        className={`ml-auto -mx-1.5 -my-1.5 bg-${color}-100 dark:bg-${color}-200 text-${color}-500 rounded-lg focus:ring-2 focus:ring-${color}-400 p-1.5 hover:bg-${color}-200 dark:hover:bg-${color}-300 inline-flex h-8 w-8`}
+        className={`ml-auto -mx-1.5 -my-1.5 bg-${color}-100 dark:bg-${color}-200 text-${color}-500 rounded-lg focus:ring-2 focus:ring-${color}-400 p-1.5 hover:bg-${color}-200 dark:hover:bg-${color}-300 inline-flex h-8 w-8 z-10`}
         data-dismiss-target="#alert-border-1"
         aria-label="Close"
         onClick={onClose}

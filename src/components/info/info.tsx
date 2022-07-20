@@ -6,7 +6,7 @@ export const Info = ({ dataTip, dataFor, className, ...props }: IInfoProps) => {
   return (
     <svg
       aria-hidden="true"
-      className={`inline flex-shrink-0 mr-3 w-5 h-5 ${className}`}
+      className={`inline flex-shrink-0 mr-3 w-5 h-5 cursor-help ${className}`}
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
