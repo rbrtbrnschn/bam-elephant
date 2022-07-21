@@ -18,10 +18,12 @@ export const MyBanner = ({
   className,
   ...props
 }: IMyBannerProps) => {
-  if (isDanger && color === "red") color = "red";
+  if (isDanger) color = "red";
   return (
     <div
-      className={`flex p-4 mb-4 border-t-4 border-${color}-500 dark:bg-${color}-200 bg-${color}-100 ${className}`}
+      className={`flex p-4 mb-4 border-t-4 border-${color}-500 dark:bg-${color}-200 bg-${color}-100 ${
+        isDanger ? "dark:text-white" : ""
+      } ${className}`}
       role="alert"
       {...props}
     >

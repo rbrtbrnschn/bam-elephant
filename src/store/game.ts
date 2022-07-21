@@ -18,6 +18,7 @@ import {
   IExampleRule,
   IGameRulesWithDescription,
 } from "../interfaces/rules.interface";
+import { shuffle as fisherYates } from "../utils/shuffle";
 import usePrevious from "./usePrevious.hook";
 
 export function useGameState({
@@ -116,7 +117,8 @@ export function useGameState({
 
   /* THUNKS */
   const shuffle = (shuffleAlg = () => 0.5 - Math.random()) => {
-    setDeck([...state.deck].sort(shuffleAlg));
+    const shuffledDeck = fisherYates(state.deck);
+    setDeck([...shuffledDeck]);
     // setDrawnCards([]);
   };
   const restart = () => {

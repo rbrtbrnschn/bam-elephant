@@ -126,6 +126,7 @@ release 2.0
 Ice Box:
 - add in cookies section
 - add strapi for rule management
+- aos
 - rework game component to allow walkthrough
 - per account custom rules, that maybe added to gamemodes or game Rules
 

@@ -73,8 +73,12 @@ const handleNotification = ({
   if (!state.drawnCards.length)
     return setRule({ title: "", description: "no cards drawn" });
   if (!winner) {
-    toast.error("It's a draw.");
-    return setRule({ title: "", description: "draw" });
+    // toast.error("It's a draw.");
+    return setRule({
+      title: "It's a draw.",
+      description: "Nothing happens",
+      isWarning: true,
+    } as IWarningRule);
   }
 
   const rule = state.gameRules.rules[winner.value];
