@@ -174,7 +174,7 @@ export const RulesPage = () => {
           </div>
           <hr className="mb-12" />
           <Testimonial
-            authorName={"York Treinis"}
+            authorName={"York Treinies"}
             position={"Co Founder"}
             quote={"Why did we call this Bam Elephant again?"}
             authorImageUrl={"https://www.tailwind-kit.com/images/person/1.jpg"}
