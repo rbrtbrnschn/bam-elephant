@@ -122,6 +122,8 @@ release 2.0
 - remove toasts -> move to danger rule V 
 - per account custom rules V
 - refactor to use modal for custom rules in onboarding V
+  - user can create client-side rules V
+    - which will be injected into current gameMode.defaultRules V
 
 
 
@@ -147,8 +149,6 @@ Ice Box:
   - save game?
   - add cookies message saying, we dont keep cookies. (accept or decline)
   - jokers?
-  - user can create client-side rules
-    - which will be injected into current gameMode.defaultRules
   - add in animation for rocket
   - add in real photos
   - whole page detailing game modes / game rules / rule / add rule section (custom rules) with search functionality and add functionality (after next upgrade?)
