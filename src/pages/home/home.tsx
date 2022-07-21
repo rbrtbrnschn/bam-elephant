@@ -48,8 +48,7 @@ export const HomePage = () => {
           <MyBanner
             title={
               <span>
-                "New Internationilization Feature!" To add translations for your
-                language{" "}
+                {t("home.banners.locale.1")}{" "}
                 <a
                   href="https://crowdin.com/project/bam-elephant"
                   target={"_blank"}
@@ -58,11 +57,11 @@ export const HomePage = () => {
                     disableLocaleBanner();
                   }}
                 >
-                  click here.
+                  {t("home.banners.locale.2")}.
                 </a>
               </span>
             }
-            dataTip="We're using 'Crowdin' for language support."
+            dataTip={t("home.banners.locale.data-tip")}
             color="teal"
             className={"dark:text-white"}
             onClose={() => {
@@ -162,8 +161,8 @@ export const HomePage = () => {
           />
           <hr />
           <Hero2
-            title="The Translations need your help!"
-            description="Want to play the game in your language instead? Click below to get started."
+            title={t("home.hero-2.title")}
+            description={t("home.hero-2.description")}
             buttons={[
               {
                 onClick: () => {
@@ -173,7 +172,7 @@ export const HomePage = () => {
                     "_blank"
                   );
                 },
-                label: "Get started",
+                label: t("home.hero-2.buttons.primary"),
               },
             ]}
             imageUrl={"/assets/pc-man.png"}
