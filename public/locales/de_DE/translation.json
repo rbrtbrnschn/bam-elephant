@@ -35,7 +35,21 @@
       "1": "Get Started!",
       "2": "Read Rules"
     },
-    "quote": "Bam Elephant! So isst der Fisch sein Essen aber nicht."
+    "quote": "Bam Elephant! So isst der Fisch sein Essen aber nicht.",
+    "banners": {
+      "locale": {
+        "1": "\"New Internationilization Feature!\" To add translations for your language",
+        "2": "click here",
+        "data-tip": "We're using 'Crowdin' for language support."
+      }
+    },
+    "hero-2": {
+      "title": "The Translations need your help!",
+      "description": "Want to play the game in your language instead? Click below to get started.",
+      "buttons": {
+        "primary": "Get started"
+      }
+    }
   },
   "guide": {
     "h1": "Bam Elephant - The drinking what now?",
