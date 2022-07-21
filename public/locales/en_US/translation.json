@@ -210,7 +210,8 @@
       "remove-last-player": "Remove Last Player",
       "name-player": "Name Player",
       "select": "Select",
-      "submit": "Submit",
+      "submit": "Ready",
+      "new-rule":"New Rule",
       "headings": {
         "gameModes": "Game Modes",
         "gameRules": "Game Rules",
