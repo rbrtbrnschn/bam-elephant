@@ -1,4 +1,4 @@
-interface IMyCard2Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface IMyCard2Props extends React.HTMLAttributes<HTMLDivElement> {
   imageUrl: string;
   title: string;
   description: string;

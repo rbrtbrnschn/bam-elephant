@@ -23,8 +23,8 @@ export const GamePage = () => {
       [
         players.length >= 2,
         players.every((e) => e.length),
-        gameRules,
-        gameMode,
+        Object.keys(gameRules || {}).length,
+        Object.keys(gameMode || {}).length,
       ].every(Boolean),
     [players, gameRules, gameMode]
   );
@@ -38,11 +38,13 @@ export const GamePage = () => {
     setPlayers(newInputs);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e: any) => {
+    e.preventDefault();
     if (!Object.keys(gameMode || {}).length)
       return toast.error("Missing Game Mode. Please Select One first.");
     if (!Object.keys(gameRules || {}).length)
       return toast.error("Missing Rule Set. Please Select One first.");
+    console.log(e);
     if (!ready2Submit) return;
 
     setNeedsOnboarding(false);

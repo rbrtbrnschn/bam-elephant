@@ -118,7 +118,10 @@ release 2.0
   - fix dark mode on banner and onClick/onClose issue. V
   - maybe even as home page footer V
 - fix locale misloading saved V
-  - fix shuffle (seems to be very much the same every iteration) V
+- fix shuffle (seems to be very much the same every iteration) V
+- remove toasts -> move to danger rule V 
+- per account custom rules V
+- refactor to use modal for custom rules in onboarding V
 
 
 
@@ -129,7 +132,6 @@ Ice Box:
 - add strapi for rule management
 - aos
 - rework game component to allow walkthrough
-- per account custom rules, that maybe added to gamemodes or game Rules
 
 - think about moving to next 
   - could create static sites that would work as documentation for all the gamemodes and game rules and rules that were created.
@@ -149,5 +151,5 @@ Ice Box:
     - which will be injected into current gameMode.defaultRules
   - add in animation for rocket
   - add in real photos
-  - whole page detailing game modes / game rules / rule with search functionality and add functionality (after next upgrade?)
+  - whole page detailing game modes / game rules / rule / add rule section (custom rules) with search functionality and add functionality (after next upgrade?)
     - add - ctrl-k for some sort of (game) search

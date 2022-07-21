@@ -18,6 +18,7 @@ import {
   IWarningRule,
 } from "../../interfaces/rules.interface";
 import { useGameState } from "../../store/game";
+import { useCustomRules } from "../../store/useCustomRules.hook";
 interface IGameProps {
   players: string[];
   gameRules: IGameRulesWithDescription;
@@ -83,6 +84,8 @@ export const Game = ({
     if (window?.innerWidth > 700) modalRef?.current?.focusInput();
   }, [modalIsOpen]);
 
+  const { customRules } = useCustomRules();
+
   const { t } = useTranslation();
   return (
     <div className="relative h-screen max-h-screen overflow-hidden">
@@ -93,7 +96,7 @@ export const Game = ({
           playerName={players[drawnCards.indexOf(loser as ICard) || 0]}
           ref={modalRef}
           onClose={toggleModal}
-          defaultRules={gameMode.defaultRules}
+          defaultRules={[...gameMode.defaultRules, ...customRules]}
           onSuccess={(rule: IBaseRule) => {
             setRules({
               ...gameRules,

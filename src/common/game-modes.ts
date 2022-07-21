@@ -97,7 +97,11 @@ const handleNotification = ({
 export const LOW_KEY_GAME_MODE: GameMode = {
   [CardValue.SEVEN]: (options) => {
     options.thunks.shuffle();
-    toast.warn("Shuffling Leftover Cards.");
+    options.actions.setRule({
+      title: "Shuffling Cards.",
+      description: "You should not have needed more information about this.",
+      isWarning: true,
+    } as IWarningRule);
   },
   [CardValue.ACE]: ({ actions, helpers, state }) => {
     // Not allow reassinging #2
