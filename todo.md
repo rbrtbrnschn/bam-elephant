@@ -116,7 +116,7 @@ release 2.0
 - setup crowdin for translations V
   - create banner and/or joyride V
   - fix dark mode on banner and onClick/onClose issue. V
-  - maybe even as home page footer
+  - maybe even as home page footer V
 - fix locale misloading saved V
 
 

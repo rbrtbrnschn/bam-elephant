@@ -8,6 +8,7 @@ import { useStorage } from "../../utils/useStorage";
 import { Testimonial } from "../rules/testimonial.rules";
 import { useGameRedirect } from "./redirect.hook";
 import { MyBanner } from "../../components/banner/banner";
+import { Hero2 } from "../../components/hero/hero2";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -160,6 +161,23 @@ export const HomePage = () => {
             iconUrl={"https://www.tailwind-kit.com/icons/rocket.svg"}
           />
           <hr />
+          <Hero2
+            title="The Translations need your help!"
+            description="Want to play the game in your language instead? Click below to get started."
+            buttons={[
+              {
+                onClick: () => {
+                  disableLocaleBanner();
+                  window.open(
+                    "https://crowdin.com/project/bam-elephant",
+                    "_blank"
+                  );
+                },
+                label: "Get started",
+              },
+            ]}
+            imageUrl={"/assets/pc-man.png"}
+          />
         </div>
       </section>
       <MyFooter />
