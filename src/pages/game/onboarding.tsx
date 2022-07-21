@@ -134,10 +134,11 @@ export const GameOnboarding = ({
             </h3>
             {customRules.length ? (
               <Table
-                head={["Title", "Description", "Delete?"]}
+                head={["Rule", "Delete"]}
                 body={customRules.map((r) => [
-                  r.title,
-                  r.description,
+                  <span className="flex justify-start gap-2">
+                    {r.title} <Info dataTip={r.description} />
+                  </span>,
                   <button
                     className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
                     onClick={() => {
