@@ -118,6 +118,7 @@ release 2.0
   - fix dark mode on banner and onClick/onClose issue. V
   - maybe even as home page footer V
 - fix locale misloading saved V
+  - fix shuffle (seems to be very much the same every iteration) V
 
 
 
@@ -139,7 +140,6 @@ Ice Box:
 - mobile game could have a tab view for nav + rule/notifs + card view + buttons / table / settings 
 
   Releas 2.0 Ideas:
-  - fix shuffle (seems to be very much the same every iteration)
   - sound effects on wins
   - settings to disable sound effects
   - save game?
