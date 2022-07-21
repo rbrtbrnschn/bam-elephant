@@ -19,6 +19,7 @@ import { IBaseRule } from "../../interfaces/rules.interface";
 import { MyNavbar } from "../../components/navbar/navbar";
 import { useWalkthroughGameRules } from "../../common/game-rules";
 import { useStorage } from "../../utils/useStorage";
+import { WALKTHROUGH_DECK } from "../../common/cards";
 
 export const WalkthroughPage = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ export const WalkthroughPage = () => {
     playerCount,
     gameMode: walkthroughGameMode,
     gameRules: walkthroughGameRules,
+    deck: WALKTHROUGH_DECK,
   });
   const { deck, drawnCards, modalIsOpen, rule, gameRules, disposedCards } =
     state;
