@@ -125,16 +125,19 @@ export const GameOnboarding = ({
                 setShowCustomRules(false);
               }}
             >
-              Close modal
+              {t("game.onboarding.custom-rules.modal.close")}
             </span>
           </button>
           <div className="py-6 px-6 lg:px-8">
             <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-              Custom Rules
+              {t("game.onboarding.custom-rules.view")}
             </h3>
             {customRules.length ? (
               <Table
-                head={["Rule", "Delete"]}
+                head={[
+                  t("game.onboarding.custom-rules.table.rule"),
+                  t("game.onboarding.custom-rules.table.delete"),
+                ]}
                 body={customRules.map((r) => [
                   <span className="flex justify-start gap-2">
                     {r.title} <Info dataTip={r.description} />
@@ -149,13 +152,13 @@ export const GameOnboarding = ({
                       setCustomRules(newRules);
                     }}
                   >
-                    Delete
+                    {t("game.onboarding.custom-rules.delete")}
                   </button>,
                 ])}
               />
             ) : (
               <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                No custom rules yet.
+                {t("game.onboarding.custom-rules.no-custom-rules-yet")}
               </div>
             )}
           </div>
@@ -188,18 +191,19 @@ export const GameOnboarding = ({
                 clipRule="evenodd"
               ></path>
             </svg>
-            <span className="sr-only">Close modal</span>
+            <span className="sr-only">
+              {t("game.onboarding.custom-rules.modal.close")}
+            </span>
           </button>
           <div className="py-6 px-6 lg:px-8">
             <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-              Add Custom Rule
+              {t("game.onboarding.custom-rules.add")}
             </h3>
             <div className="flex justify-center align-center pb-2"></div>
             <form
               className="space-y-6"
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log("jih");
                 //add-custom-rule-submit
                 // if (e.currentTarget.id === "input-title") {
                 //   return;
@@ -219,8 +223,10 @@ export const GameOnboarding = ({
                 name="title"
                 id="input-title"
                 value={newRule.title}
-                placeholder={"Title"}
-                title={"Rule Title"}
+                placeholder={t(
+                  "game.onboarding.custom-rules.modal.title-placeholder"
+                )}
+                title={t("game.onboarding.custom-rules.modal.title-title")}
                 onChange={(e) => {
                   setNewRule((rule) => ({
                     ...newRule,
@@ -233,15 +239,18 @@ export const GameOnboarding = ({
                 name="description"
                 id="input-description"
                 value={newRule.description}
-                placeholder={"Description"}
-                title="Rule Description"
+                title={t(
+                  "game.onboarding.custom-rules.modal.description-title"
+                )}
+                placeholder={t(
+                  "game.onboarding.custom-rules.modal.description-placeholder"
+                )}
                 onChange={(e) => {
                   setNewRule((rule) => ({
                     ...newRule,
                     description: e.target.value,
                   }));
                 }}
-                required
               />
 
               <button
@@ -267,12 +276,12 @@ export const GameOnboarding = ({
                   console.log("ran submit");
                 }}
               >
-                Submit
+                {t("game.onboarding.custom-rules.modal.submit")}
               </button>
               <div className="transition text-sm font-medium text-gray-500 dark:text-gray-300">
-                {t("game.add-rule-modal.skip.prefix")}.{" "}
+                {t("game.add-rule-modal.skip.prefix")}.
                 <button
-                  className="text-blue-700 hover:underline dark:text-blue-500"
+                  className="text-blue-700 hover:underline dark:text-blue-500 pl-1"
                   onClick={() => {
                     setShowCustomRuleModal(false);
                   }}
@@ -467,7 +476,7 @@ export const GameOnboarding = ({
                 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
                 id="rule-sets"
               >
-                Addons
+                {t("addons")}
               </h2>
               <div className="grid md:grid-cols-3 md:gap-6 gap-6">
                 {addons.map((a) => (
