@@ -42,6 +42,10 @@ export const HomePage = () => {
 
   return (
     <div>
+      <div className="sr-only">
+        Bam Elephant is a quality 'Made In Germany' drinking game, suited for
+        all ages. Recommended ages are 6-99.
+      </div>
       {needsJoyride ? <ReactJoyride steps={steps} run={true} /> : null}
       {showLocaleBanner ? (
         <div className="px-4 mx-auto max-w-screen-xl text-center lg:px-12 ">
