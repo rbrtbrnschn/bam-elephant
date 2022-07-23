@@ -77,15 +77,38 @@ export const GameOnboarding = ({
     defaultValue: [],
   }) as unknown as any[];
   console.log(addonsTranslations);
-  const addons: IMyCard2Props[] = addonsTranslations.map((t) => ({
+  const addons: IMyCard2Props[] = addonsTranslations.map((t, i) => ({
     imageUrl: "/assets/elephant.png",
     c2a: t.c2a,
     description: t.description,
     title: t.title,
     onClick: (e) => {
-      setShowCustomRuleModal(true);
+      i === 0 && setShowCustomRuleModal(true);
+      i === 1 && setShowCustomRules(true);
     },
   }));
+  // const addons: IMyCard2Props[] = [
+  //   {
+  //     imageUrl: "/assets/elephant.png",
+  //     c2a: "Cacaa",
+  //     description:
+  //       "Add custom rule. These may be used when assigning new rules in each of the gamemodes.",
+  //     title: "Custom Rule",
+  //     onClick: (e) => {
+  //       setShowCustomRuleModal(true);
+  //     },
+  //   },
+  //   {
+  //     imageUrl: "/assets/elephant.png",
+  //     c2a: "Show",
+  //     //@TODO add to translations
+  //     description: "List all custom rules. Here you may delete them too.",
+  //     title: "Show Custom Rules",
+  //     onClick: (e) => {
+  //       setShowCustomRules(true);
+  //     },
+  //   },
+  // ];
   return (
     <div>
       <MyNavbar />
@@ -471,8 +494,8 @@ export const GameOnboarding = ({
                 {t("addons.title")}
               </h2>
               <div className="grid md:grid-cols-3 md:gap-6 gap-6">
-                {addons.map((a) => (
-                  <MyCard2 tabIndex={0} {...a} />
+                {addons.map((a, i) => (
+                  <MyCard2 tabIndex={0} {...a} key={"addon-" + i} />
                 ))}
               </div>
               <div className="mt-6"></div>
