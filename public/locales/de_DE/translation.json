@@ -1,149 +1,163 @@
 {
   "navbar": {
-    "home": "Home",
-    "help": "Help",
-    "guide": "Guide",
-    "walkthrough": "Walkthrough",
-    "getStarted": "Get Started!"
+    "home": "Startseite",
+    "help": "Hilfe",
+    "guide": "Anleitung",
+    "walkthrough": "Begleitanleitung",
+    "getStarted": "Los geht's!"
   },
   "footer": {
     "resources": {
-      "_": "Resources",
-      "faqs": "FAQS",
-      "gameModes": "Game Modes"
+      "_": "Ressourcen",
+      "faqs": "Häufig gestellte Fragen",
+      "gameModes": "Spielmodi"
     },
     "followUs": {
-      "_": "Follow Us",
+      "_": "Folg Uns",
       "github": "Github",
       "discord": "Discord"
     },
     "legal": {
-      "_": "Legal",
-      "privacy": "Privacy Policy",
-      "toc": "Terms & Conditions"
+      "_": "Impressum",
+      "privacy": "Datenschutz",
+      "toc": "Nutzungsbedingungen"
     },
-    "allRightsReserved": "All Rights Reserved"
+    "allRightsReserved": "Alle Rechte vorbehalten"
   },
   "home": {
     "tag": {
-      "badge": "New",
-      "text": "Walkthrough is out now! See how it works"
+      "badge": "Neu",
+      "text": "Es gibt ein Tutorial! Sieh dir jetzt an, wie der Hase läuft"
     },
-    "header": "The Casual Drinking Game",
-    "subHeader": "Bam Elephant is a quality \"Made In Germany\" drinking game, suited for all ages. Recommended ages are 6-99.",
+    "header": "Das leichtgängige Trinkspiel",
+    "subHeader": "Bam Elephant ist ein Trinkspiel, Qualitätsstandard \"Made in Germany\", geeignet für alle Altersgruppen. Empfohlenes Alter 6-99.",
     "c2a": {
-      "1": "Get Started!",
-      "2": "Read Rules"
+      "1": "Los geht's!",
+      "2": "Zu den Regeln"
     },
-    "quote": "Bam Elephant! So isst der Fisch sein Essen aber nicht."
+    "quote": "Bam Elephant! So isst der Fisch sein Essen aber nicht.",
+    "banners": {
+      "locale": {
+        "1": "\"Neues Feature: Internationalisierung\" Hilf uns bei der Übersetzung und betrinke dich auch in deiner Sprache",
+        "2": "Klicke hier",
+        "data-tip": "Wir verwenden \"Crowdin\" für Sprachunterstützung."
+      }
+    },
+    "hero-2": {
+      "title": "Die Übersetzungen brauchen deine Hilfe!",
+      "description": "Möchtest du dich auch in deiner Sprache betrinken? Klicke unten um loszulegen.",
+      "buttons": {
+        "primary": "Los geht's"
+      }
+    }
   },
   "guide": {
     "h1": "Bam Elephant - The drinking what now?",
     "description": {
-      "1": "Bam Elephant is a card game. Each participant draws a card. Usually the person with the highest value card, has to do a dare of sorts. Depending on the",
-      "2": "game mode",
-      "3": "and the",
-      "4": "game rules",
-      "5": "you play with, this may change. All in good fun, of course. Gather some friends around and play whereever, in a bar, out in the streets, any where. Let's get",
-      "6": "you started"
+      "1": "Bam Elephant ist ein Kartenspiel. Jeder Teilnehmer zieht eine Karte. Normalerweise muss die Person mit dem höchsten Wert der Karte eine Aktion ausführen. Abhängig vom",
+      "2": "Spielmodus",
+      "3": "und den",
+      "4": "Spielregeln",
+      "5": "die du ausgewählt hast, kann sich das ändern. Sammle ein paar Freunde zusammen und spiele überall, sei es in der Bar, auf der Straße, einfach überall. Beginne",
+      "6": "jetzt!"
     },
     "faqs": {
       "1": {
-        "title": "How does this work?",
+        "title": "Wie funktioniert's?",
         "description": {
-          "prefix": "Check out the",
-          "suffix": "That should help with any questions or confusion."
+          "prefix": "Teste den",
+          "suffix": "Das sollte jegliche Fragen beantworten."
         }
       },
       "2": {
-        "title": "Can I play this with my friends?",
-        "description": "Yes, this is a multiplayer experience, though locally. Get your friends round. Join the fun. 1 Person acts as the 'Game Master' and leads the game."
+        "title": "Kann ich dies mit meinen Freunden spielen?",
+        "description": "Ja, das ist ein Mehrspieler-Spiel, in einem Raum. Leite deine Freunde im Besäufnis. Jeder wird Spaß haben. Eine Person sollte jedoch als Spielmeister gewählt werden, der das Spiel leitet."
       },
       "3": {
-        "title": "What are the different 'Game Modes'?",
+        "title": "Was sind die verschiedenen 'Spielmodi'?",
         "description": {
-          "1": "The 'Game Modes' are envisioned as a different start into game, for the different types of people or scenarios which you might find yourself in. If you play in a smaller group, you might aim for more of a low-key time. If you're out with the squad, maybe you want to try something more on the 'crazy' side. Check thet",
-          "2": "'Game Modes'",
-          "3": "section for more info."
+          "1": "Die 'Spielmodi' sind gedacht um Abwechslung zu schaffen. Wenn du in kleinen Gruppen spielst empfiehlt sich 'low-key' zu wählen. Wenn ihr eine etwas größere Gruppe seid, dann ist 'crazy' eine gute Wahl. Schaue in der",
+          "2": "'Spielmodi'",
+          "3": "Sektion nach für mehr Informationen."
         }
       },
       "4": {
-        "title": "And what are 'Rule Sets'?",
+        "title": "Was sind 'Regelsätze'?",
         "description": {
-          "1": "'Rule Sets'",
+          "1": "'Regelsätze'",
           "2": "are just a different starting points, regarding the pre-determined rules, applied to cards. Think of it like this. Haven't you ever played a card game with someone else, that tried to explain to you, that you've been playing a game wrong whole your life? People play the same games with different rules sometimes. We embrace this! Make it your own."
         }
       },
       "5": {
-        "title": "How do I play?",
+        "title": "Wie geht das Spiel?",
         "description": {
-          "1": "Click the",
-          "2": "'Get Started'",
-          "3": "button in the top right corner"
+          "1": "Klicke auf",
+          "2": "'Los geht's'",
+          "3": "in der oberen rechten Ecke"
         }
       }
     },
     "hero": {
-      "title": "Got it? Get started!",
-      "subTitle": "It's now or never.",
+      "title": "Verstanden? Los geht's!",
+      "subTitle": "Jetzt oder nie.",
       "c2a": {
-        "1": "Get Started!",
-        "2": "Help me!"
+        "1": "Los geht's!",
+        "2": "Immer noch planlos!"
       }
     },
     "gameModes": {
-      "title": "Game Modes"
+      "title": "Spielmodi"
     },
-    "quote": "Wieso nochmal wollten wir das Bam Elephant nennen?",
+    "quote": "Wieso nochmal wollten wir das \"Bam Elephant\" nennen?",
     "gameRules": {
-      "title": "Game Rules"
+      "title": "Spielregeln"
     }
   },
   "gameModes": {
     "walkthrough": {
-      "title": "Walkthrough",
-      "description": "WIP.",
+      "title": "Begleitanleitung",
+      "description": "In Arbeit",
       "about": []
     },
     "outdoors": {
       "title": "Outdoors",
-      "description": "Share relevant, engaging, and inspirational brand messages to create a connection with your audience.",
+      "description": "Teilen Sie relevante, engagierende und inspirierende Markenbotschaften, um eine Verbindung zu Ihrem Publikum herzustellen.",
       "about": [
         [
-          "Jack",
+          "Bube",
           {
-            "title": "assign new rule"
+            "title": "Neue Regel zuweisen"
           }
         ],
         [
-          "Queen",
+          "Dame",
           {
-            "title": "assign new rule"
+            "title": "Neue Regel zuweisen"
           }
         ],
         [
-          "KING",
+          "KÖNIG",
           {
-            "title": "assing new rule"
+            "title": "Neue Regel zuweisen"
           }
         ]
       ]
     },
     "low-key": {
       "title": "Low-Key",
-      "description": "A low-key scenario, just sit down with your friends. Put on some good music. Have a good time.",
+      "description": "Ein Low-Key-Szenario, setzen Sie sich einfach mit Ihren Freunden zusammen. Legen Sie eine gute Musik auf. Viel Spaß.",
       "about": [
         [
-          "Seven",
+          "Sieben",
           {
-            "title": "shuffle deck",
-            "description": "Shuffles left over cards."
+            "title": "Kartenstapel mischen",
+            "description": "Verbleibene Karten mischen"
           }
         ],
         [
-          "Ace",
+          "Ass",
           {
-            "title": "assign new rule"
+            "title": "Neue Regel zuweisen"
           }
         ],
         [
@@ -164,48 +178,67 @@
   "gameRules": {
     "walkthrough": {
       "title": "Walkthrough",
-      "description": "For educational purposes only.",
-      "about": "WIP."
+      "description": "Nur zu Bildungszwecken.",
+      "about": "In Arbeit"
     },
     "basic": {
       "title": "Basic",
-      "description": "At this point I'm out of information.",
-      "about": "Wip."
+      "description": "Es gibt nicht viel mehr zu sagen.",
+      "about": "In Arbeit"
     },
     "crazy": {
       "title": "Crazy",
-      "description": "Lorem Ipsum. I don't even know, how to describe it. That's how crazy it is.",
-      "about": "Wip."
+      "description": "Lorem Ipsum. Ich weiß nicht einmal, wie man es beschreibt. Das ist so verrückt.",
+      "about": "In Arbeit"
     },
     "adversity-rich": {
       "title": "Adversity-rich",
-      "description": "I'm just making up words as I go now.",
-      "about": "Wip."
+      "description": "Ich denke mir nur noch Wörter aus.",
+      "about": "In Arbeit"
     }
   },
   "game": {
-    "draw": "Draw",
-    "shuffle": "Shuffle",
-    "undo": "Undo",
-    "leave-demo": "Leave demo",
-    "value": "Value",
-    "rule": "Rule",
+    "draw": "Ziehen",
+    "shuffle": "Mischen",
+    "undo": "Zurück",
+    "leave-demo": "Demo verlassen",
+    "value": "Wert",
+    "rule": "Regel",
     "onboarding": {
-      "add-player": "Add Player",
-      "add-player_other": "Add Players",
-      "remove-last-player": "Remove Last Player",
-      "name-player": "Name Player",
-      "select": "Select",
+      "add-player": "Spieler hinzufügen",
+      "add-player_other": "Füge Spieler hinzu",
+      "remove-last-player": "Letzten Spieler entfernen",
+      "name-player": "Spielername",
+      "select": "Auswählen",
       "submit": "Submit",
+      "new-rule": "Neue Regel",
       "headings": {
-        "gameModes": "Game Modes",
-        "gameRules": "Game Rules",
+        "gameModes": "Spielmodi",
+        "gameRules": "Spielregeln",
         "about": "About",
         "preview": "Game Rules Preview"
       },
       "dataTips": {
         "gameModes": "A 'Game Mode' is what will happen to you in the game.",
         "gameRules": "A 'Game Rule' is what you will end up doing."
+      },
+      "custom-rules": {
+        "modal": {
+          "close": "Close Modal",
+          "title-placeholder": "Title",
+          "title-title": "Rule Title",
+          "description-placeholder": "Description",
+          "description-title": "Rule Description",
+          "submit": "Submit"
+        },
+        "view": "Custom Rules",
+        "delete": "Delete",
+        "no-custom-rules-yet": "No custom rules yet",
+        "add": "Add Custom Rule",
+        "table": {
+          "rule": "Rule",
+          "delete": "Delete"
+        }
       }
     },
     "add-rule-modal": {
@@ -220,5 +253,20 @@
       }
     }
   },
-  "test": "test"
+  "test": "test",
+  "addons": {
+    "title": "Addons",
+    "items": [
+      {
+        "c2a": "Add",
+        "title": "Custom Rule",
+        "description": "Add custom rule. These may be used when assigning new rules in each of the gamemodes."
+      },
+      {
+        "c2a": "Show",
+        "title": "Show Custom Rules",
+        "description": "List all custom rules. Here you may delete them too."
+      }
+    ]
+  }
 }
