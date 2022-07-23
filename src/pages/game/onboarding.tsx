@@ -72,28 +72,20 @@ export const GameOnboarding = ({
     ReactTooltip.rebuild();
   }, [customRules, showCustomRuleModal]);
 
-  const addons: IMyCard2Props[] = [
-    {
-      imageUrl: "/assets/elephant.png",
-      c2a: "Add",
-      description:
-        "Add custom rule. These may be used when assigning new rules in each of the gamemodes.",
-      title: "Custom Rule",
-      onClick: (e) => {
-        setShowCustomRuleModal(true);
-      },
+  const addonsTranslations = t("addons.items", {
+    returnObjects: true,
+    defaultValue: [],
+  }) as unknown as any[];
+  console.log(addonsTranslations);
+  const addons: IMyCard2Props[] = addonsTranslations.map((t) => ({
+    imageUrl: "/assets/elephant.png",
+    c2a: t.c2a,
+    description: t.description,
+    title: t.title,
+    onClick: (e) => {
+      setShowCustomRuleModal(true);
     },
-    {
-      imageUrl: "/assets/elephant.png",
-      c2a: "Show",
-      //@TODO add to translations
-      description: "List all custom rules. Here you may delete them too.",
-      title: "Show Custom Rules",
-      onClick: (e) => {
-        setShowCustomRules(true);
-      },
-    },
-  ];
+  }));
   return (
     <div>
       <MyNavbar />
@@ -476,7 +468,7 @@ export const GameOnboarding = ({
                 className="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12 dark:text-white"
                 id="rule-sets"
               >
-                {t("addons")}
+                {t("addons.title")}
               </h2>
               <div className="grid md:grid-cols-3 md:gap-6 gap-6">
                 {addons.map((a) => (

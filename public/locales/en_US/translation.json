@@ -257,6 +257,21 @@
     
   },
   "test":"test",
-  "addons": "Addons"
+  "addons":{
+  "title": "Addons",
+    "items": [
+      {
+        "c2a":"Add",
+        "title":"Custom Rule",
+        "description":"Add custom rule. These may be used when assigning new rules in each of the gamemodes."
+      },
+      {
+        "c2a":"Show",
+        "title":"Show Custom Rules",
+        "description":"List all custom rules. Here you may delete them too."
+      }
+    ]
+
+  }
   
 }

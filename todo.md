@@ -106,7 +106,7 @@
   - alt tags V
   - headers V
 
-## release 2.0
+## release 1.4
 - refactor gamerule.rule handle to not use hardcode card valus like ACE V
 - cards that cannot be reruled like 2 in lowkey V
 - add onclick for info component, so that mobile works V (it does on native anyways)
@@ -128,7 +128,7 @@
 - fix draw logic only working on names.length = drawnCards.filter(Boolean).length; V
 - fix restart logic V
 - go for more of a primary/secondary theme for onboarding atleast V
-  
+- fix last translations for onboarding V
 
 ### Ice Box:
 - fix undo logic
@@ -154,9 +154,10 @@
   - add in animation for rocket
   - add in real photos
   - whole page detailing game modes / game rules / rule / add rule section (custom rules) with search functionality and add functionality (after next upgrade?)
-    - add - ctrl-k for some sort of (game) search
+    - add - ctrl-k for some sort of (game) search 
 
 ### 3 Am In The Morning Update:
+- add in rest of gamemodes / game rules
 - on the streets gamemode:
   - default game rules consisting of social dares ie:
     - say "hi" to next person you see
