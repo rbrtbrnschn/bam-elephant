@@ -221,6 +221,24 @@
       "dataTips": {
         "gameModes": "A 'Game Mode' is what will happen to you in the game.",
         "gameRules": "A 'Game Rule' is what you will end up doing."
+      },
+      "custom-rules": {
+        "modal": {
+          "close": "Close Modal",
+          "title-placeholder": "Title",
+          "title-title": "Rule Title",
+          "description-placeholder": "Description",
+          "description-title": "Rule Description",
+          "submit": "Submit"
+        },
+        "view": "Custom Rules",
+        "delete": "Delete",
+        "no-custom-rules-yet": "No custom rules yet",
+        "add": "Add Custom Rule",
+        "table": {
+          "rule": "Rule",
+          "delete": "Delete"
+        }
       }
     },
     "add-rule-modal": {
@@ -235,5 +253,6 @@
       }
     }
   },
-  "test": "test"
+  "test": "test",
+  "addons": "Addons"
 }
