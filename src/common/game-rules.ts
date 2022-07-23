@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "../common/useTranslation";
 import { CardValue } from "../interfaces/card.interface";
 import {
@@ -6,6 +7,7 @@ import {
   IExampleRule,
   IGameRulesWithDescription,
 } from "../interfaces/rules.interface";
+import { useStorage } from "../utils/useStorage";
 /* RULES */
 export const halfAShot: IBaseRule = {
   title: "1/2 Shots",

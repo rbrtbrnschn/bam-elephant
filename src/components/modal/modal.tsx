@@ -16,7 +16,7 @@ export const Modal = ({ onClose, id, children, ...props }: IModalProps) => {
         className="modal-background absolute top-0 left-0 w-screen h-screen z-10 bg-slate-700/50 "
         onClick={onClose}
       ></div>
-      <div className="modal-card relative m-4 lg:m-0 w-full max-w-md h-auto  max-h-[90vh] lg:max-h-screen bg-slate-900 z-20 bg-white rounded-lg shadow dark:bg-gray-700 overflow-scroll">
+      <div className="modal-card relative m-4 lg:m-0 w-full max-w-md h-auto  max-h-[90vh] lg:max-h-screen dark:bg-slate-900 z-20 bg-white rounded-lg shadow dark:bg-gray-700 overflow-scroll">
         <section className="modal-card-body">{children}</section>
       </div>
     </div>

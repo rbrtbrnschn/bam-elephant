@@ -124,14 +124,14 @@
 - refactor to use modal for custom rules in onboarding V
   - user can create client-side rules V
     - which will be injected into current gameMode.defaultRules V
-    - add translations for onboarding.defaultRules
-- undo color to outlined | go for more of a primary/secondary theme
+    - add translations for onboarding.defaultRules V
 - fix undo logic
 - fix draw logic only working on names.length = drawnCards.filter(Boolean).length;
 - fix 3 or more players mobile
   
 
 ### Ice Box:
+- undo color to outlined | go for more of a primary/secondary theme
 - add in cookies section
 - add strapi for rule management
 - aos
