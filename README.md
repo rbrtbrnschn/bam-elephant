@@ -11,6 +11,7 @@
 <a href="https://bam-elephant.com"><img src="https://img.shields.io/github/workflow/status/rbrtbrnschn/bam-elephant/Crowdin%20Sync?label=Translations&style=for-the-badge" alt="crowdin-sinc workflow" /></a>
 <a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Ideas%3F"><img src="https://img.shields.io/badge/Share-Ideas%20-yellow?style=for-the-badge" /></a>
 <a href=https://github.com/rbrtbrnschn/bam-elephant/wiki/Feedback"><img src="https://img.shields.io/badge/Leave-Feedback%20-yellow?style=for-the-badge" />
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/rbrtbrnschn/bam-elephant?color=a&style=for-the-badge">
 <a title="Crowdin" target="_blank" href="https://crowdin.com/project/bam-elephant"><img src="https://badges.crowdin.net/bam-elephant/localized.svg?style=for-the-badge"></a>
 </p>
 
