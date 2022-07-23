@@ -33,7 +33,6 @@ export const Game = ({
     playerCount: players.length,
     gameMode: givenGameMode,
     gameRules: givenGameRules,
-    deck: givenGameMode.deck,
   });
   const {
     deck,

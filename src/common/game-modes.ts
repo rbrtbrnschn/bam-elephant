@@ -8,7 +8,11 @@ import {
   IGameState,
 } from "../interfaces/game.interface";
 import { IBaseRule, IWarningRule } from "../interfaces/rules.interface";
-import { LOW_KEY_STANDARD_DECK } from "./cards";
+import {
+  LOW_KEY_STANDARD_DECK,
+  STANDARD_DECK,
+  WALKTHROUGH_DECK,
+} from "./cards";
 import {
   fullShot,
   halfAShot,
@@ -165,6 +169,7 @@ export const useWalkthroughGameMode = () => {
     handleWinner,
     handleNotification,
     defaultRules: [halfAShot, fullShot, neverHaveIEver],
+    deck: [...WALKTHROUGH_DECK],
   };
   return WALKTHROUGH_GAME_MODE_WITH_DESCRIPTION;
 };
@@ -191,6 +196,7 @@ export const useOutdoorsGameMode = () => {
     handleWinner,
     handleNotification,
     defaultRules: [halfAShot, fullShot, neverHaveIEver],
+    deck: [...STANDARD_DECK],
   };
   return OUTDOORS_GAME_MODE_WITH_DESCRIPTION;
 };
@@ -208,6 +214,7 @@ export const useAtTheClubGameMode = () => {
     handleWinner,
     handleNotification,
     defaultRules: [halfAShot, fullShot, neverHaveIEver],
+    deck: [...STANDARD_DECK],
   };
   return At_THE_CLUB_GAME_MODE_WITH_DESCRIPTION;
 };

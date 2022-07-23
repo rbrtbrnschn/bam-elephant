@@ -125,8 +125,9 @@
   - user can create client-side rules V
     - which will be injected into current gameMode.defaultRules V
     - add translations for onboarding.defaultRules V
+- fix draw logic only working on names.length = drawnCards.filter(Boolean).length; V
+- fix restart logic V
 - fix undo logic
-- fix draw logic only working on names.length = drawnCards.filter(Boolean).length;
 - fix 3 or more players mobile
   
 

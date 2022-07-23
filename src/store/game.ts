@@ -26,7 +26,6 @@ export function useGameState({
   playerCount: PLAYER_COUNT = 2,
   gameMode,
   gameRules,
-  deck = [...STANDARD_DECK],
 }: IUseGameStateOptions = {}) {
   const lowKeyGameModeWithDescription = useLowKeyGameMode();
   const basicGameRulesWithDescription = useBasicGameRules();
@@ -44,7 +43,7 @@ export function useGameState({
   /* Error Handling */
 
   const [state, setState] = useState<IGameState>({
-    deck,
+    deck: gameMode.deck,
     drawnCards: [],
     disposedCards: [],
     rule: {
@@ -71,7 +70,6 @@ export function useGameState({
   };
 
   const setRule = (newRule: IBaseRule) => {
-    console.log("newRule:", newRule);
     setState((oldState) => ({ ...oldState, rule: newRule }));
   };
 
@@ -101,7 +99,10 @@ export function useGameState({
     () => !!(state.deck.length && state.drawnCards.length),
     [state.drawnCards.length, state.deck.length]
   );
-  const roundHasEnded = useMemo(() => !state.deck.length, [state.deck.length]);
+  const roundHasEnded = useMemo(
+    () => state.deck.length < PLAYER_COUNT,
+    [state.deck.length]
+  );
 
   const [winner, loser] = useMemo<(ICard | null)[]>(
     () => (gameMode as IGameModeWithDescription).handleWinner({ state }),
@@ -122,7 +123,11 @@ export function useGameState({
     // setDrawnCards([]);
   };
   const restart = () => {
-    setDeck([...STANDARD_DECK].sort(() => 0.5 * Math.random()));
+    setDeck(
+      [...(gameMode as IGameModeWithDescription)?.deck].sort(
+        () => 0.5 * Math.random()
+      )
+    );
     setDrawnCards([]);
     setDisposedCards([]);
   };
