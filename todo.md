@@ -1,11 +1,13 @@
-Demo:
+# Roadmap / Ideas
+
+## Demo:
 - button to draw two cards V
 - compare V
 - decide winner V
 - showcase rule/todo V
 - draw another V
 
-Alpha:
+## Alpha:
 - refactor to use proper data V
 - reshuffle V
 - ace may add rules V
@@ -31,7 +33,7 @@ Alpha:
 - refactor toggle Modal, newRule out of store/index.ts 
 - feat: add in givenState for gameState hook for modal and such to allow use of actions/access to state in IGameInjections 
 
-Beta:
+## Beta:
 - tooltip on hover card showing current rule V
 - fix up mobile view V
 - use cookies to redirect to game from home V
@@ -48,7 +50,7 @@ Beta:
 - vercel V
 - Tutorial Walkthrough V
 
-release:
+## release 1.0.0:
 - add favicon V
 - add logo navbar / footer V
 - fix navbar mobile V
@@ -61,11 +63,9 @@ release:
 - add in gamemode description when playing. V
 - refactor winner loser logic to gamemode! ;) 100iq move right there. V
 - allow for toast/rule manipulation/creation via callback V
-
-Release:
 - build out readme V
 
-release 1.1
+## release v1.1
 - add lint test V
 - add in tooltip for i on banner V
 - maybe add in dropdown for gamemode rules to choose from instead of custom for choose rule modal V
@@ -83,7 +83,7 @@ release 1.1
 - fix modal layout V
 
 
-release 1.2 V
+## release v1.2
 - add skeletons for card images V
 - internationalization V
   - add locales for rules V
@@ -91,7 +91,7 @@ release 1.2 V
 - add more info next to onboarding headers V
 - add in joyride to home page get started button -> guides  V
   
-release 1.3 V
+## release v1.3
 - bam-elephant card? V
 - extra cards by game-mode? V
 - made it clearer who get's too choose new rule V
@@ -100,13 +100,13 @@ release 1.3 V
 - fix droddown mechanics, for accesibility. mobile cannot update rule by selecting from dropdown. V
 - mobile layout fudged V
 
-release 1.3.1 V
+## release v1.3.1
 - SEO home V
   - guide V
   - alt tags V
   - headers V
 
-release 2.0
+## release 2.0
 - refactor gamerule.rule handle to not use hardcode card valus like ACE V
 - cards that cannot be reruled like 2 in lowkey V
 - add onclick for info component, so that mobile works V (it does on native anyways)
@@ -124,12 +124,14 @@ release 2.0
 - refactor to use modal for custom rules in onboarding V
   - user can create client-side rules V
     - which will be injected into current gameMode.defaultRules V
-
-
-
+    - add translations for onboarding.defaultRules
+- undo color to outlined | go for more of a primary/secondary theme
+- fix undo logic
+- fix draw logic only working on names.length = drawnCards.filter(Boolean).length;
+- fix 3 or more players mobile
   
 
-Ice Box:
+### Ice Box:
 - add in cookies section
 - add strapi for rule management
 - aos
@@ -143,7 +145,7 @@ Ice Box:
   - user can upload custom cards / decks
 - mobile game could have a tab view for nav + rule/notifs + card view + buttons / table / settings 
 
-  Releas 2.0 Ideas:
+### Releas 2.0 Ideas:
   - sound effects on wins
   - settings to disable sound effects
   - save game?
@@ -153,3 +155,18 @@ Ice Box:
   - add in real photos
   - whole page detailing game modes / game rules / rule / add rule section (custom rules) with search functionality and add functionality (after next upgrade?)
     - add - ctrl-k for some sort of (game) search
+
+### 3 Am In The Morning Update:
+- on the streets gamemode:
+  - default game rules consisting of social dares ie:
+    - say "hi" to next person you see
+    - go tell a knock knock joke
+    - approach someone in a foreign language, if they dont know it, speak in your native language but with that foreign language's accent
+- technically bam elephant could be played at all three stages of partying:
+  - low-key (Vorgluehen [apparently a german thing - can't find a translation])
+  - on the streets (on your way to the club/bar, so literally on the streets)
+  - @theClub (when you arrive at the party/club/bar)
+- teams
+- onboarding via step by step "page-components" with breadcrumbs / navigation 
+instead of one long page.
+- game has native mobile style dock/nav on mobile (unsure of web)
