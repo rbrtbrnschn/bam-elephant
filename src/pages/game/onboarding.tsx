@@ -86,6 +86,7 @@ export const GameOnboarding = ({
     {
       imageUrl: "/assets/elephant.png",
       c2a: "Show",
+      //@TODO add to translations
       description: "List all custom rules. Here you may delete them too.",
       title: "Show Custom Rules",
       onClick: (e) => {
@@ -146,7 +147,6 @@ export const GameOnboarding = ({
                     className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
                     onClick={() => {
                       const newRules = [...customRules].filter((cr) => {
-                        console.log("compare", cr, r);
                         return cr.title !== r.title;
                       });
                       setCustomRules(newRules);
@@ -356,7 +356,7 @@ export const GameOnboarding = ({
                   e.preventDefault();
                   deleteInput();
                 }}
-                className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+                className="border-b-4 py-2 px-4 inline-flex justify-center items-center text-base font-medium text-center text-gray-900 rounded border border-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 hover:border-gray-500"
               >
                 {t("game.onboarding.remove-last-player")}
               </button>
@@ -488,18 +488,19 @@ export const GameOnboarding = ({
                 type="submit"
                 className={`text-white font-bold py-2 px-4 border-b-4 rounded ${
                   ready2Submit
-                    ? "bg-green-500 hover:bg-green-400 border-green-700 hover:border-green-500"
-                    : "bg-yellow-500 hover:bg-yellow-400 border-yellow-700 hover:border-yellow-500"
+                    ? "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                    : "border-b-4 py-2 px-4 inline-flex justify-center items-center text-base font-medium text-center text-gray-900 rounded border border-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 hover:border-gray-500"
                 }`}
                 onClick={onSubmit}
               >
                 {t("game.onboarding.submit")}
-              </button>{" "}
+              </button>
+              {""}
             </>
           ) : (
             <button
               type="submit"
-              className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+              className="border-b-4 py-2 px-4 inline-flex justify-center items-center text-base font-medium text-center text-gray-900 rounded border border-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 hover:border-gray-500"
             >
               {t("game.onboarding.submit")}
             </button>

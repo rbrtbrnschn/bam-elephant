@@ -19,7 +19,7 @@ export const MyCard2 = ({
   return (
     <div
       className={`transition max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:-translate-y-2
-      ${isSelected ? "border-green-300 dark:border-white border-2" : ""}
+      ${isSelected ? "border-blue-400 dark:border-white border-2" : ""}
       ${disabled ? "pointer-events-none " : ""}
          ${className}`}
       {...props}
@@ -35,7 +35,11 @@ export const MyCard2 = ({
           alt="bam elephant card"
         />
       </a>
-      <div className={`p-5 ${disabled ? "opacity-25 cursor-not-allowed" : ""}`}>
+      <div
+        className={`p-5 h-max  ${
+          disabled ? "opacity-25 cursor-not-allowed" : ""
+        }`}
+      >
         <a className="cursor-pointer">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
@@ -44,13 +48,15 @@ export const MyCard2 = ({
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {description}
         </p>
-        <a
-          className={`transition cursor-pointer inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded ${
+        <button
+          type="button"
+          tabIndex={-1}
+          className={`transition cursor-pointer  ${
             disabled ? "opacity-25 cursor-not-allowed" : ""
           } ${
             isSelected
-              ? "bg-green-500 hover:bg-green-400 border-green-700 hover:border-green-500"
-              : ""
+              ? "inline-flex justify-center items-center bg-blue-400 dark:bg-blue-500 cursor-not-allowed text-white font-bold py-2 px-4 border-0 border-b-4 border-blue-600 rounded"
+              : "border-b-4 py-2 px-4 inline-flex justify-center items-center text-base font-medium text-center text-gray-900 rounded border border-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 hover:border-gray-500"
           }`}
         >
           {c2a}
@@ -67,7 +73,7 @@ export const MyCard2 = ({
               clipRule="evenodd"
             ></path>
           </svg>
-        </a>
+        </button>
       </div>
     </div>
   );

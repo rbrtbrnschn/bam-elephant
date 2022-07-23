@@ -185,7 +185,7 @@ export const Game = ({
           )}
           {!hasEnded && disposedCards.length ? (
             <button
-              className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+              className="border-b-4 py-2 px-4 inline-flex justify-center items-center text-base font-medium text-center text-gray-900 rounded border border-gray-700 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 hover:border-gray-500"
               onClick={() => {
                 undo();
               }}

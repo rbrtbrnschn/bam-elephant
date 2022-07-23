@@ -127,12 +127,11 @@
     - add translations for onboarding.defaultRules V
 - fix draw logic only working on names.length = drawnCards.filter(Boolean).length; V
 - fix restart logic V
-- fix undo logic
-- fix 3 or more players mobile
+- go for more of a primary/secondary theme for onboarding atleast V
   
 
 ### Ice Box:
-- undo color to outlined | go for more of a primary/secondary theme
+- fix undo logic
 - add in cookies section
 - add strapi for rule management
 - aos
